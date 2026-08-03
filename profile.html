@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GameRent | Profile</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<div class="logo">
+🎮 GameRent
+</div>
+
+<ul class="nav-links">
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="games.html">Games</a></li>
+
+<li><a href="wishlist.html">Wishlist</a></li>
+
+<li><a href="profile.html" class="active">Profile</a></li>
+
+</ul>
+
+</nav>
+
+<!-- PROFILE -->
+
+<section class="profile-page">
+
+<div class="profile-card">
+
+<div class="profile-banner"></div>
+
+<div class="profile-content">
+
+<img
+id="profileAvatar"
+class="profile-avatar"
+src="images/avatars/avatar1.png"
+alt="Avatar">
+
+<h1 id="profileName">Guest Gamer</h1>
+
+<p class="member">
+⭐ Premium Gamer
+</p>
+
+<button class="change-avatar-btn">
+Change Avatar
+</button>
+
+</div>
+
+</div>
+
+<!-- STATS -->
+
+<div class="profile-stats">
+
+<div class="stat">
+
+<h2 id="rentCount">0</h2>
+
+<p>Total Rentals</p>
+
+</div>
+
+<div class="stat">
+
+<h2 id="wishCount">0</h2>
+
+<p>Wishlist</p>
+
+</div>
+
+<div class="stat">
+
+<h2>2026</h2>
+
+<p>Member Since</p>
+
+</div>
+
+</div>
+
+<!-- USER INFO -->
+
+<div class="profile-info">
+
+<h2>Account Information</h2>
+
+<div class="info-box">
+
+<p>
+
+<i class="fa-solid fa-user"></i>
+
+Username
+
+</p>
+
+<span id="usernameText">
+
+Guest Gamer
+
+</span>
+
+</div>
+
+<div class="info-box">
+
+<p>
+
+<i class="fa-solid fa-envelope"></i>
+
+Email
+
+</p>
+
+<span>
+
+Not Added
+
+</span>
+
+</div>
+
+<div class="info-box">
+
+<p>
+
+<i class="fa-solid fa-gamepad"></i>
+
+Favorite Genre
+
+</p>
+
+<span>
+
+Open World
+
+</span>
+
+</div>
+
+</div>
+
+<!-- RECENT RENTALS -->
+
+<div class="recent-section">
+
+<h2>
+
+Recent Rentals
+
+</h2>
+
+<div id="recentRentals" class="games">
+
+<p>No rentals yet.</p>
+
+</div>
+
+</div>
+
+<!-- SETTINGS -->
+
+<div class="settings">
+
+<h2>
+
+Settings
+
+</h2>
+
+<button class="profile-btn">
+
+<i class="fa-solid fa-user-pen"></i>
+
+Edit Profile
+
+</button>
+
+<button class="profile-btn">
+
+<i class="fa-solid fa-lock"></i>
+
+Change Password
+
+</button>
+
+<button class="profile-btn">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Logout
+
+</button>
+
+</div>
+
+</section>
+
+<script src="script.js"></script>
+
+<script>
+
+const username = localStorage.getItem("username");
+
+if(username){
+
+document.getElementById("profileName").innerText=username;
+
+document.getElementById("usernameText").innerText=username;
+
+}
+
+const rentals = JSON.parse(localStorage.getItem("rentals")) || [];
+
+document.getElementById("rentCount").innerText=rentals.length;
+
+const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+document.getElementById("wishCount").innerText=wishlist.length;
+
+const recent=document.getElementById("recentRentals");
+
+if(rentals.length){
+
+recent.innerHTML="";
+
+rentals.slice(-4).reverse().forEach(game=>{
+
+recent.innerHTML+=`
+
+<div class="card">
+
+<div class="info">
+
+<h3>${game.game}</h3>
+
+<p>₹${game.price}</p>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+</script>
+
+</body>
+
+</html>
