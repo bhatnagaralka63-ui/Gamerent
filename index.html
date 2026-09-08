@@ -49,7 +49,10 @@
         <li><a href="#categories">Categories</a></li>
         <li><a href="#myrentals">My Rentals</a></li>
         <li><a href="#">Contact</a></li>
-      <li><a href="#profile">Profile</a></li>
+        <button class="nav-profile-btn" onclick="openProfile()">
+    <i class="fa-solid fa-user"></i>
+    Profile
+</button>
     </ul>
 
     <div class="nav-right">
@@ -701,6 +704,161 @@ Rent Now
 
 </div>
 <script src="script.js"></script>
+<!-- ==========================================
+     PROFILE POPUP
+========================================== -->
 
+<div id="profileOverlay" class="profile-overlay">
+
+    <div class="profile-modal">
+
+        <!-- CLOSE -->
+        <button class="profile-close" onclick="closeProfile()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <!-- HEADER -->
+        <div class="profile-header">
+
+            <div class="profile-avatar-wrapper">
+                <img
+                    id="selectedAvatar"
+                    src="https://i.pravatar.cc/150?img=12"
+                    alt="Profile Avatar"
+                >
+            </div>
+
+            <h2>My Profile</h2>
+
+            <p>
+                Manage your GameRent profile
+            </p>
+
+        </div>
+
+
+        <!-- USERNAME -->
+        <div class="profile-field">
+
+            <label for="profileInputName">
+                Username
+            </label>
+
+            <div class="profile-input-wrapper">
+
+                <i class="fa-solid fa-user"></i>
+
+                <input
+                    type="text"
+                    id="profileInputName"
+                    placeholder="Enter username"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- AVATARS -->
+        <div class="profile-field">
+
+            <label>
+                Choose Avatar
+            </label>
+
+            <div class="avatar-list">
+
+                <img
+                    src="https://i.pravatar.cc/150?img=12"
+                    onclick="selectAvatar(this.src, this)"
+                    alt="Avatar"
+                >
+
+                <img
+                    src="https://i.pravatar.cc/150?img=11"
+                    onclick="selectAvatar(this.src, this)"
+                    alt="Avatar"
+                >
+
+                <img
+                    src="https://i.pravatar.cc/150?img=13"
+                    onclick="selectAvatar(this.src, this)"
+                    alt="Avatar"
+                >
+
+                <img
+                    src="https://i.pravatar.cc/150?img=14"
+                    onclick="selectAvatar(this.src, this)"
+                    alt="Avatar"
+                >
+
+                <img
+                    src="https://i.pravatar.cc/150?img=15"
+                    onclick="selectAvatar(this.src, this)"
+                    alt="Avatar"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- STATS -->
+        <div class="profile-popup-stats">
+
+            <div class="profile-stat">
+
+                <span class="profile-stat-icon">
+                    🎮
+                </span>
+
+                <div>
+                    <strong id="profileRentals">0</strong>
+                    <small>Rentals</small>
+                </div>
+
+            </div>
+
+
+            <div class="profile-stat">
+
+                <span class="profile-stat-icon">
+                    ❤️
+                </span>
+
+                <div>
+                    <strong id="profileWishlist">0</strong>
+                    <small>Wishlist</small>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- BUTTONS -->
+        <div class="profile-actions">
+
+            <button
+                class="profile-save-btn"
+                onclick="saveProfile()"
+            >
+                <i class="fa-solid fa-check"></i>
+                Save Profile
+            </button>
+
+            <button
+                class="profile-logout-btn"
+                onclick="logoutUser()"
+            >
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 </body>
 </html>
