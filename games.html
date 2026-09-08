@@ -3,487 +3,1004 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>GameRent | All Games</title>
+    <title>GameRent | All Games</title>
 
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
 
 </head>
 
+
 <body>
 
-<!-- ================= NAVBAR ================= -->
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
 
 <nav class="navbar">
 
-<div class="logo">
-🎮 GameRent
-</div>
+    <div class="logo">
+        🎮 GameRent
+    </div>
 
-<ul class="nav-links">
 
-<li><a href="index.html">Home</a></li>
+    <ul class="nav-links">
 
-<li><a href="games.html" class="active">Games</a></li>
+        <li>
+            <a href="index.html">
+                Home
+            </a>
+        </li>
 
-<li><a href="index.html#categories">Categories</a></li>
+        <li>
+            <a href="games.html" class="active">
+                Games
+            </a>
+        </li>
 
-<li><a href="index.html#myrentals">My Rentals</a></li>
+        <li>
+            <a href="index.html#categories">
+                Categories
+            </a>
+        </li>
 
-<li><a href="#">Contact</a></li>
+        <li>
+            <a href="index.html#myrentals">
+                My Rentals
+            </a>
+        </li>
 
-</ul>
+        <li>
+            <a href="index.html#contact">
+                Contact
+            </a>
+        </li>
 
-<div class="nav-right">
+    </ul>
 
-<div class="search">
 
-<i class="fa-solid fa-magnifying-glass"></i>
+    <div class="nav-right">
 
-<input
-type="text"
-id="searchBox"
-placeholder="Search Games..."
-oninput="searchGame()">
+        <div class="search">
 
-</div>
+            <i class="fa-solid fa-magnifying-glass"></i>
 
-<button class="login-btn">
-Profile
-</button>
+            <input
+                type="text"
+                id="searchBox"
+                placeholder="Search Games..."
+                oninput="searchGame()"
+            >
 
-</div>
+        </div>
+
+
+        <button
+            class="login-btn"
+            onclick="location.href='index.html#profile'"
+        >
+            <i class="fa-solid fa-user"></i>
+            Profile
+        </button>
+
+    </div>
 
 </nav>
 
-<!-- ================= HERO ================= -->
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
 
 <section class="hero">
 
-<div class="overlay">
+    <div class="overlay">
 
-<h1>Browse Every Game</h1>
+        <h1>
+            Browse Every Game
+        </h1>
 
-<p>
+        <p>
+            Discover hundreds of premium AAA titles from PlayStation,
+            Xbox and PC.
+        </p>
 
-Discover hundreds of premium AAA titles from PlayStation, Xbox and PC.
+        <button
+            onclick="document.getElementById('gameLibrary').scrollIntoView({
+                behavior: 'smooth'
+            })"
+        >
+            Explore Library
+        </button>
 
-</p>
-
-<button onclick="window.scrollTo({
-top:700,
-behavior:'smooth'
-})">
-
-Explore Library
-
-</button>
-
-</div>
+    </div>
 
 </section>
 
-<!-- ================= FILTERS ================= -->
+
+
+<!-- =========================================================
+     FILTERS
+========================================================= -->
 
 <section class="section">
 
-<h2>🎮 Game Library</h2>
+    <h2>
+        🎮 Game Library
+    </h2>
 
-<div class="categories">
 
-<div class="cat-card active"
-onclick="filterCategory('all',this)">
-<i class="fa-solid fa-grip"></i>
-<h3>All</h3>
-</div>
+    <div class="categories">
 
-<div class="cat-card"
-onclick="filterCategory('action',this)">
-<i class="fa-solid fa-fire"></i>
-<h3>Action</h3>
-</div>
 
-<div class="cat-card"
-onclick="filterCategory('rpg',this)">
-<i class="fa-solid fa-dragon"></i>
-<h3>RPG</h3>
-</div>
+        <!-- ALL -->
 
-<div class="cat-card"
-onclick="filterCategory('horror',this)">
-<i class="fa-solid fa-ghost"></i>
-<h3>Horror</h3>
-</div>
+        <div
+            class="cat-card active"
+            onclick="filterCategory('all', this)"
+        >
 
-<div class="cat-card"
-onclick="filterCategory('sports',this)">
-<i class="fa-solid fa-futbol"></i>
-<h3>Sports</h3>
-</div>
+            <i class="fa-solid fa-grip"></i>
 
-<div class="cat-card"
-onclick="filterCategory('openworld',this)">
-<i class="fa-solid fa-earth-americas"></i>
-<h3>Open World</h3>
-</div>
+            <h3>
+                All
+            </h3>
 
-<div class="cat-card"
-onclick="filterCategory('racing',this)">
-<i class="fa-solid fa-flag-checkered"></i>
-<h3>Racing</h3>
-</div>
+        </div>
 
-</div>
+
+        <!-- ACTION -->
+
+        <div
+            class="cat-card"
+            onclick="filterCategory('action', this)"
+        >
+
+            <i class="fa-solid fa-fire"></i>
+
+            <h3>
+                Action
+            </h3>
+
+        </div>
+
+
+        <!-- RPG -->
+
+        <div
+            class="cat-card"
+            onclick="filterCategory('rpg', this)"
+        >
+
+            <i class="fa-solid fa-dragon"></i>
+
+            <h3>
+                RPG
+            </h3>
+
+        </div>
+
+
+        <!-- HORROR -->
+
+        <div
+            class="cat-card"
+            onclick="filterCategory('horror', this)"
+        >
+
+            <i class="fa-solid fa-ghost"></i>
+
+            <h3>
+                Horror
+            </h3>
+
+        </div>
+
+
+        <!-- SPORTS -->
+
+        <div
+            class="cat-card"
+            onclick="filterCategory('sports', this)"
+        >
+
+            <i class="fa-solid fa-futbol"></i>
+
+            <h3>
+                Sports
+            </h3>
+
+        </div>
+
+
+        <!-- OPEN WORLD -->
+
+        <div
+            class="cat-card"
+            onclick="filterCategory('openworld', this)"
+        >
+
+            <i class="fa-solid fa-earth-americas"></i>
+
+            <h3>
+                Open World
+            </h3>
+
+        </div>
+
+
+        <!-- RACING -->
+
+        <div
+            class="cat-card"
+            onclick="filterCategory('racing', this)"
+        >
+
+            <i class="fa-solid fa-flag-checkered"></i>
+
+            <h3>
+                Racing
+            </h3>
+
+        </div>
+
+    </div>
 
 </section>
 
-<!-- ================= GAME GRID ================= -->
 
-<section class="section">
 
-<div class="games" id="gameList">
-    <!-- Resident Evil 4 -->
-    <div class="card"
-    data-genre="horror"
-    onclick="location.href='re4.html'">
-    <img src="https://images3.alphacoders.com/133/thumbbig-1338230.webp" alt="Resident Evil 4">
+<!-- =========================================================
+     GAME LIBRARY
+========================================================= -->
 
-    <div class="info">
-        <h3>Resident Evil 4</h3>
-        <p>Survival Horror</p>
+<section
+    class="section"
+    id="gameLibrary"
+>
 
-        <div class="bottom">
-            <span>₹199</span>
+    <div
+        class="games"
+        id="gameList"
+    >
 
-            <div class="button-group">
-                <button onclick="addWishlist('Resident Evil 4')">❤️</button>
-                <button onclick="rentGame('Resident Evil 4',199)">Rent</button>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- GTA V -->
-<div class="card"
-data-genre="openworld"
-onclick="location.href='gta5.html'">
-    <img src="https://wallpaperaccess.com/full/24765803.png" alt="GTA V">
+        <!-- =================================================
+             RESIDENT EVIL 4
+        ================================================== -->
 
-    <div class="info">
-        <h3>GTA V</h3>
-        <p>Open World Action</p>
+        <div
+            class="card"
+            data-genre="horror"
+            onclick="location.href='re4.html'"
+        >
 
-        <div class="bottom">
-            <span>₹149</span>
+            <img
+                src="https://images3.alphacoders.com/133/thumbbig-1338230.webp"
+                alt="Resident Evil 4"
+            >
 
-            <div class="button-group">
-                <button onclick="addWishlist('GTA V')">❤️</button>
-                <button onclick="rentGame('GTA V',149)">Rent</button>
-            </div>
-        </div>
-    </div>
-</div>
+            <div class="info">
 
-<!-- Elden Ring -->
-<div class="card"
-data-genre="rpg"
-onclick="location.href='eldenring.html'">
-    <img src="https://cdn.wallpapersafari.com/49/8/kFGIR8.jpg" alt="Elden Ring">
+                <h3>
+                    Resident Evil 4
+                </h3>
 
-    <div class="info">
-        <h3>Elden Ring</h3>
-        <p>Fantasy RPG</p>
+                <p>
+                    Survival Horror
+                </p>
 
-        <div class="bottom">
-            <span>₹249</span>
 
-            <div class="button-group">
-                <button onclick="addWishlist('Elden Ring')">❤️</button>
-                <button onclick="rentGame('Elden Ring',249)">Rent</button>
-            </div>
-        </div>
-    </div>
-</div>
+                <div class="bottom">
 
-<!-- Cyberpunk 2077 -->
-<div class="card"
-data-genre="rpg"
-onclick="location.href='cyberpunk.html'">
+                    <span>
+                        ₹199
+                    </span>
 
-    <img src="https://wallpapercave.com/wp/wp11857928.png" alt="Cyberpunk 2077">
 
-    <div class="info">
-        <h3>Cyberpunk 2077</h3>
-        <p>Sci-Fi RPG</p>
+                    <div class="button-group">
 
-        <div class="bottom">
-            <span>₹299</span>
+                        <button
+                            onclick="event.stopPropagation(); addWishlist('Resident Evil 4')"
+                            title="Add to Wishlist"
+                        >
+                            ❤️
+                        </button>
 
-            <div class="button-group">
-                <button onclick="addWishlist('Cyberpunk 2077')">❤️</button>
-                <button onclick="rentGame('Cyberpunk 2077',299)">Rent</button>
-            </div>
-        </div>
-    </div>
-</div>
+                        <button
+                            onclick="event.stopPropagation(); rentGame('Resident Evil 4', 199)"
+                        >
+                            Rent
+                        </button>
 
-<!-- Red Dead Redemption 2 -->
-<div class="card"
-data-genre="openworld"
-onclick="location.href='rdr2.html'">
-    <img src="https://i.pinimg.com/originals/93/15/1b/93151b55fc766ac8aef0e1c94e73a11b.jpg" alt="Red Dead Redemption 2">
+                    </div>
 
-    <div class="info">
-        <h3>Red Dead Redemption 2</h3>
-        <p>Western Adventure</p>
+                </div>
 
-        <div class="bottom">
-            <span>₹219</span>
-
-            <div class="button-group">
-                <button onclick="addWishlist('Red Dead Redemption 2')">❤️</button>
-                <button onclick="rentGame('Red Dead Redemption 2',219)">Rent</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- FIFA 25 -->
-<div class="card"
-data-genre="sports"
-onclick="location.href='fifa25.html'">
-    <img src="https://wallpapercat.com/w/full/1/f/3/125963-3840x2160-desktop-4k-fifa-background.jpg" alt="FIFA 25">
-
-    <div class="info">
-        <h3>FIFA 25</h3>
-        <p>Sports</p>
-
-        <div class="bottom">
-            <span>₹179</span>
-
-            <div class="button-group">
-                <button onclick="addWishlist('FIFA 25')">❤️</button>
-                <button onclick="rentGame('FIFA 25',179)">Rent</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- God of War Ragnarok -->
-<div class="card"
-data-genre="action rpg"
-onclick="location.href='gowr.html'">
-    <img src="https://wallpaperaccess.com/full/9183473.jpg" alt="God of War Ragnarok">
-
-    <div class="info">
-
-        <h3>God of War Ragnarok</h3>
-
-        <p>Action RPG</p>
-
-        <div class="bottom">
-
-            <span>₹299</span>
-
-            <div class="button-group">
-                <button onclick="addWishlist('God of War Ragnarok')">
-                    ❤️
-                </button>
-
-                <button onclick="rentGame('God of War Ragnarok',299)">
-                    Rent
-                </button>
             </div>
 
         </div>
 
-    </div>
 
-</div>
 
-<!-- Spider-Man 2 -->
-<div class="card"
-data-genre="action openworld"
-onclick="location.href='spiderman2.html'">
+        <!-- =================================================
+             GTA V
+        ================================================== -->
 
-    <img src="https://wallpapercave.com/wp/wp14274140.jpg" alt="Spider-Man 2">
+        <div
+            class="card"
+            data-genre="openworld action"
+            onclick="location.href='gta5.html'"
+        >
 
-    <div class="info">
+            <img
+                src="https://wallpaperaccess.com/full/24765803.png"
+                alt="GTA V"
+            >
 
-        <h3>Spider-Man 2</h3>
+            <div class="info">
 
-        <p>Open World Action</p>
+                <h3>
+                    GTA V
+                </h3>
 
-        <div class="bottom">
+                <p>
+                    Open World Action
+                </p>
 
-            <span>₹279</span>
 
-            <div class="button-group">
-                <button onclick="addWishlist('Spider-Man 2')">
-                    ❤️
-                </button>
+                <div class="bottom">
 
-                <button onclick="rentGame('Spider-Man 2',279)">
-                    Rent
-                </button>
+                    <span>
+                        ₹149
+                    </span>
+
+
+                    <div class="button-group">
+
+                        <button
+                            onclick="event.stopPropagation(); addWishlist('GTA V')"
+                            title="Add to Wishlist"
+                        >
+                            ❤️
+                        </button>
+
+                        <button
+                            onclick="event.stopPropagation(); rentGame('GTA V', 149)"
+                        >
+                            Rent
+                        </button>
+
+                    </div>
+
+                </div>
+
             </div>
 
         </div>
 
-    </div>
 
-</div>
 
-<!-- Hogwarts Legacy -->
-<div class="card"
-data-genre="rpg"
-onclick="location.href='hogwarts.html'">
+        <!-- =================================================
+             ELDEN RING
+        ================================================== -->
 
-    <img src="https://wallpaperaccess.com/full/8879877.jpg" alt="Hogwarts Legacy">
+        <div
+            class="card"
+            data-genre="rpg"
+            onclick="location.href='eldenring.html'"
+        >
 
-    <div class="info">
+            <img
+                src="https://cdn.wallpapersafari.com/49/8/kFGIR8.jpg"
+                alt="Elden Ring"
+            >
 
-        <h3>Hogwarts Legacy</h3>
+            <div class="info">
 
-        <p>Fantasy RPG</p>
+                <h3>
+                    Elden Ring
+                </h3>
 
-        <div class="bottom">
+                <p>
+                    Fantasy RPG
+                </p>
 
-            <span>₹259</span>
 
-            <div class="button-group">
-                <button onclick="addWishlist('Hogwarts Legacy')">
-                    ❤️
-                </button>
+                <div class="bottom">
 
-                <button onclick="rentGame('Hogwarts Legacy',259)">
-                    Rent
-                </button>
+                    <span>
+                        ₹249
+                    </span>
+
+
+                    <div class="button-group">
+
+                        <button
+                            onclick="event.stopPropagation(); addWishlist('Elden Ring')"
+                            title="Add to Wishlist"
+                        >
+                            ❤️
+                        </button>
+
+                        <button
+                            onclick="event.stopPropagation(); rentGame('Elden Ring', 249)"
+                        >
+                            Rent
+                        </button>
+
+                    </div>
+
+                </div>
+
             </div>
 
         </div>
 
-    </div>
 
-</div>
 
-<!-- Ghost of Tsushima -->
-<div class="card"
-data-genre="action adventure"
-onclick="location.href='ghost.html'">
+        <!-- =================================================
+             CYBERPUNK 2077
+        ================================================== -->
 
-    <img src="https://wallpapercave.com/wp/wp7079547.jpg" alt="Ghost of Tsushima">
+        <div
+            class="card"
+            data-genre="rpg"
+            onclick="location.href='cyberpunk.html'"
+        >
 
-    <div class="info">
+            <img
+                src="https://wallpapercave.com/wp/wp11857928.png"
+                alt="Cyberpunk 2077"
+            >
 
-        <h3>Ghost of Tsushima</h3>
+            <div class="info">
 
-        <p>Samurai Adventure</p>
+                <h3>
+                    Cyberpunk 2077
+                </h3>
 
-        <div class="bottom">
+                <p>
+                    Sci-Fi RPG
+                </p>
 
-            <span>₹269</span>
 
-            <div class="button-group">
-                <button onclick="addWishlist('Ghost of Tsushima')">
-                    ❤️
-                </button>
+                <div class="bottom">
 
-                <button onclick="rentGame('Ghost of Tsushima',269)">
-                    Rent
-                </button>
+                    <span>
+                        ₹299
+                    </span>
+
+
+                    <div class="button-group">
+
+                        <button
+                            onclick="event.stopPropagation(); addWishlist('Cyberpunk 2077')"
+                            title="Add to Wishlist"
+                        >
+                            ❤️
+                        </button>
+
+                        <button
+                            onclick="event.stopPropagation(); rentGame('Cyberpunk 2077', 299)"
+                        >
+                            Rent
+                        </button>
+
+                    </div>
+
+                </div>
+
             </div>
 
         </div>
 
-    </div>
 
-</div>
 
-<!-- Black Myth: Wukong -->
-<div class="card"
-data-genre="rpg"
-onclick="location.href='wukong.html'">
+        <!-- =================================================
+             RED DEAD REDEMPTION 2
+        ================================================== -->
 
-    <img src="https://images5.alphacoders.com/135/thumbbig-1353323.webp" alt="Black Myth Wukong">
+        <div
+            class="card"
+            data-genre="openworld"
+            onclick="location.href='rdr2.html'"
+        >
 
-    <div class="info">
+            <img
+                src="https://i.pinimg.com/originals/93/15/1b/93151b55fc766ac8aef0e1c94e73a11b.jpg"
+                alt="Red Dead Redemption 2"
+            >
 
-        <h3>Black Myth: Wukong</h3>
+            <div class="info">
 
-        <p>Action RPG</p>
+                <h3>
+                    Red Dead Redemption 2
+                </h3>
 
-        <div class="bottom">
+                <p>
+                    Western Adventure
+                </p>
 
-            <span>₹349</span>
 
-            <div class="button-group">
-                <button onclick="addWishlist('Black Myth: Wukong')">
-                    ❤️
-                </button>
+                <div class="bottom">
 
-                <button onclick="rentGame('Black Myth: Wukong',349)">
-                    Rent
-                </button>
+                    <span>
+                        ₹219
+                    </span>
+
+
+                    <div class="button-group">
+
+                        <button
+                            onclick="event.stopPropagation(); addWishlist('Red Dead Redemption 2')"
+                            title="Add to Wishlist"
+                        >
+                            ❤️
+                        </button>
+
+                        <button
+                            onclick="event.stopPropagation(); rentGame('Red Dead Redemption 2', 219)"
+                        >
+                            Rent
+                        </button>
+
+                    </div>
+
+                </div>
+
             </div>
 
         </div>
 
-    </div>
 
-</div>
 
-<!-- Forza Horizon 5 -->
-<div class="card"
-data-genre="racing"
-onclick="location.href='forza5.html'">
+        <!-- =================================================
+             FIFA 25
+        ================================================== -->
 
-    <img src="https://cdn.wallpapersafari.com/54/66/JwPN9r.jpg" alt="Forza Horizon 5">
+        <div
+            class="card"
+            data-genre="sports"
+            onclick="location.href='fifa25.html'"
+        >
 
-    <div class="info">
+            <img
+                src="https://wallpapercat.com/w/full/1/f/3/125963-3840x2160-desktop-4k-fifa-background.jpg"
+                alt="FIFA 25"
+            >
 
-        <h3>Forza Horizon 5</h3>
+            <div class="info">
 
-        <p>Open World Racing</p>
+                <h3>
+                    FIFA 25
+                </h3>
 
-        <div class="bottom">
+                <p>
+                    Sports
+                </p>
 
-            <span>₹229</span>
 
-            <div class="button-group">
-                <button onclick="addWishlist('Forza Horizon 5')">
-                    ❤️
-                </button>
+                <div class="bottom">
 
-                <button onclick="rentGame('Forza Horizon 5',229)">
-                    Rent
-                </button>
+                    <span>
+                        ₹179
+                    </span>
+
+
+                    <div class="button-group">
+
+                        <button
+                            onclick="event.stopPropagation(); addWishlist('FIFA 25')"
+                            title="Add to Wishlist"
+                        >
+                            ❤️
+                        </button>
+
+                        <button
+                            onclick="event.stopPropagation(); rentGame('FIFA 25', 179)"
+                        >
+                            Rent
+                        </button>
+
+                    </div>
+
+                </div>
+
             </div>
 
         </div>
 
-    </div>
 
-</div>
-</div>
+
+        <!-- =================================================
+             GOD OF WAR RAGNAROK
+        ================================================== -->
+
+        <div
+            class="card"
+            data-genre="action rpg"
+            onclick="location.href='gowr.html'"
+        >
+
+            <img
+                src="https://wallpaperaccess.com/full/9183473.jpg"
+                alt="God of War Ragnarok"
+            >
+
+            <div class="info">
+
+                <h3>
+                    God of War Ragnarok
+                </h3>
+
+                <p>
+                    Action RPG
+                </p>
+
+
+                <div class="bottom">
+
+                    <span>
+                        ₹299
+                    </span>
+
+
+                    <div class="button-group">
+
+                        <button
+                            onclick="event.stopPropagation(); addWishlist('God of War Ragnarok')"
+                            title="Add to Wishlist"
+                        >
+                            ❤️
+                        </button>
+
+                        <button
+                            onclick="event.stopPropagation(); rentGame('God of War Ragnarok', 299)"
+                        >
+                            Rent
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             SPIDER-MAN 2
+        ================================================== -->
+
+        <div
+            class="card"
+            data-genre="action openworld"
+            onclick="location.href='spiderman2.html'"
+        >
+
+            <img
+                src="https://wallpapercave.com/wp/wp14274140.jpg"
+                alt="Spider-Man 2"
+            >
+
+            <div class="info">
+
+                <h3>
+                    Spider-Man 2
+                </h3>
+
+                <p>
+                    Open World Action
+                </p>
+
+
+                <div class="bottom">
+
+                    <span>
+                        ₹279
+                    </span>
+
+
+                    <div class="button-group">
+
+                        <button
+                            onclick="event.stopPropagation(); addWishlist('Spider-Man 2')"
+                            title="Add to Wishlist"
+                        >
+                            ❤️
+                        </button>
+
+                        <button
+                            onclick="event.stopPropagation(); rentGame('Spider-Man 2', 279)"
+                        >
+                            Rent
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             HOGWARTS LEGACY
+        ================================================== -->
+
+        <div
+            class="card"
+            data-genre="rpg"
+            onclick="location.href='hogwarts.html'"
+        >
+
+            <img
+                src="https://wallpaperaccess.com/full/8879877.jpg"
+                alt="Hogwarts Legacy"
+            >
+
+            <div class="info">
+
+                <h3>
+                    Hogwarts Legacy
+                </h3>
+
+                <p>
+                    Fantasy RPG
+                </p>
+
+
+                <div class="bottom">
+
+                    <span>
+                        ₹259
+                    </span>
+
+
+                    <div class="button-group">
+
+                        <button
+                            onclick="event.stopPropagation(); addWishlist('Hogwarts Legacy')"
+                            title="Add to Wishlist"
+                        >
+                            ❤️
+                        </button>
+
+                        <button
+                            onclick="event.stopPropagation(); rentGame('Hogwarts Legacy', 259)"
+                        >
+                            Rent
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             GHOST OF TSUSHIMA
+        ================================================== -->
+
+        <div
+            class="card"
+            data-genre="action adventure openworld"
+            onclick="location.href='ghost.html'"
+        >
+
+            <img
+                src="https://wallpapercave.com/wp/wp7079547.jpg"
+                alt="Ghost of Tsushima"
+            >
+
+            <div class="info">
+
+                <h3>
+                    Ghost of Tsushima
+                </h3>
+
+                <p>
+                    Samurai Adventure
+                </p>
+
+
+                <div class="bottom">
+
+                    <span>
+                        ₹269
+                    </span>
+
+
+                    <div class="button-group">
+
+                        <button
+                            onclick="event.stopPropagation(); addWishlist('Ghost of Tsushima')"
+                            title="Add to Wishlist"
+                        >
+                            ❤️
+                        </button>
+
+                        <button
+                            onclick="event.stopPropagation(); rentGame('Ghost of Tsushima', 269)"
+                        >
+                            Rent
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             BLACK MYTH WUKONG
+        ================================================== -->
+
+        <div
+            class="card"
+            data-genre="rpg action"
+            onclick="location.href='wukong.html'"
+        >
+
+            <img
+                src="https://images5.alphacoders.com/135/thumbbig-1353323.webp"
+                alt="Black Myth Wukong"
+            >
+
+            <div class="info">
+
+                <h3>
+                    Black Myth: Wukong
+                </h3>
+
+                <p>
+                    Action RPG
+                </p>
+
+
+                <div class="bottom">
+
+                    <span>
+                        ₹349
+                    </span>
+
+
+                    <div class="button-group">
+
+                        <button
+                            onclick="event.stopPropagation(); addWishlist('Black Myth: Wukong')"
+                            title="Add to Wishlist"
+                        >
+                            ❤️
+                        </button>
+
+                        <button
+                            onclick="event.stopPropagation(); rentGame('Black Myth: Wukong', 349)"
+                        >
+                            Rent
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             FORZA HORIZON 5
+        ================================================== -->
+
+        <div
+            class="card"
+            data-genre="racing openworld"
+            onclick="location.href='forza5.html'"
+        >
+
+            <img
+                src="https://cdn.wallpapersafari.com/54/66/JwPN9r.jpg"
+                alt="Forza Horizon 5"
+            >
+
+            <div class="info">
+
+                <h3>
+                    Forza Horizon 5
+                </h3>
+
+                <p>
+                    Open World Racing
+                </p>
+
+
+                <div class="bottom">
+
+                    <span>
+                        ₹229
+                    </span>
+
+
+                    <div class="button-group">
+
+                        <button
+                            onclick="event.stopPropagation(); addWishlist('Forza Horizon 5')"
+                            title="Add to Wishlist"
+                        >
+                            ❤️
+                        </button>
+
+                        <button
+                            onclick="event.stopPropagation(); rentGame('Forza Horizon 5', 229)"
+                        >
+                            Rent
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
 
 </section>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
 <footer>
 
-    <h2>GameRent</h2>
+    <h2>
+        GameRent
+    </h2>
 
     <p>
         © 2026 GameRent. All Rights Reserved.
     </p>
 
 </footer>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
 
 <script src="script.js"></script>
 
