@@ -1946,3 +1946,68 @@ document.addEventListener(
 
     }
 );
+
+function openProfile() {
+
+    const overlay =
+        document.getElementById("profileOverlay");
+
+    if (!overlay) return;
+
+    overlay.style.display = "flex";
+
+    const savedProfile =
+        localStorage.getItem("profile");
+
+    if (savedProfile) {
+
+        try {
+
+            const profile =
+                JSON.parse(savedProfile);
+
+            const input =
+                document.getElementById(
+                    "profileInputName"
+                );
+
+            const avatar =
+                document.getElementById(
+                    "selectedAvatar"
+                );
+
+            if (input) {
+                input.value = profile.name || "";
+            }
+
+            if (avatar && profile.avatar) {
+
+                avatar.src = profile.avatar;
+
+                selectedAvatar =
+                    profile.avatar;
+            }
+
+        } catch (error) {
+
+            console.log(
+                "Could not load profile."
+            );
+
+        }
+
+    }
+}
+
+
+function closeProfile() {
+
+    const overlay =
+        document.getElementById(
+            "profileOverlay"
+        );
+
+    if (overlay) {
+        overlay.style.display = "none";
+    }
+}
