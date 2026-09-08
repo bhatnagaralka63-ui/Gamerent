@@ -1796,3 +1796,11 @@ section {
     }
 
 }
+
+/* ================================
+   HIDE HOMEPAGE PROFILE BLOCK
+================================ */
+
+#profile {
+    display: none !important;
+}
