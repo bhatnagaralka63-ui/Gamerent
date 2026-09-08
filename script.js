@@ -7,13 +7,113 @@
    GLOBAL DATA
 ========================================================= */
 
-let rentals = JSON.parse(localStorage.getItem("rentals")) || [];
-let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+let rentals = [];
+let wishlist = [];
 
 let selectedAvatar =
     localStorage.getItem("selectedAvatar") ||
     "https://i.pravatar.cc/150?img=12";
 
+
+/* =========================================================
+   SAFE LOCAL STORAGE LOADING
+========================================================= */
+
+try {
+
+    const savedRentals =
+        localStorage.getItem("rentals");
+
+    if (savedRentals) {
+        rentals = JSON.parse(savedRentals);
+
+        if (!Array.isArray(rentals)) {
+            rentals = [];
+        }
+    }
+
+} catch (error) {
+
+    console.warn("Invalid rentals data. Resetting rentals.");
+    localStorage.removeItem("rentals");
+    rentals = [];
+}
+
+
+try {
+
+    const savedWishlist =
+        localStorage.getItem("wishlist");
+
+    if (savedWishlist) {
+        wishlist = JSON.parse(savedWishlist);
+
+        if (!Array.isArray(wishlist)) {
+            wishlist = [];
+        }
+    }
+
+} catch (error) {
+
+    console.warn("Invalid wishlist data. Resetting wishlist.");
+    localStorage.removeItem("wishlist");
+    wishlist = [];
+}/* =========================================================
+   GLOBAL DATA
+========================================================= */
+
+let rentals = [];
+let wishlist = [];
+
+let selectedAvatar =
+    localStorage.getItem("selectedAvatar") ||
+    "https://i.pravatar.cc/150?img=12";
+
+
+/* =========================================================
+   SAFE LOCAL STORAGE LOADING
+========================================================= */
+
+try {
+
+    const savedRentals =
+        localStorage.getItem("rentals");
+
+    if (savedRentals) {
+        rentals = JSON.parse(savedRentals);
+
+        if (!Array.isArray(rentals)) {
+            rentals = [];
+        }
+    }
+
+} catch (error) {
+
+    console.warn("Invalid rentals data. Resetting rentals.");
+    localStorage.removeItem("rentals");
+    rentals = [];
+}
+
+
+try {
+
+    const savedWishlist =
+        localStorage.getItem("wishlist");
+
+    if (savedWishlist) {
+        wishlist = JSON.parse(savedWishlist);
+
+        if (!Array.isArray(wishlist)) {
+            wishlist = [];
+        }
+    }
+
+} catch (error) {
+
+    console.warn("Invalid wishlist data. Resetting wishlist.");
+    localStorage.removeItem("wishlist");
+    wishlist = [];
+}
 
 /* =========================================================
    RENTAL SYSTEM
