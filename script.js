@@ -1,6 +1,7 @@
 /* =========================================================
-   GAMERENT - CLEAN SCRIPT
-   ========================================================= */
+   GAMERENT - MAIN JAVASCRIPT
+========================================================= */
+
 
 /* =========================================================
    GLOBAL DATA
@@ -10,19 +11,35 @@ let rentals = JSON.parse(localStorage.getItem("rentals")) || [];
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
 let selectedAvatar =
+    localStorage.getItem("selectedAvatar") ||
     "https://i.pravatar.cc/150?img=12";
 
 
 /* =========================================================
-   RENTALS / CART
+   SAVE DATA
+========================================================= */
+
+function saveRentals() {
+    localStorage.setItem("rentals", JSON.stringify(rentals));
+}
+
+function saveWishlist() {
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+}
+
+
+/* =========================================================
+   RENT GAME
 ========================================================= */
 
 function rentGame(game, price) {
 
-    const alreadyRented = rentals.some(item => item.game === game);
+    const existingGame = rentals.find(
+        item => item.game === game
+    );
 
-    if (alreadyRented) {
-        alert("You already rented this game 🎮");
+    if (existingGame) {
+        alert(game + " is already in your rentals.");
         return;
     }
 
@@ -30,40 +47,70 @@ function rentGame(game, price) {
         `Rent ${game} for ₹${price}?`
     );
 
-    if (!confirmRent) return;
+    if (!confirmRent) {
+        return;
+    }
 
     rentals.push({
         game: game,
-        price: Number(price)
+        price: price,
+        date: new Date().toLocaleDateString()
     });
 
-    localStorage.setItem(
-        "rentals",
-        JSON.stringify(rentals)
-    );
+    saveRentals();
 
+    updateCartCount();
     renderRentals();
-    loadProfile();
 
-    alert(`${game} added to your rentals 🎮`);
+    alert(
+        `${game} has been added to your rentals!`
+    );
 }
 
+
+/* =========================================================
+   REMOVE RENTAL
+========================================================= */
 
 function removeRental(index) {
 
-    if (index < 0 || index >= rentals.length) return;
+    if (index < 0 || index >= rentals.length) {
+        return;
+    }
+
+    const gameName = rentals[index].game;
 
     rentals.splice(index, 1);
 
-    localStorage.setItem(
-        "rentals",
-        JSON.stringify(rentals)
-    );
+    saveRentals();
 
+    updateCartCount();
     renderRentals();
-    loadProfile();
+
+    alert(
+        `${gameName} was removed from your rentals.`
+    );
 }
 
+
+/* =========================================================
+   CART COUNT
+========================================================= */
+
+function updateCartCount() {
+
+    const cartCounts =
+        document.querySelectorAll("#cartCount, .cart-count");
+
+    cartCounts.forEach(counter => {
+        counter.textContent = rentals.length;
+    });
+}
+
+
+/* =========================================================
+   RENDER RENTALS
+========================================================= */
 
 function renderRentals() {
 
@@ -73,431 +120,73 @@ function renderRentals() {
     const cartTotal =
         document.getElementById("cartTotal");
 
-    const cartCount =
-        document.getElementById("cartCount");
-
-    if (!rentalsList) return;
+    if (!rentalsList) {
+        return;
+    }
 
     rentalsList.innerHTML = "";
 
     let total = 0;
 
-    rentals.forEach((item, index) => {
+    if (rentals.length === 0) {
 
-        total += Number(item.price);
-
-        const div = document.createElement("div");
-
-        div.className = "rental-item";
-
-        div.innerHTML = `
-            <div>
-                <strong>${item.game}</strong>
-                <p>₹${item.price}</p>
+        rentalsList.innerHTML = `
+            <div class="empty-rentals">
+                <i class="fa-solid fa-gamepad"></i>
+                <h3>No games rented yet</h3>
+                <p>Explore our library and rent your first game.</p>
             </div>
-
-            <button onclick="removeRental(${index})">
-                Remove
-            </button>
         `;
 
-        rentalsList.appendChild(div);
-    });
-
-    if (cartTotal) {
-        cartTotal.innerText = `₹${total}`;
-    }
-
-    if (cartCount) {
-        cartCount.innerText = rentals.length;
-    }
-}
-
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
-function searchGame() {
-
-    const searchInput =
-        document.getElementById("searchInput");
-
-    if (!searchInput) return;
-
-    const query =
-        searchInput.value.toLowerCase().trim();
-
-    const cards =
-        document.querySelectorAll(
-            "#featured .card, #gameList .card"
-        );
-
-    cards.forEach(card => {
-
-        const titleElement =
-            card.querySelector("h3");
-
-        if (!titleElement) return;
-
-        const title =
-            titleElement.innerText.toLowerCase();
-
-        card.style.display =
-            title.includes(query)
-                ? ""
-                : "none";
-    });
-}
-
-
-/* =========================================================
-   LOGIN
-========================================================= */
-
-function setupLogin() {
-
-    const loginButton =
-        document.querySelector(".login-btn");
-
-    if (!loginButton) return;
-
-    const username =
-        localStorage.getItem("username");
-
-    if (username) {
-        loginButton.innerHTML =
-            `<i class="fa-solid fa-user"></i> ${username}`;
-    }
-
-    loginButton.addEventListener("click", function () {
-
-        const currentUser =
-            localStorage.getItem("username");
-
-        const name =
-            prompt(
-                "Enter your username:",
-                currentUser || ""
-            );
-
-        if (!name || name.trim() === "") {
-            return;
+        if (cartTotal) {
+            cartTotal.textContent = "₹0";
         }
-
-        localStorage.setItem(
-            "username",
-            name.trim()
-        );
-
-        loginButton.innerHTML =
-            `<i class="fa-solid fa-user"></i> ${name.trim()}`;
-
-        loadProfile();
-    });
-}
-
-
-/* =========================================================
-   PROFILE SYSTEM
-========================================================= */
-
-function openProfile() {
-
-    const overlay =
-        document.getElementById("profileOverlay");
-
-    if (!overlay) return;
-
-    overlay.style.display = "flex";
-
-    const savedProfile =
-        localStorage.getItem("profile");
-
-    const input =
-        document.getElementById("profileInputName");
-
-    const avatar =
-        document.getElementById("selectedAvatar");
-
-    if (savedProfile) {
-
-        try {
-
-            const profile =
-                JSON.parse(savedProfile);
-
-            if (input) {
-                input.value =
-                    profile.name || "";
-            }
-
-            if (avatar && profile.avatar) {
-
-                avatar.src =
-                    profile.avatar;
-
-                selectedAvatar =
-                    profile.avatar;
-            }
-
-        } catch (error) {
-
-            console.error(
-                "Could not load profile:",
-                error
-            );
-        }
-
-    } else {
-
-        if (input) {
-            input.value =
-                localStorage.getItem("username") || "";
-        }
-
-        if (avatar) {
-            avatar.src =
-                selectedAvatar;
-        }
-    }
-}
-
-
-function closeProfile() {
-
-    const overlay =
-        document.getElementById("profileOverlay");
-
-    if (!overlay) return;
-
-    overlay.style.display = "none";
-}
-
-
-function selectAvatar(avatar, clickedImage) {
-
-    selectedAvatar = avatar;
-
-    const selected =
-        document.getElementById("selectedAvatar");
-
-    if (selected) {
-        selected.src = avatar;
-    }
-
-    document
-        .querySelectorAll(".avatar-list img")
-        .forEach(img => {
-
-            img.classList.remove("selected");
-
-        });
-
-    if (clickedImage) {
-        clickedImage.classList.add("selected");
-    }
-}
-
-
-function saveProfile() {
-
-    const input =
-        document.getElementById("profileInputName");
-
-    if (!input) return;
-
-    const name =
-        input.value.trim();
-
-    if (name === "") {
-
-        alert(
-            "Please enter a username."
-        );
 
         return;
     }
 
-    const profile = {
-        name: name,
-        avatar: selectedAvatar
-    };
 
-    localStorage.setItem(
-        "profile",
-        JSON.stringify(profile)
-    );
+    rentals.forEach((rental, index) => {
 
-    localStorage.setItem(
-        "username",
-        name
-    );
+        total += Number(rental.price);
 
-    loadProfile();
+        const item = document.createElement("div");
 
-    closeProfile();
+        item.className = "rental-item";
 
-    alert(
-        "Profile saved successfully 🎮"
-    );
-}
+        item.innerHTML = `
+            <div class="rental-info">
 
+                <h3>${rental.game}</h3>
 
-function loadProfile() {
+                <p>
+                    Rented on ${rental.date}
+                </p>
 
-    const savedProfile =
-        localStorage.getItem("profile");
+            </div>
 
-    let name =
-        localStorage.getItem("username") ||
-        "Guest User";
+            <div class="rental-price">
+                ₹${rental.price}
+            </div>
 
-    let avatar =
-        selectedAvatar;
+            <button
+                class="remove-rental"
+                onclick="removeRental(${index})">
 
-    if (savedProfile) {
+                <i class="fa-solid fa-trash"></i>
 
-        try {
+            </button>
+        `;
 
-            const profile =
-                JSON.parse(savedProfile);
+        rentalsList.appendChild(item);
 
-            name =
-                profile.name ||
-                name;
-
-            avatar =
-                profile.avatar ||
-                avatar;
-
-        } catch (error) {
-
-            console.error(
-                "Invalid profile data:",
-                error
-            );
-        }
-    }
-
-    /* Username */
-
-    const profileName =
-        document.getElementById("profileName");
-
-    if (profileName) {
-        profileName.innerText =
-            name;
-    }
+    });
 
 
-    /* Rentals */
-
-    const rentedCount =
-        document.getElementById("rentedCount");
-
-    if (rentedCount) {
-        rentedCount.innerText =
-            rentals.length;
-    }
-
-
-    /* Wishlist */
-
-    const wishlistCount =
-        document.getElementById("wishlistCount");
-
-    if (wishlistCount) {
-        wishlistCount.innerText =
-            wishlist.length;
-    }
-
-
-    /* Money spent */
-
-    const moneySpent =
-        document.getElementById("moneySpent");
-
-    if (moneySpent) {
-
-        const total =
-            rentals.reduce(
-                (sum, item) =>
-                    sum + Number(item.price),
-                0
-            );
-
-        moneySpent.innerText =
-            `₹${total}`;
-    }
-
-
-    /* Profile image */
-
-    const profileImage =
-        document.querySelector(
-            ".profile-box .profile-img"
-        );
-
-    if (profileImage && avatar) {
-        profileImage.src = avatar;
+    if (cartTotal) {
+        cartTotal.textContent = `₹${total}`;
     }
 }
-
-
-function logoutUser() {
-
-    localStorage.removeItem("username");
-    localStorage.removeItem("profile");
-
-    const profileName =
-        document.getElementById("profileName");
-
-    if (profileName) {
-        profileName.innerText =
-            "Guest User";
-    }
-
-    const profileImage =
-        document.querySelector(
-            ".profile-box .profile-img"
-        );
-
-    if (profileImage) {
-        profileImage.src =
-            "https://i.pravatar.cc/150";
-    }
-
-    loadProfile();
-
-    alert(
-        "Logged out successfully 👋"
-    );
-}
-
-
-/* =========================================================
-   CLOSE PROFILE WHEN CLICKING OUTSIDE
-========================================================= */
-
-document.addEventListener(
-    "click",
-    function(event) {
-
-        const overlay =
-            document.getElementById(
-                "profileOverlay"
-            );
-
-        if (!overlay) return;
-
-        if (
-            event.target === overlay
-        ) {
-            closeProfile();
-        }
-    }
-);
 
 
 /* =========================================================
@@ -509,7 +198,7 @@ function addWishlist(game) {
     if (wishlist.includes(game)) {
 
         alert(
-            `${game} is already in your wishlist ❤️`
+            `${game} is already in your wishlist.`
         );
 
         return;
@@ -517,142 +206,126 @@ function addWishlist(game) {
 
     wishlist.push(game);
 
-    localStorage.setItem(
-        "wishlist",
-        JSON.stringify(wishlist)
-    );
+    saveWishlist();
 
     renderWishlist();
-    loadProfile();
 
     alert(
-        `${game} added to wishlist ❤️`
+        `${game} has been added to your wishlist!`
     );
 }
 
 
-function removeWishlist(index) {
+function removeWishlist(game) {
 
-    if (
-        index < 0 ||
-        index >= wishlist.length
-    ) {
-        return;
-    }
+    wishlist =
+        wishlist.filter(item => item !== game);
 
-    wishlist.splice(index, 1);
-
-    localStorage.setItem(
-        "wishlist",
-        JSON.stringify(wishlist)
-    );
+    saveWishlist();
 
     renderWishlist();
-    loadProfile();
 }
 
 
 function renderWishlist() {
 
     const wishlistList =
-        document.getElementById(
-            "wishlistList"
-        );
+        document.getElementById("wishlistList");
 
-    if (!wishlistList) return;
+    if (!wishlistList) {
+        return;
+    }
 
     wishlistList.innerHTML = "";
 
-    wishlist.forEach(
-        (game, index) => {
+    if (wishlist.length === 0) {
 
-            const div =
-                document.createElement(
-                    "div"
-                );
+        wishlistList.innerHTML = `
+            <div class="empty-wishlist">
 
-            div.className =
-                "wishlist-item";
+                <i class="fa-regular fa-heart"></i>
 
-            div.innerHTML = `
-                <div>
-                    <strong>${game}</strong>
-                </div>
+                <h3>Your wishlist is empty</h3>
 
-                <button onclick="removeWishlist(${index})">
-                    Remove
-                </button>
-            `;
+                <p>
+                    Add games you want to play later.
+                </p>
 
-            wishlistList.appendChild(div);
-        }
-    );
+            </div>
+        `;
+
+        return;
+    }
+
+
+    wishlist.forEach(game => {
+
+        const item =
+            document.createElement("div");
+
+        item.className = "wishlist-item";
+
+        item.innerHTML = `
+
+            <div>
+                <h3>${game}</h3>
+            </div>
+
+            <button
+                onclick="removeWishlist('${game}')">
+
+                <i class="fa-solid fa-trash"></i>
+
+            </button>
+        `;
+
+        wishlistList.appendChild(item);
+
+    });
 }
 
 
 /* =========================================================
-   HERO BUTTON
+   SEARCH GAMES
 ========================================================= */
 
-function setupHeroButton() {
+function searchGame() {
 
-    const heroButton =
-        document.querySelector(
-            ".hero button"
+    const searchBox =
+        document.getElementById("searchBox");
+
+    if (!searchBox) {
+        return;
+    }
+
+    const search =
+        searchBox.value
+            .toLowerCase()
+            .trim();
+
+
+    const cards =
+        document.querySelectorAll(
+            "#gameList .card, #featured .card"
         );
 
-    if (!heroButton) return;
 
-    heroButton.addEventListener(
-        "click",
-        function() {
+    cards.forEach(card => {
 
-            const featured =
-                document.getElementById(
-                    "featured"
-                );
+        const text =
+            card.textContent.toLowerCase();
 
-            if (featured) {
+        if (text.includes(search)) {
 
-                featured.scrollIntoView({
-                    behavior: "smooth"
-                });
+            card.style.display = "";
 
-            }
+        } else {
+
+            card.style.display = "none";
+
         }
-    );
-}
 
-
-/* =========================================================
-   NAVBAR SCROLL EFFECT
-========================================================= */
-
-function setupNavbar() {
-
-    const nav =
-        document.querySelector("nav");
-
-    if (!nav) return;
-
-    window.addEventListener(
-        "scroll",
-        function() {
-
-            if (window.scrollY > 50) {
-
-                nav.classList.add(
-                    "scrolled"
-                );
-
-            } else {
-
-                nav.classList.remove(
-                    "scrolled"
-                );
-            }
-        }
-    );
+    });
 }
 
 
@@ -660,105 +333,344 @@ function setupNavbar() {
    CATEGORY FILTER
 ========================================================= */
 
-function filterGames(category) {
+function filterCategory(category, button) {
 
-    const cards =
+    document
+        .querySelectorAll(".cat-card")
+        .forEach(card => {
+
+            card.classList.remove("active");
+
+        });
+
+
+    if (button) {
+        button.classList.add("active");
+    }
+
+
+    const games =
         document.querySelectorAll(
-            "#featured .card, #gameList .card"
+            "#gameList .card"
         );
 
-    cards.forEach(card => {
 
-        const cardCategory =
-            card.dataset.category;
+    games.forEach(game => {
+
+        const genre =
+            game.dataset.genre || "";
+
+        const genres =
+            genre.toLowerCase().split(" ");
+
 
         if (
             category === "all" ||
-            !category ||
-            cardCategory === category
+            genres.includes(category.toLowerCase())
         ) {
 
-            card.style.display = "";
+            game.style.display = "";
 
         } else {
 
-            card.style.display = "none";
+            game.style.display = "none";
+
         }
+
     });
 }
 
 
 /* =========================================================
-   MOBILE MENU
+   PROFILE
 ========================================================= */
 
-function setupMobileMenu() {
+function openProfile() {
 
-    const menuButton =
-        document.querySelector(
-            ".menu-toggle"
-        );
+    const popup =
+        document.getElementById("profileOverlay");
 
-    const navLinks =
-        document.querySelector(
-            "nav ul"
-        );
-
-    if (
-        !menuButton ||
-        !navLinks
-    ) {
+    if (!popup) {
         return;
     }
 
-    menuButton.addEventListener(
-        "click",
-        function() {
+    popup.classList.add("active");
 
-            navLinks.classList.toggle(
-                "active"
-            );
+    const input =
+        document.getElementById("profileInputName");
+
+    if (input) {
+
+        input.value =
+            localStorage.getItem("profileName") || "";
+
+    }
+
+    updateProfileStats();
+}
+
+
+function closeProfile() {
+
+    const popup =
+        document.getElementById("profileOverlay");
+
+    if (!popup) {
+        return;
+    }
+
+    popup.classList.remove("active");
+}
+
+
+/* =========================================================
+   SELECT AVATAR
+========================================================= */
+
+function selectAvatar(avatar, clickedImage) {
+
+    selectedAvatar = avatar;
+
+    document
+        .querySelectorAll(".avatar-option")
+        .forEach(image => {
+
+            image.classList.remove("selected");
+
+        });
+
+
+    if (clickedImage) {
+        clickedImage.classList.add("selected");
+    }
+}
+
+
+/* =========================================================
+   SAVE PROFILE
+========================================================= */
+
+function saveProfile() {
+
+    const input =
+        document.getElementById("profileInputName");
+
+    if (!input) {
+        return;
+    }
+
+    const username =
+        input.value.trim();
+
+
+    if (!username) {
+
+        alert("Please enter a username.");
+
+        return;
+    }
+
+
+    localStorage.setItem(
+        "profileName",
+        username
+    );
+
+    localStorage.setItem(
+        "selectedAvatar",
+        selectedAvatar
+    );
+
+
+    loadProfile();
+
+    closeProfile();
+
+    alert("Profile saved successfully!");
+}
+
+
+/* =========================================================
+   LOAD PROFILE
+========================================================= */
+
+function loadProfile() {
+
+    const username =
+        localStorage.getItem("profileName") ||
+        "Player";
+
+
+    const avatar =
+        localStorage.getItem("selectedAvatar") ||
+        "https://i.pravatar.cc/150?img=12";
+
+
+    const profileNames =
+        document.querySelectorAll(
+            "#profileName, .profile-name"
+        );
+
+
+    profileNames.forEach(element => {
+
+        if (
+            element.tagName === "INPUT" ||
+            element.tagName === "TEXTAREA"
+        ) {
+
+            element.value = username;
+
+        } else {
+
+            element.textContent = username;
+
         }
+
+    });
+
+
+    const profileImages =
+        document.querySelectorAll(
+            "#profileAvatar, .profile-img"
+        );
+
+
+    profileImages.forEach(image => {
+
+        image.src = avatar;
+
+    });
+
+
+    updateProfileStats();
+}
+
+
+/* =========================================================
+   PROFILE STATS
+========================================================= */
+
+function updateProfileStats() {
+
+    const rentalCount =
+        document.getElementById("profileRentalCount");
+
+    const wishlistCount =
+        document.getElementById("profileWishlistCount");
+
+
+    if (rentalCount) {
+        rentalCount.textContent =
+            rentals.length;
+    }
+
+
+    if (wishlistCount) {
+        wishlistCount.textContent =
+            wishlist.length;
+    }
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+function logoutUser() {
+
+    const confirmLogout =
+        confirm("Are you sure you want to logout?");
+
+    if (!confirmLogout) {
+        return;
+    }
+
+
+    localStorage.removeItem("profileName");
+    localStorage.removeItem("selectedAvatar");
+
+    alert("You have been logged out.");
+
+    location.reload();
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+function loginUser() {
+
+    const username =
+        prompt("Enter your username:");
+
+    if (!username) {
+        return;
+    }
+
+    localStorage.setItem(
+        "profileName",
+        username
+    );
+
+    loadProfile();
+
+    alert(
+        `Welcome to GameRent, ${username}!`
     );
 }
 
 
 /* =========================================================
-   CARD ANIMATION
+   HERO SCROLL
 ========================================================= */
 
-function setupCardAnimations() {
+function exploreGames() {
 
-    const cards =
-        document.querySelectorAll(
-            ".card"
-        );
+    const gameLibrary =
+        document.getElementById("gameLibrary");
 
-    cards.forEach(
-        (card, index) => {
 
-            card.style.opacity = "0";
+    if (gameLibrary) {
 
-            card.style.transform =
-                "translateY(20px)";
+        gameLibrary.scrollIntoView({
+            behavior: "smooth"
+        });
 
-            setTimeout(
-                function() {
+        return;
+    }
 
-                    card.style.transition =
-                        "opacity 0.5s ease, transform 0.5s ease";
 
-                    card.style.opacity =
-                        "1";
+    const featured =
+        document.getElementById("featured");
 
-                    card.style.transform =
-                        "translateY(0)";
 
-                },
-                index * 80
-            );
-        }
-    );
+    if (featured) {
+
+        featured.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
+
+function toggleMenu() {
+
+    const navLinks =
+        document.querySelector(".nav-links");
+
+    if (!navLinks) {
+        return;
+    }
+
+    navLinks.classList.toggle("active");
 }
 
 
@@ -766,76 +678,49 @@ function setupCardAnimations() {
    GAME DETAILS MODAL
 ========================================================= */
 
-function openGameModal(
-    title,
-    description,
-    image,
-    rating
-) {
+function openGameDetails(game) {
 
     const modal =
-        document.getElementById(
-            "gameModal"
-        );
+        document.getElementById("gameModal");
 
-    if (!modal) return;
-
-    const modalTitle =
-        document.getElementById(
-            "modalTitle"
-        );
-
-    const modalDescription =
-        document.getElementById(
-            "modalDescription"
-        );
-
-    const modalImage =
-        document.getElementById(
-            "modalImage"
-        );
-
-    const modalRating =
-        document.getElementById(
-            "modalRating"
-        );
-
-    if (modalTitle) {
-        modalTitle.innerText =
-            title;
+    if (!modal) {
+        return;
     }
 
-    if (modalDescription) {
-        modalDescription.innerText =
-            description;
+
+    const title =
+        document.getElementById("modalTitle");
+
+    const description =
+        document.getElementById("modalDescription");
+
+
+    if (title) {
+        title.textContent =
+            game.title || game.name || "Game";
     }
 
-    if (modalImage) {
-        modalImage.src =
-            image;
+
+    if (description) {
+        description.textContent =
+            game.description || "";
     }
 
-    if (modalRating) {
-        modalRating.innerText =
-            rating || "";
-    }
 
-    modal.style.display =
-        "flex";
+    modal.classList.add("active");
 }
 
 
-function closeGameModal() {
+function closeGameDetails() {
 
     const modal =
-        document.getElementById(
-            "gameModal"
-        );
+        document.getElementById("gameModal");
 
-    if (!modal) return;
+    if (!modal) {
+        return;
+    }
 
-    modal.style.display =
-        "none";
+    modal.classList.remove("active");
 }
 
 
@@ -843,129 +728,101 @@ function closeGameModal() {
    GAME POPUP
 ========================================================= */
 
-let currentPopupGame = null;
-let currentPopupPrice = 0;
-
-
-function openPopup(
-    game,
+function openGamePopup(
+    title,
     price,
-    image
+    image,
+    description
 ) {
 
-    currentPopupGame = game;
-    currentPopupPrice = Number(price);
-
     const popup =
-        document.getElementById(
-            "gamePopup"
-        );
+        document.getElementById("gamePopup");
 
-    if (!popup) return;
+    if (!popup) {
+        return;
+    }
+
 
     const popupTitle =
-        document.getElementById(
-            "popupTitle"
-        );
-
-    const popupImage =
-        document.getElementById(
-            "popupImage"
-        );
+        document.getElementById("popupGameTitle");
 
     const popupPrice =
-        document.getElementById(
-            "popupPrice"
-        );
+        document.getElementById("popupGamePrice");
+
+    const popupImage =
+        document.getElementById("popupGameImage");
+
+    const popupDescription =
+        document.getElementById("popupGameDescription");
+
 
     if (popupTitle) {
-        popupTitle.innerText =
-            game;
+        popupTitle.textContent = title;
     }
 
-    if (popupImage && image) {
-        popupImage.src =
-            image;
-    }
 
     if (popupPrice) {
-        popupPrice.innerText =
-            `₹${price}`;
+        popupPrice.textContent = `₹${price}`;
     }
 
-    popup.style.display =
-        "flex";
+
+    if (popupImage) {
+        popupImage.src = image;
+    }
+
+
+    if (popupDescription) {
+        popupDescription.textContent =
+            description || "";
+    }
+
+
+    popup.dataset.game = title;
+    popup.dataset.price = price;
+
+    popup.classList.add("active");
 }
 
 
-function closePopup() {
+function closeGamePopup() {
 
     const popup =
-        document.getElementById(
-            "gamePopup"
-        );
+        document.getElementById("gamePopup");
 
-    if (!popup) return;
+    if (!popup) {
+        return;
+    }
 
-    popup.style.display =
-        "none";
-
-    currentPopupGame = null;
-    currentPopupPrice = 0;
+    popup.classList.remove("active");
 }
 
 
 function rentPopupGame() {
 
-    if (
-        !currentPopupGame ||
-        !currentPopupPrice
-    ) {
+    const popup =
+        document.getElementById("gamePopup");
+
+    if (!popup) {
         return;
     }
 
-    rentGame(
-        currentPopupGame,
-        currentPopupPrice
-    );
 
-    closePopup();
-}
+    const game =
+        popup.dataset.game;
+
+    const price =
+        Number(popup.dataset.price);
 
 
-/* =========================================================
-   CLOSE MODALS BY CLICKING OUTSIDE
-========================================================= */
-
-window.addEventListener(
-    "click",
-    function(event) {
-
-        const gameModal =
-            document.getElementById(
-                "gameModal"
-            );
-
-        const gamePopup =
-            document.getElementById(
-                "gamePopup"
-            );
-
-        if (
-            gameModal &&
-            event.target === gameModal
-        ) {
-            closeGameModal();
-        }
-
-        if (
-            gamePopup &&
-            event.target === gamePopup
-        ) {
-            closePopup();
-        }
+    if (!game || !price) {
+        return;
     }
-);
+
+
+    rentGame(game, price);
+
+    closeGamePopup();
+}
 
 
 /* =========================================================
@@ -977,346 +834,167 @@ function openCheckout() {
     if (rentals.length === 0) {
 
         alert(
-            "Your cart is empty 🎮"
+            "Your rental cart is empty."
         );
 
         return;
     }
 
+
     const checkout =
-        document.getElementById(
-            "checkout"
-        );
+        document.getElementById("checkoutModal");
 
-    if (!checkout) return;
 
-    checkout.style.display =
-        "flex";
+    if (checkout) {
 
-    updateCheckoutTotal();
+        checkout.classList.add("active");
+
+        return;
+    }
+
+
+    let total = 0;
+
+    rentals.forEach(item => {
+
+        total += Number(item.price);
+
+    });
+
+
+    alert(
+        `Checkout total: ₹${total}`
+    );
 }
 
 
 function closeCheckout() {
 
     const checkout =
-        document.getElementById(
-            "checkout"
-        );
+        document.getElementById("checkoutModal");
 
-    if (!checkout) return;
+    if (!checkout) {
+        return;
+    }
 
-    checkout.style.display =
-        "none";
+    checkout.classList.remove("active");
 }
 
 
-function updateCheckoutTotal() {
-
-    const checkoutTotal =
-        document.getElementById(
-            "checkoutTotal"
-        );
-
-    if (!checkoutTotal) return;
-
-    const total =
-        rentals.reduce(
-            (sum, item) =>
-                sum + Number(item.price),
-            0
-        );
-
-    checkoutTotal.innerText =
-        `₹${total}`;
-}
-
-
-function processPayment() {
+function completeCheckout() {
 
     if (rentals.length === 0) {
 
         alert(
-            "Your cart is empty."
+            "There are no games to checkout."
         );
 
         return;
     }
 
-    const total =
-        rentals.reduce(
-            (sum, item) =>
-                sum + Number(item.price),
-            0
-        );
-
-    const confirmed =
-        confirm(
-            `Confirm payment of ₹${total}?`
-        );
-
-    if (!confirmed) return;
 
     alert(
-        "Payment successful! 🎉"
+        "Payment successful! Your games are ready."
     );
 
-    rentals = [];
-
-    localStorage.setItem(
-        "rentals",
-        JSON.stringify(rentals)
-    );
-
-    renderRentals();
-    loadProfile();
     closeCheckout();
 }
 
 
 /* =========================================================
-   LOADER
+   NAVBAR SCROLL EFFECT
 ========================================================= */
 
-function setupLoader() {
+function handleNavbarScroll() {
 
-    const loader =
-        document.getElementById(
-            "loader"
-        );
+    const navbar =
+        document.getElementById("navbar") ||
+        document.querySelector("nav");
 
-    if (!loader) return;
 
-    window.addEventListener(
-        "load",
-        function() {
+    if (!navbar) {
+        return;
+    }
 
-            setTimeout(
-                function() {
 
-                    loader.classList.add(
-                        "hidden"
-                    );
+    if (window.scrollY > 50) {
 
-                    setTimeout(
-                        function() {
+        navbar.classList.add("scrolled");
 
-                            loader.style.display =
-                                "none";
+    } else {
 
-                        },
-                        500
-                    );
+        navbar.classList.remove("scrolled");
 
-                },
-                500
-            );
-        }
-    );
+    }
 }
 
 
 /* =========================================================
-   PARTICLE BACKGROUND
+   CLOSE POPUPS WHEN CLICKING OUTSIDE
 ========================================================= */
 
-function setupParticles() {
+document.addEventListener("click", function(event) {
 
-    const canvas =
-        document.getElementById(
-            "particles"
-        );
+    const profileOverlay =
+        document.getElementById("profileOverlay");
 
-    if (!canvas) return;
 
-    const ctx =
-        canvas.getContext("2d");
+    if (
+        profileOverlay &&
+        event.target === profileOverlay
+    ) {
 
-    let particles = [];
+        closeProfile();
 
-    function resizeCanvas() {
-
-        canvas.width =
-            window.innerWidth;
-
-        canvas.height =
-            window.innerHeight;
     }
 
-    function createParticles() {
 
-        particles = [];
+    const gamePopup =
+        document.getElementById("gamePopup");
 
-        const count =
-            Math.min(
-                80,
-                Math.floor(
-                    window.innerWidth / 15
-                )
-            );
 
-        for (
-            let i = 0;
-            i < count;
-            i++
-        ) {
+    if (
+        gamePopup &&
+        event.target === gamePopup
+    ) {
 
-            particles.push({
+        closeGamePopup();
 
-                x:
-                    Math.random() *
-                    canvas.width,
-
-                y:
-                    Math.random() *
-                    canvas.height,
-
-                size:
-                    Math.random() * 2 + 1,
-
-                speedX:
-                    (Math.random() - 0.5) *
-                    0.4,
-
-                speedY:
-                    (Math.random() - 0.5) *
-                    0.4
-            });
-        }
     }
 
-    function animateParticles() {
 
-        ctx.clearRect(
-            0,
-            0,
-            canvas.width,
-            canvas.height
-        );
+    const gameModal =
+        document.getElementById("gameModal");
 
-        particles.forEach(
-            particle => {
 
-                particle.x +=
-                    particle.speedX;
+    if (
+        gameModal &&
+        event.target === gameModal
+    ) {
 
-                particle.y +=
-                    particle.speedY;
+        closeGameDetails();
 
-                if (
-                    particle.x < 0 ||
-                    particle.x > canvas.width
-                ) {
-                    particle.speedX *= -1;
-                }
-
-                if (
-                    particle.y < 0 ||
-                    particle.y > canvas.height
-                ) {
-                    particle.speedY *= -1;
-                }
-
-                ctx.beginPath();
-
-                ctx.arc(
-                    particle.x,
-                    particle.y,
-                    particle.size,
-                    0,
-                    Math.PI * 2
-                );
-
-                ctx.fill();
-            }
-        );
-
-        requestAnimationFrame(
-            animateParticles
-        );
     }
 
-    resizeCanvas();
-    createParticles();
-    animateParticles();
 
-    window.addEventListener(
-        "resize",
-        function() {
+    const checkoutModal =
+        document.getElementById("checkoutModal");
 
-            resizeCanvas();
-            createParticles();
 
-        }
-    );
-}
+    if (
+        checkoutModal &&
+        event.target === checkoutModal
+    ) {
+
+        closeCheckout();
+
+    }
+
+});
 
 
 /* =========================================================
-   CARD TILT EFFECT
-========================================================= */
-
-function setupCardTilt() {
-
-    const cards =
-        document.querySelectorAll(
-            ".card"
-        );
-
-    cards.forEach(card => {
-
-        card.addEventListener(
-            "mousemove",
-            function(event) {
-
-                const rect =
-                    card.getBoundingClientRect();
-
-                const x =
-                    event.clientX -
-                    rect.left;
-
-                const y =
-                    event.clientY -
-                    rect.top;
-
-                const centerX =
-                    rect.width / 2;
-
-                const centerY =
-                    rect.height / 2;
-
-                const rotateX =
-                    ((y - centerY) /
-                        centerY) * -4;
-
-                const rotateY =
-                    ((x - centerX) /
-                        centerX) * 4;
-
-                card.style.transform =
-                    `perspective(800px)
-                     rotateX(${rotateX}deg)
-                     rotateY(${rotateY}deg)
-                     translateY(-5px)`;
-            }
-        );
-
-        card.addEventListener(
-            "mouseleave",
-            function() {
-
-                card.style.transform =
-                    "";
-
-            }
-        );
-    });
-}
-
-
-/* =========================================================
-   KEYBOARD ESCAPE
+   ESC KEY
 ========================================================= */
 
 document.addEventListener(
@@ -1328,42 +1006,141 @@ document.addEventListener(
         }
 
         closeProfile();
-        closePopup();
-        closeGameModal();
+        closeGamePopup();
+        closeGameDetails();
         closeCheckout();
+
     }
 );
 
 
 /* =========================================================
-   INITIALIZE EVERYTHING
+   DOM READY
 ========================================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
     function() {
 
+        loadProfile();
+
+        updateCartCount();
+
         renderRentals();
 
         renderWishlist();
 
-        loadProfile();
+        handleNavbarScroll();
 
-        setupLogin();
 
-        setupHeroButton();
+        /* -----------------------------------------
+           NAVBAR SCROLL
+        ----------------------------------------- */
 
-        setupNavbar();
+        window.addEventListener(
+            "scroll",
+            handleNavbarScroll
+        );
 
-        setupMobileMenu();
 
-        setupLoader();
+        /* -----------------------------------------
+           RENTAL BUTTONS
+        ----------------------------------------- */
 
-        setupParticles();
+        document
+            .querySelectorAll("[data-rent-game]")
+            .forEach(button => {
 
-        setupCardAnimations();
+                button.addEventListener(
+                    "click",
+                    function(event) {
 
-        setupCardTilt();
+                        event.stopPropagation();
+
+                        const game =
+                            this.dataset.rentGame;
+
+                        const price =
+                            Number(
+                                this.dataset.price
+                            );
+
+                        rentGame(game, price);
+
+                    }
+                );
+
+            });
+
+
+        /* -----------------------------------------
+           WISHLIST BUTTONS
+        ----------------------------------------- */
+
+        document
+            .querySelectorAll("[data-wishlist-game]")
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    function(event) {
+
+                        event.stopPropagation();
+
+                        addWishlist(
+                            this.dataset.wishlistGame
+                        );
+
+                    }
+                );
+
+            });
+
+
+        /* -----------------------------------------
+           MOBILE MENU
+        ----------------------------------------- */
+
+        const menuButton =
+            document.querySelector(".menu-toggle");
+
+
+        if (menuButton) {
+
+            menuButton.addEventListener(
+                "click",
+                toggleMenu
+            );
+
+        }
+
+
+        /* -----------------------------------------
+           SEARCH ENTER KEY
+        ----------------------------------------- */
+
+        const searchBox =
+            document.getElementById("searchBox");
+
+
+        if (searchBox) {
+
+            searchBox.addEventListener(
+                "keydown",
+                function(event) {
+
+                    if (
+                        event.key === "Enter"
+                    ) {
+
+                        searchGame();
+
+                    }
+
+                }
+            );
+
+        }
 
     }
 );
