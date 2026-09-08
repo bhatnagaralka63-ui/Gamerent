@@ -1730,3 +1730,322 @@ footer h2 {
         font-size: 16px;
     }
 }
+
+/* =========================================
+   GAME DETAIL PAGES
+========================================= */
+
+.game-detail-hero {
+    min-height: 720px;
+    display: flex;
+    align-items: center;
+    padding: 140px 8% 80px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.game-detail-content {
+    max-width: 720px;
+    z-index: 2;
+}
+
+.game-badge {
+    display: inline-block;
+    padding: 7px 16px;
+    border-radius: 30px;
+    background: rgba(0, 212, 255, 0.15);
+    border: 1px solid rgba(0, 212, 255, 0.5);
+    color: #00d4ff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.game-detail-content h1 {
+    font-size: clamp(45px, 6vw, 82px);
+    line-height: 1.05;
+    margin-bottom: 12px;
+    font-weight: 800;
+}
+
+.game-tagline {
+    font-size: 20px;
+    color: #b9c2d0;
+    margin-bottom: 22px;
+}
+
+.game-rating {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    margin-bottom: 25px;
+}
+
+.game-rating span {
+    color: #dce3ed;
+}
+
+.game-rating i {
+    color: #00d4ff;
+    margin-right: 6px;
+}
+
+.game-description {
+    color: #c5ccd8;
+    font-size: 17px;
+    line-height: 1.8;
+    max-width: 650px;
+    margin-bottom: 32px;
+}
+
+.game-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.game-actions button {
+    cursor: pointer;
+}
+
+.game-info-section {
+    padding: 90px 8%;
+    background: #0b0f17;
+}
+
+.game-info-container {
+    max-width: 1250px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 70px;
+}
+
+.game-main-info h2 {
+    font-size: 38px;
+    margin-bottom: 20px;
+}
+
+.game-main-info p {
+    color: #aeb7c5;
+    line-height: 1.9;
+    margin-bottom: 20px;
+}
+
+.game-specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.spec-item {
+    padding: 20px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+}
+
+.spec-item span {
+    display: block;
+    color: #7f8999;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.spec-item strong {
+    color: white;
+    font-size: 15px;
+}
+
+.game-features,
+.game-screenshots,
+.related-games {
+    padding: 100px 8%;
+    background: #080b12;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title span {
+    color: #00d4ff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.section-title h2 {
+    font-size: 42px;
+    margin-top: 8px;
+}
+
+.feature-grid {
+    max-width: 1250px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.feature-card {
+    padding: 32px 25px;
+    border-radius: 16px;
+    background: #10151f;
+    border: 1px solid rgba(255,255,255,0.07);
+    transition: 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(0,212,255,0.5);
+}
+
+.feature-card i {
+    font-size: 30px;
+    color: #00d4ff;
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.feature-card p {
+    color: #8f99a8;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.screenshot-grid {
+    max-width: 1250px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.screenshot-grid img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: 0.4s ease;
+}
+
+.screenshot-grid img:hover {
+    transform: scale(1.03);
+}
+
+.game-rent-cta {
+    padding: 70px 8%;
+    background: linear-gradient(
+        135deg,
+        #101722,
+        #081018
+    );
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.game-rent-cta span {
+    color: #00d4ff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.game-rent-cta h2 {
+    font-size: 38px;
+    margin: 8px 0;
+}
+
+.game-rent-cta p {
+    color: #8f99a8;
+}
+
+.related-games {
+    padding-bottom: 120px;
+}
+
+.related-games .games {
+    max-width: 1250px;
+    margin: auto;
+}
+
+
+/* =========================================
+   RESPONSIVE GAME PAGE
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .game-info-container {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .screenshot-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .game-detail-hero {
+        min-height: 650px;
+        padding: 130px 6% 60px;
+    }
+
+    .game-detail-content h1 {
+        font-size: 45px;
+    }
+
+    .game-description {
+        font-size: 15px;
+    }
+
+    .game-info-section,
+    .game-features,
+    .game-screenshots,
+    .related-games {
+        padding: 70px 6%;
+    }
+
+    .game-specs {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .screenshot-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .screenshot-grid img {
+        height: 220px;
+    }
+
+    .game-rent-cta {
+        padding: 55px 6%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .game-rent-cta h2 {
+        font-size: 30px;
+    }
+
+}
