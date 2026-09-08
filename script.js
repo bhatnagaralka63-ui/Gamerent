@@ -21,10 +21,10 @@ let selectedAvatar =
 
 try {
 
-    const savedRentals =
-        localStorage.getItem("rentals");
+    const savedRentals = localStorage.getItem("rentals");
 
     if (savedRentals) {
+
         rentals = JSON.parse(savedRentals);
 
         if (!Array.isArray(rentals)) {
@@ -35,17 +35,19 @@ try {
 } catch (error) {
 
     console.warn("Invalid rentals data. Resetting rentals.");
+
     localStorage.removeItem("rentals");
+
     rentals = [];
 }
 
 
 try {
 
-    const savedWishlist =
-        localStorage.getItem("wishlist");
+    const savedWishlist = localStorage.getItem("wishlist");
 
     if (savedWishlist) {
+
         wishlist = JSON.parse(savedWishlist);
 
         if (!Array.isArray(wishlist)) {
@@ -56,32 +58,47 @@ try {
 } catch (error) {
 
     console.warn("Invalid wishlist data. Resetting wishlist.");
+
     localStorage.removeItem("wishlist");
+
     wishlist = [];
 }
+
+
 /* =========================================================
    RENTAL SYSTEM
 ========================================================= */
 
 function rentGame(game, price) {
 
-    const alreadyRented = rentals.some(item => item.game === game);
-
-    if (alreadyRented) {
-        alert(`${game} is already in your rentals.`);
+    if (!game || !price) {
+        alert("Game information is missing.");
         return;
     }
 
-    const confirmRent = confirm(
-        `Rent ${game} for ₹${price}?`
-    );
+    const alreadyRented =
+        rentals.some(item => item.game === game);
+
+    if (alreadyRented) {
+
+        alert(`${game} is already in your rentals.`);
+
+        return;
+    }
+
+    const confirmRent =
+        confirm(`Rent ${game} for ₹${price}?`);
 
     if (!confirmRent) return;
 
     rentals.push({
+
         game: game,
-        price: price,
+
+        price: Number(price),
+
         date: new Date().toLocaleDateString()
+
     });
 
     localStorage.setItem(
@@ -91,6 +108,7 @@ function rentGame(game, price) {
 
     updateCartCount();
     renderRentals();
+    updateProfileStats();
 
     alert(`${game} has been added to your rentals!`);
 }
@@ -102,9 +120,15 @@ function rentGame(game, price) {
 
 function removeRental(index) {
 
-    if (index < 0 || index >= rentals.length) return;
+    if (
+        index < 0 ||
+        index >= rentals.length
+    ) {
+        return;
+    }
 
-    const gameName = rentals[index].game;
+    const gameName =
+        rentals[index].game;
 
     rentals.splice(index, 1);
 
@@ -115,6 +139,7 @@ function removeRental(index) {
 
     renderRentals();
     updateCartCount();
+    updateProfileStats();
 
     alert(`${gameName} removed from rentals.`);
 }
@@ -126,11 +151,13 @@ function removeRental(index) {
 
 function updateCartCount() {
 
-    const cartCount = document.getElementById("cartCount");
+    const cartCount =
+        document.getElementById("cartCount");
 
     if (!cartCount) return;
 
-    cartCount.textContent = rentals.length;
+    cartCount.textContent =
+        rentals.length;
 }
 
 
@@ -152,14 +179,23 @@ function renderRentals() {
 
     let total = 0;
 
+
     if (rentals.length === 0) {
 
         rentalsList.innerHTML = `
+
             <div class="empty-state">
+
                 <i class="fa-solid fa-gamepad"></i>
+
                 <h3>No rentals yet</h3>
-                <p>Browse the library and rent your first game.</p>
+
+                <p>
+                    Browse the library and rent your first game.
+                </p>
+
             </div>
+
         `;
 
         if (cartTotal) {
@@ -169,37 +205,59 @@ function renderRentals() {
         return;
     }
 
+
     rentals.forEach((item, index) => {
 
-        total += Number(item.price);
+        total += Number(item.price) || 0;
 
-        const rental = document.createElement("div");
+        const rental =
+            document.createElement("div");
 
-        rental.className = "rental-item";
+        rental.className =
+            "rental-item";
 
         rental.innerHTML = `
+
             <div class="rental-info">
+
                 <h3>${item.game}</h3>
-                <p>Rented on ${item.date}</p>
+
+                <p>
+                    Rented on ${item.date}
+                </p>
+
             </div>
 
+
             <div class="rental-price">
+
                 ₹${item.price}
+
             </div>
+
 
             <button
                 class="remove-btn"
                 onclick="removeRental(${index})"
+                aria-label="Remove rental"
             >
+
                 <i class="fa-solid fa-trash"></i>
+
             </button>
+
         `;
 
         rentalsList.appendChild(rental);
+
     });
 
+
     if (cartTotal) {
-        cartTotal.textContent = `₹${total}`;
+
+        cartTotal.textContent =
+            `₹${total}`;
+
     }
 }
 
@@ -210,12 +268,18 @@ function renderRentals() {
 
 function addWishlist(game) {
 
+    if (!game) return;
+
+
     if (wishlist.includes(game)) {
 
-        alert(`${game} is already in your wishlist.`);
+        alert(
+            `${game} is already in your wishlist.`
+        );
 
         return;
     }
+
 
     wishlist.push(game);
 
@@ -225,16 +289,21 @@ function addWishlist(game) {
     );
 
     renderWishlist();
+    updateWishlistButtons();
+    updateProfileStats();
 
-    alert(`${game} added to wishlist!`);
+    alert(
+        `${game} added to wishlist!`
+    );
 }
 
 
 function removeWishlist(game) {
 
-    wishlist = wishlist.filter(
-        item => item !== game
-    );
+    wishlist =
+        wishlist.filter(
+            item => item !== game
+        );
 
     localStorage.setItem(
         "wishlist",
@@ -242,6 +311,8 @@ function removeWishlist(game) {
     );
 
     renderWishlist();
+    updateWishlistButtons();
+    updateProfileStats();
 }
 
 
@@ -254,39 +325,70 @@ function renderWishlist() {
 
     wishlistList.innerHTML = "";
 
+
     if (wishlist.length === 0) {
 
         wishlistList.innerHTML = `
+
             <div class="empty-state">
+
                 <i class="fa-regular fa-heart"></i>
-                <h3>Your wishlist is empty</h3>
-                <p>Add games you want to play later.</p>
+
+                <h3>
+                    Your wishlist is empty
+                </h3>
+
+                <p>
+                    Add games you want to play later.
+                </p>
+
             </div>
+
         `;
 
         return;
     }
 
+
     wishlist.forEach(game => {
 
-        const item = document.createElement("div");
+        const item =
+            document.createElement("div");
 
-        item.className = "wishlist-item";
+        item.className =
+            "wishlist-item";
 
-        item.innerHTML = `
-            <div>
-                <h3>${game}</h3>
-            </div>
 
-            <button
-                class="remove-btn"
-                onclick="removeWishlist('${game.replace(/'/g, "\\'")}')"
-            >
-                <i class="fa-solid fa-trash"></i>
-            </button>
+        const info =
+            document.createElement("div");
+
+        info.innerHTML = `
+            <h3>${game}</h3>
         `;
 
+
+        const button =
+            document.createElement("button");
+
+        button.className =
+            "remove-btn";
+
+        button.innerHTML = `
+            <i class="fa-solid fa-trash"></i>
+        `;
+
+        button.addEventListener(
+            "click",
+            () => removeWishlist(game)
+        );
+
+
+        item.appendChild(info);
+
+        item.appendChild(button);
+
         wishlistList.appendChild(item);
+
     });
 }
 
@@ -302,13 +404,18 @@ function searchGame() {
 
     if (!searchBox) return;
 
+
     const searchTerm =
-        searchBox.value.toLowerCase().trim();
+        searchBox.value
+            .toLowerCase()
+            .trim();
+
 
     const cards =
         document.querySelectorAll(
             "#featured .card, #gameList .card"
         );
+
 
     cards.forEach(card => {
 
@@ -318,15 +425,18 @@ function searchGame() {
         const descriptionElement =
             card.querySelector("p");
 
+
         const title =
             titleElement
                 ? titleElement.textContent.toLowerCase()
                 : "";
 
+
         const description =
             descriptionElement
                 ? descriptionElement.textContent.toLowerCase()
                 : "";
+
 
         if (
             title.includes(searchTerm) ||
@@ -339,6 +449,7 @@ function searchGame() {
 
             card.style.display = "none";
         }
+
     });
 }
 
@@ -357,26 +468,37 @@ function filterCategory(category, button) {
 
         });
 
+
     if (button) {
+
         button.classList.add("active");
+
     }
 
+
     const games =
-        document.querySelectorAll("#gameList .card");
+        document.querySelectorAll(
+            "#gameList .card"
+        );
+
 
     games.forEach(game => {
 
         const genreData =
             game.dataset.genre || "";
 
+
         const genres =
             genreData
                 .toLowerCase()
-                .split(" ");
+                .split(/\s+/);
+
 
         if (
             category === "all" ||
-            genres.includes(category.toLowerCase())
+            genres.includes(
+                category.toLowerCase()
+            )
         ) {
 
             game.style.display = "";
@@ -384,7 +506,9 @@ function filterCategory(category, button) {
         } else {
 
             game.style.display = "none";
+
         }
+
     });
 }
 
@@ -396,7 +520,9 @@ function filterCategory(category, button) {
 function openProfile() {
 
     const popup =
-        document.getElementById("profileOverlay");
+        document.getElementById(
+            "profileOverlay"
+        );
 
     if (!popup) return;
 
@@ -409,7 +535,9 @@ function openProfile() {
 function closeProfile() {
 
     const popup =
-        document.getElementById("profileOverlay");
+        document.getElementById(
+            "profileOverlay"
+        );
 
     if (!popup) return;
 
@@ -417,20 +545,31 @@ function closeProfile() {
 }
 
 
-function selectAvatar(avatar, clickedImage) {
+function selectAvatar(
+    avatar,
+    clickedImage
+) {
 
     selectedAvatar = avatar;
+
 
     document
         .querySelectorAll(".avatar-option")
         .forEach(image => {
 
-            image.classList.remove("selected");
+            image.classList.remove(
+                "selected"
+            );
 
         });
 
+
     if (clickedImage) {
-        clickedImage.classList.add("selected");
+
+        clickedImage.classList.add(
+            "selected"
+        );
+
     }
 }
 
@@ -438,34 +577,46 @@ function selectAvatar(avatar, clickedImage) {
 function saveProfile() {
 
     const input =
-        document.getElementById("profileInputName");
+        document.getElementById(
+            "profileInputName"
+        );
 
     if (!input) return;
+
 
     const name =
         input.value.trim();
 
+
     if (name === "") {
 
-        alert("Please enter a username.");
+        alert(
+            "Please enter a username."
+        );
 
         return;
     }
+
 
     localStorage.setItem(
         "profileName",
         name
     );
 
+
     localStorage.setItem(
         "selectedAvatar",
         selectedAvatar
     );
 
+
     updateProfileButton();
+
     loadProfile();
 
-    alert("Profile saved successfully!");
+    alert(
+        "Profile saved successfully!"
+    );
 
     closeProfile();
 }
@@ -474,48 +625,85 @@ function saveProfile() {
 function loadProfile() {
 
     const savedName =
-        localStorage.getItem("profileName") ||
-        "Gamer";
+        localStorage.getItem(
+            "profileName"
+        ) || "Gamer";
+
 
     const savedAvatar =
-        localStorage.getItem("selectedAvatar") ||
-        selectedAvatar;
+        localStorage.getItem(
+            "selectedAvatar"
+        ) || selectedAvatar;
 
-    selectedAvatar = savedAvatar;
+
+    selectedAvatar =
+        savedAvatar;
 
 
     /* Visible profile name */
 
     const profileName =
-        document.getElementById("profileName");
+        document.getElementById(
+            "profileName"
+        );
+
 
     if (profileName) {
-        profileName.textContent = savedName;
+
+        profileName.textContent =
+            savedName;
+
     }
 
 
     /* Popup input */
 
     const profileInput =
-        document.getElementById("profileInputName");
+        document.getElementById(
+            "profileInputName"
+        );
+
 
     if (profileInput) {
-        profileInput.value = savedName;
+
+        profileInput.value =
+            savedName;
+
     }
 
 
     /* Profile images */
 
     document
-        .querySelectorAll(".profile-img")
+        .querySelectorAll(
+            ".profile-img"
+        )
         .forEach(image => {
 
-            image.src = savedAvatar;
+            image.src =
+                savedAvatar;
+
+        });
+
+
+    /* Selected avatar */
+
+    document
+        .querySelectorAll(
+            ".avatar-option"
+        )
+        .forEach(image => {
+
+            image.classList.toggle(
+                "selected",
+                image.src === savedAvatar
+            );
 
         });
 
 
     updateProfileStats();
+
     updateProfileButton();
 }
 
@@ -527,19 +715,30 @@ function loadProfile() {
 function updateProfileStats() {
 
     const rentalCount =
-        document.getElementById("profileRentalCount");
+        document.getElementById(
+            "profileRentalCount"
+        );
+
 
     const wishlistCount =
-        document.getElementById("profileWishlistCount");
+        document.getElementById(
+            "profileWishlistCount"
+        );
+
 
     if (rentalCount) {
+
         rentalCount.textContent =
             rentals.length;
+
     }
 
+
     if (wishlistCount) {
+
         wishlistCount.textContent =
             wishlist.length;
+
     }
 }
 
@@ -551,25 +750,38 @@ function updateProfileStats() {
 function updateProfileButton() {
 
     const profileButton =
-        document.querySelector(".profile-btn");
+        document.querySelector(
+            ".profile-btn"
+        );
 
-    const savedName =
-        localStorage.getItem("profileName");
 
     if (!profileButton) return;
+
+
+    const savedName =
+        localStorage.getItem(
+            "profileName"
+        );
+
 
     if (savedName) {
 
         profileButton.innerHTML = `
+
             <i class="fa-solid fa-user"></i>
+
             ${savedName}
+
         `;
 
     } else {
 
         profileButton.innerHTML = `
+
             <i class="fa-solid fa-user"></i>
+
             Profile
+
         `;
     }
 }
@@ -581,15 +793,24 @@ function updateProfileButton() {
 
 function logoutUser() {
 
-    localStorage.removeItem("profileName");
-    localStorage.removeItem("selectedAvatar");
+    localStorage.removeItem(
+        "profileName"
+    );
+
+    localStorage.removeItem(
+        "selectedAvatar"
+    );
+
 
     selectedAvatar =
         "https://i.pravatar.cc/150?img=12";
 
+
     loadProfile();
 
-    alert("You have been logged out.");
+    alert(
+        "You have been logged out."
+    );
 }
 
 
@@ -600,40 +821,67 @@ function logoutUser() {
 function loginUser() {
 
     const emailInput =
-        document.getElementById("loginEmail");
+        document.getElementById(
+            "loginEmail"
+        );
+
 
     const passwordInput =
-        document.getElementById("loginPassword");
+        document.getElementById(
+            "loginPassword"
+        );
 
-    if (!emailInput || !passwordInput) {
+
+    if (
+        !emailInput ||
+        !passwordInput
+    ) {
+
         return;
     }
+
 
     const email =
         emailInput.value.trim();
 
+
     const password =
         passwordInput.value.trim();
 
+
     if (!email || !password) {
 
-        alert("Please enter your email and password.");
+        alert(
+            "Please enter your email and password."
+        );
 
         return;
     }
+
 
     localStorage.setItem(
         "loggedIn",
         "true"
     );
 
-    alert("Login successful!");
+
+    alert(
+        "Login successful!"
+    );
+
 
     const loginPopup =
-        document.getElementById("loginOverlay");
+        document.getElementById(
+            "loginOverlay"
+        );
+
 
     if (loginPopup) {
-        loginPopup.classList.remove("active");
+
+        loginPopup.classList.remove(
+            "active"
+        );
+
     }
 }
 
@@ -645,7 +893,10 @@ function loginUser() {
 function exploreGames() {
 
     const gameSection =
-        document.getElementById("gameLibrary");
+        document.getElementById(
+            "gameLibrary"
+        );
+
 
     if (gameSection) {
 
@@ -656,8 +907,12 @@ function exploreGames() {
         return;
     }
 
+
     const featured =
-        document.getElementById("featured");
+        document.getElementById(
+            "featured"
+        );
+
 
     if (featured) {
 
@@ -668,7 +923,9 @@ function exploreGames() {
         return;
     }
 
-    window.location.href = "games.html";
+
+    window.location.href =
+        "games.html";
 }
 
 
@@ -679,22 +936,34 @@ function exploreGames() {
 function toggleMenu() {
 
     const navLinks =
-        document.querySelector(".nav-links");
+        document.querySelector(
+            ".nav-links"
+        );
+
 
     if (!navLinks) return;
 
-    navLinks.classList.toggle("active");
+
+    navLinks.classList.toggle(
+        "active"
+    );
 }
 
 
 function closeMobileMenu() {
 
     const navLinks =
-        document.querySelector(".nav-links");
+        document.querySelector(
+            ".nav-links"
+        );
+
 
     if (!navLinks) return;
 
-    navLinks.classList.remove("active");
+
+    navLinks.classList.remove(
+        "active"
+    );
 }
 
 
@@ -713,79 +982,145 @@ function openGameDetails(
 ) {
 
     const modal =
-        document.getElementById("gameDetailsModal");
+        document.getElementById(
+            "gameDetailsModal"
+        );
+
 
     if (!modal) return;
 
 
     const modalTitle =
-        document.getElementById("modalGameTitle");
+        document.getElementById(
+            "modalGameTitle"
+        );
+
 
     const modalDescription =
-        document.getElementById("modalGameDescription");
+        document.getElementById(
+            "modalGameDescription"
+        );
+
 
     const modalImage =
-        document.getElementById("modalGameImage");
+        document.getElementById(
+            "modalGameImage"
+        );
+
 
     const modalPrice =
-        document.getElementById("modalGamePrice");
+        document.getElementById(
+            "modalGamePrice"
+        );
+
 
     const modalRating =
-        document.getElementById("modalGameRating");
+        document.getElementById(
+            "modalGameRating"
+        );
+
 
     const modalGenre =
-        document.getElementById("modalGameGenre");
+        document.getElementById(
+            "modalGameGenre"
+        );
+
 
     const modalYear =
-        document.getElementById("modalGameYear");
+        document.getElementById(
+            "modalGameYear"
+        );
 
 
     if (modalTitle) {
-        modalTitle.textContent = title;
+
+        modalTitle.textContent =
+            title;
+
     }
+
 
     if (modalDescription) {
-        modalDescription.textContent = description;
+
+        modalDescription.textContent =
+            description;
+
     }
+
 
     if (modalImage) {
-        modalImage.src = image;
-        modalImage.alt = title;
+
+        modalImage.src =
+            image;
+
+        modalImage.alt =
+            title;
+
     }
+
 
     if (modalPrice) {
-        modalPrice.textContent = `₹${price}`;
+
+        modalPrice.textContent =
+            `₹${price}`;
+
     }
+
 
     if (modalRating) {
-        modalRating.textContent = rating || "4.8";
+
+        modalRating.textContent =
+            rating || "4.8";
+
     }
+
 
     if (modalGenre) {
-        modalGenre.textContent = genre || "Action";
+
+        modalGenre.textContent =
+            genre || "Action";
+
     }
+
 
     if (modalYear) {
-        modalYear.textContent = year || "2025";
+
+        modalYear.textContent =
+            year || "2025";
+
     }
 
 
-    modal.classList.add("active");
+    modal.classList.add(
+        "active"
+    );
 
-    document.body.classList.add("modal-open");
+
+    document.body.classList.add(
+        "modal-open"
+    );
 }
 
 
 function closeGameDetails() {
 
     const modal =
-        document.getElementById("gameDetailsModal");
+        document.getElementById(
+            "gameDetailsModal"
+        );
+
 
     if (!modal) return;
 
-    modal.classList.remove("active");
 
-    document.body.classList.remove("modal-open");
+    modal.classList.remove(
+        "active"
+    );
+
+
+    document.body.classList.remove(
+        "modal-open"
+    );
 }
 
 
@@ -802,74 +1137,125 @@ function openGamePopup(
 ) {
 
     const popup =
-        document.getElementById("gamePopup");
+        document.getElementById(
+            "gamePopup"
+        );
+
 
     if (!popup) return;
 
 
     const popupTitle =
-        document.getElementById("popupGameTitle");
+        document.getElementById(
+            "popupGameTitle"
+        );
+
 
     const popupDescription =
-        document.getElementById("popupGameDescription");
+        document.getElementById(
+            "popupGameDescription"
+        );
+
 
     const popupImage =
-        document.getElementById("popupGameImage");
+        document.getElementById(
+            "popupGameImage"
+        );
+
 
     const popupPrice =
-        document.getElementById("popupGamePrice");
+        document.getElementById(
+            "popupGamePrice"
+        );
+
 
     const popupRating =
-        document.getElementById("popupGameRating");
+        document.getElementById(
+            "popupGameRating"
+        );
 
 
     if (popupTitle) {
-        popupTitle.textContent = title;
+
+        popupTitle.textContent =
+            title;
+
     }
+
 
     if (popupDescription) {
+
         popupDescription.textContent =
             description;
+
     }
+
 
     if (popupImage) {
-        popupImage.src = image;
-        popupImage.alt = title;
+
+        popupImage.src =
+            image;
+
+        popupImage.alt =
+            title;
+
     }
+
 
     if (popupPrice) {
+
         popupPrice.textContent =
             `₹${price}`;
+
     }
+
 
     if (popupRating) {
+
         popupRating.textContent =
             rating || "4.8";
+
     }
 
 
-    /* Store data on popup */
-
-    popup.dataset.game = title;
-    popup.dataset.price = price;
+    popup.dataset.game =
+        title;
 
 
-    popup.classList.add("active");
+    popup.dataset.price =
+        price;
 
-    document.body.classList.add("modal-open");
+
+    popup.classList.add(
+        "active"
+    );
+
+
+    document.body.classList.add(
+        "modal-open"
+    );
 }
 
 
 function closeGamePopup() {
 
     const popup =
-        document.getElementById("gamePopup");
+        document.getElementById(
+            "gamePopup"
+        );
+
 
     if (!popup) return;
 
-    popup.classList.remove("active");
 
-    document.body.classList.remove("modal-open");
+    popup.classList.remove(
+        "active"
+    );
+
+
+    document.body.classList.remove(
+        "modal-open"
+    );
 }
 
 
@@ -880,24 +1266,39 @@ function closeGamePopup() {
 function rentPopupGame() {
 
     const popup =
-        document.getElementById("gamePopup");
+        document.getElementById(
+            "gamePopup"
+        );
+
 
     if (!popup) return;
+
 
     const game =
         popup.dataset.game;
 
+
     const price =
-        Number(popup.dataset.price);
+        Number(
+            popup.dataset.price
+        );
+
 
     if (!game || !price) {
 
-        alert("Game information is missing.");
+        alert(
+            "Game information is missing."
+        );
 
         return;
     }
 
-    rentGame(game, price);
+
+    rentGame(
+        game,
+        price
+    );
+
 
     closeGamePopup();
 }
@@ -911,13 +1312,19 @@ function openCheckout() {
 
     if (rentals.length === 0) {
 
-        alert("Your rental cart is empty.");
+        alert(
+            "Your rental cart is empty."
+        );
 
         return;
     }
 
+
     const checkout =
-        document.getElementById("checkoutModal");
+        document.getElementById(
+            "checkoutModal"
+        );
+
 
     if (!checkout) {
 
@@ -928,35 +1335,53 @@ function openCheckout() {
         return;
     }
 
+
     const checkoutTotal =
-        document.getElementById("checkoutTotal");
+        document.getElementById(
+            "checkoutTotal"
+        );
+
 
     if (checkoutTotal) {
 
         checkoutTotal.textContent =
             `₹${calculateTotal()}`;
+
     }
 
-    checkout.classList.add("active");
+
+    checkout.classList.add(
+        "active"
+    );
 }
 
 
 function closeCheckout() {
 
     const checkout =
-        document.getElementById("checkoutModal");
+        document.getElementById(
+            "checkoutModal"
+        );
+
 
     if (!checkout) return;
 
-    checkout.classList.remove("active");
+
+    checkout.classList.remove(
+        "active"
+    );
 }
 
 
 function calculateTotal() {
 
     return rentals.reduce(
-        (total, item) =>
-            total + Number(item.price),
+        (total, item) => {
+
+            return total +
+                (Number(item.price) || 0);
+
+        },
         0
     );
 }
@@ -966,27 +1391,36 @@ function completeCheckout() {
 
     if (rentals.length === 0) {
 
-        alert("Your cart is empty.");
+        alert(
+            "Your cart is empty."
+        );
 
         return;
     }
 
+
     const total =
         calculateTotal();
+
 
     alert(
         `Payment successful!\n\nTotal: ₹${total}\n\nThank you for using GameRent!`
     );
 
+
     rentals = [];
+
 
     localStorage.setItem(
         "rentals",
         JSON.stringify(rentals)
     );
 
+
     updateCartCount();
+
     renderRentals();
+
     updateProfileStats();
 
     closeCheckout();
@@ -997,22 +1431,35 @@ function completeCheckout() {
    NAVBAR SCROLL EFFECT
 ========================================================= */
 
-window.addEventListener("scroll", () => {
+window.addEventListener(
+    "scroll",
+    () => {
 
-    const nav =
-        document.querySelector("nav");
+        const nav =
+            document.querySelector(
+                "nav"
+            );
 
-    if (!nav) return;
 
-    if (window.scrollY > 50) {
+        if (!nav) return;
 
-        nav.classList.add("scrolled");
 
-    } else {
+        if (window.scrollY > 50) {
 
-        nav.classList.remove("scrolled");
+            nav.classList.add(
+                "scrolled"
+            );
+
+        } else {
+
+            nav.classList.remove(
+                "scrolled"
+            );
+
+        }
+
     }
-});
+);
 
 
 /* =========================================================
@@ -1024,11 +1471,15 @@ document.addEventListener(
     event => {
 
         if (
-            event.target.closest(".nav-links a")
+            event.target.closest(
+                ".nav-links a"
+            )
         ) {
 
             closeMobileMenu();
+
         }
+
     }
 );
 
@@ -1042,7 +1493,10 @@ document.addEventListener(
     event => {
 
         const gamePopup =
-            document.getElementById("gamePopup");
+            document.getElementById(
+                "gamePopup"
+            );
+
 
         if (
             gamePopup &&
@@ -1050,6 +1504,7 @@ document.addEventListener(
         ) {
 
             closeGamePopup();
+
         }
 
 
@@ -1058,12 +1513,14 @@ document.addEventListener(
                 "gameDetailsModal"
             );
 
+
         if (
             gameDetails &&
             event.target === gameDetails
         ) {
 
             closeGameDetails();
+
         }
 
 
@@ -1072,12 +1529,14 @@ document.addEventListener(
                 "checkoutModal"
             );
 
+
         if (
             checkout &&
             event.target === checkout
         ) {
 
             closeCheckout();
+
         }
 
 
@@ -1086,13 +1545,16 @@ document.addEventListener(
                 "profileOverlay"
             );
 
+
         if (
             profileOverlay &&
             event.target === profileOverlay
         ) {
 
             closeProfile();
+
         }
+
     }
 );
 
@@ -1105,14 +1567,23 @@ document.addEventListener(
     "keydown",
     event => {
 
-        if (event.key !== "Escape") {
+        if (
+            event.key !== "Escape"
+        ) {
+
             return;
+
         }
 
+
         closeGamePopup();
+
         closeGameDetails();
+
         closeCheckout();
+
         closeProfile();
+
     }
 );
 
@@ -1124,7 +1595,10 @@ document.addEventListener(
 function setupCardAnimations() {
 
     const cards =
-        document.querySelectorAll(".card");
+        document.querySelectorAll(
+            ".card"
+        );
+
 
     cards.forEach(card => {
 
@@ -1132,19 +1606,25 @@ function setupCardAnimations() {
             "mouseenter",
             () => {
 
-                card.classList.add("card-hover");
+                card.classList.add(
+                    "card-hover"
+                );
 
             }
         );
+
 
         card.addEventListener(
             "mouseleave",
             () => {
 
-                card.classList.remove("card-hover");
+                card.classList.remove(
+                    "card-hover"
+                );
 
             }
         );
+
     });
 }
 
@@ -1160,6 +1640,7 @@ function setupCardTilt() {
             ".card.tilt-card"
         );
 
+
     cards.forEach(card => {
 
         card.addEventListener(
@@ -1169,39 +1650,53 @@ function setupCardTilt() {
                 const rect =
                     card.getBoundingClientRect();
 
+
                 const x =
-                    event.clientX - rect.left;
+                    event.clientX -
+                    rect.left;
+
 
                 const y =
-                    event.clientY - rect.top;
+                    event.clientY -
+                    rect.top;
+
 
                 const centerX =
                     rect.width / 2;
 
+
                 const centerY =
                     rect.height / 2;
+
 
                 const rotateX =
                     (y - centerY) / 15;
 
+
                 const rotateY =
                     (centerX - x) / 15;
+
 
                 card.style.transform =
                     `perspective(1000px)
                      rotateX(${rotateX}deg)
                      rotateY(${rotateY}deg)
                      translateY(-8px)`;
+
             }
         );
+
 
         card.addEventListener(
             "mouseleave",
             () => {
 
-                card.style.transform = "";
+                card.style.transform =
+                    "";
+
             }
         );
+
     });
 }
 
@@ -1213,35 +1708,61 @@ function setupCardTilt() {
 function createParticles() {
 
     const container =
-        document.querySelector(".particles");
+        document.querySelector(
+            ".particles"
+        );
+
 
     if (!container) return;
 
+
     container.innerHTML = "";
+
 
     const amount = 35;
 
-    for (let i = 0; i < amount; i++) {
+
+    for (
+        let i = 0;
+        i < amount;
+        i++
+    ) {
 
         const particle =
-            document.createElement("span");
+            document.createElement(
+                "span"
+            );
+
 
         particle.className =
             "particle";
 
+
         particle.style.left =
-            Math.random() * 100 + "%";
+            Math.random() * 100 +
+            "%";
+
 
         particle.style.top =
-            Math.random() * 100 + "%";
+            Math.random() * 100 +
+            "%";
+
 
         particle.style.animationDelay =
-            Math.random() * 5 + "s";
+            Math.random() * 5 +
+            "s";
+
 
         particle.style.animationDuration =
-            4 + Math.random() * 6 + "s";
+            4 +
+            Math.random() * 6 +
+            "s";
 
-        container.appendChild(particle);
+
+        container.appendChild(
+            particle
+        );
+
     }
 }
 
@@ -1253,15 +1774,24 @@ function createParticles() {
 function hideLoader() {
 
     const loader =
-        document.getElementById("loader");
+        document.getElementById(
+            "loader"
+        );
+
 
     if (!loader) return;
 
-    setTimeout(() => {
 
-        loader.classList.add("hidden");
+    setTimeout(
+        () => {
 
-    }, 500);
+            loader.classList.add(
+                "hidden"
+            );
+
+        },
+        500
+    );
 }
 
 
@@ -1272,7 +1802,9 @@ function hideLoader() {
 function setupSmoothScroll() {
 
     document
-        .querySelectorAll('a[href^="#"]')
+        .querySelectorAll(
+            'a[href^="#"]'
+        )
         .forEach(link => {
 
             link.addEventListener(
@@ -1280,29 +1812,40 @@ function setupSmoothScroll() {
                 event => {
 
                     const targetID =
-                        link.getAttribute("href");
+                        link.getAttribute(
+                            "href"
+                        );
+
 
                     if (
                         !targetID ||
                         targetID === "#"
                     ) {
+
                         return;
+
                     }
+
 
                     const target =
                         document.querySelector(
                             targetID
                         );
 
+
                     if (!target) return;
 
+
                     event.preventDefault();
+
 
                     target.scrollIntoView({
                         behavior: "smooth"
                     });
+
                 }
             );
+
         });
 }
 
@@ -1314,7 +1857,9 @@ function setupSmoothScroll() {
 function setupRentalPage() {
 
     renderRentals();
+
     updateCartCount();
+
 }
 
 
@@ -1325,6 +1870,7 @@ function setupRentalPage() {
 function setupWishlistPage() {
 
     renderWishlist();
+
 }
 
 
@@ -1335,7 +1881,9 @@ function setupWishlistPage() {
 function setupProfilePage() {
 
     loadProfile();
+
     updateProfileStats();
+
 }
 
 
@@ -1346,18 +1894,26 @@ function setupProfilePage() {
 function setupSearchEnter() {
 
     const searchBox =
-        document.getElementById("searchBox");
+        document.getElementById(
+            "searchBox"
+        );
+
 
     if (!searchBox) return;
+
 
     searchBox.addEventListener(
         "keydown",
         event => {
 
-            if (event.key === "Enter") {
+            if (
+                event.key === "Enter"
+            ) {
 
                 searchGame();
+
             }
+
         }
     );
 }
@@ -1383,6 +1939,7 @@ function setupGameButtons() {
 
                 }
             );
+
         });
 }
 
@@ -1398,6 +1955,7 @@ function setupGameDetailPage() {
             "[data-rent-game]"
         );
 
+
     rentButtons.forEach(button => {
 
         button.addEventListener(
@@ -1406,18 +1964,34 @@ function setupGameDetailPage() {
 
                 event.preventDefault();
 
+                event.stopPropagation();
+
+
                 const game =
                     button.dataset.rentGame;
 
+
                 const price =
-                    Number(button.dataset.price);
+                    Number(
+                        button.dataset.price
+                    );
 
-                if (game && price) {
 
-                    rentGame(game, price);
+                if (
+                    game &&
+                    price
+                ) {
+
+                    rentGame(
+                        game,
+                        price
+                    );
+
                 }
+
             }
         );
+
     });
 
 
@@ -1425,6 +1999,7 @@ function setupGameDetailPage() {
         document.querySelectorAll(
             "[data-wishlist-game]"
         );
+
 
     wishlistButtons.forEach(button => {
 
@@ -1434,16 +2009,26 @@ function setupGameDetailPage() {
 
                 event.preventDefault();
 
+                event.stopPropagation();
+
+
                 const game =
                     button.dataset.wishlistGame;
 
+
                 if (game) {
 
-                    addWishlist(game);
+                    addWishlist(
+                        game
+                    );
+
                 }
+
             }
         );
+
     });
+
 }
 
 
@@ -1463,14 +2048,24 @@ function updateWishlistButtons() {
                 button.dataset.wishlistGame ||
                 button.dataset.game;
 
+
             if (!game) return;
 
-            if (wishlist.includes(game)) {
 
-                button.classList.add("active");
+            const icon =
+                button.querySelector(
+                    "i"
+                );
 
-                const icon =
-                    button.querySelector("i");
+
+            if (
+                wishlist.includes(game)
+            ) {
+
+                button.classList.add(
+                    "active"
+                );
+
 
                 if (icon) {
 
@@ -1478,15 +2073,35 @@ function updateWishlistButtons() {
                         "fa-regular"
                     );
 
+
                     icon.classList.add(
                         "fa-solid"
                     );
+
                 }
 
             } else {
 
-                button.classList.remove("active");
+                button.classList.remove(
+                    "active"
+                );
+
+
+                if (icon) {
+
+                    icon.classList.remove(
+                        "fa-solid"
+                    );
+
+
+                    icon.classList.add(
+                        "fa-regular"
+                    );
+
+                }
+
             }
+
         });
 }
 
@@ -1497,15 +2112,89 @@ function updateWishlistButtons() {
 
 function refreshAllData() {
 
-    rentals =
-        JSON.parse(
-            localStorage.getItem("rentals")
-        ) || [];
+    /* Rentals */
 
-    wishlist =
-        JSON.parse(
-            localStorage.getItem("wishlist")
-        ) || [];
+    try {
+
+        const savedRentals =
+            localStorage.getItem(
+                "rentals"
+            );
+
+
+        rentals =
+            savedRentals
+                ? JSON.parse(savedRentals)
+                : [];
+
+
+        if (
+            !Array.isArray(rentals)
+        ) {
+
+            rentals = [];
+
+        }
+
+    } catch (error) {
+
+        console.warn(
+            "Invalid rentals data. Resetting."
+        );
+
+
+        localStorage.removeItem(
+            "rentals"
+        );
+
+
+        rentals = [];
+
+    }
+
+
+    /* Wishlist */
+
+    try {
+
+        const savedWishlist =
+            localStorage.getItem(
+                "wishlist"
+            );
+
+
+        wishlist =
+            savedWishlist
+                ? JSON.parse(savedWishlist)
+                : [];
+
+
+        if (
+            !Array.isArray(wishlist)
+        ) {
+
+            wishlist = [];
+
+        }
+
+    } catch (error) {
+
+        console.warn(
+            "Invalid wishlist data. Resetting."
+        );
+
+
+        localStorage.removeItem(
+            "wishlist"
+        );
+
+
+        wishlist = [];
+
+    }
+
+
+    /* Avatar */
 
     selectedAvatar =
         localStorage.getItem(
@@ -1513,11 +2202,19 @@ function refreshAllData() {
         ) ||
         "https://i.pravatar.cc/150?img=12";
 
+
+    /* Update everything */
+
     updateCartCount();
+
     renderRentals();
+
     renderWishlist();
+
     updateProfileStats();
+
     updateWishlistButtons();
+
 }
 
 
@@ -1547,21 +2244,27 @@ document.addEventListener(
         /* Cards */
 
         setupCardAnimations();
+
         setupCardTilt();
+
         setupGameButtons();
 
 
         /* Pages */
 
         setupRentalPage();
+
         setupWishlistPage();
+
         setupProfilePage();
+
         setupGameDetailPage();
 
 
         /* Other UI */
 
         setupSmoothScroll();
+
         createParticles();
 
 
@@ -1570,7 +2273,7 @@ document.addEventListener(
         hideLoader();
 
 
-        /* Update wishlist */
+        /* Wishlist */
 
         updateWishlistButtons();
 
@@ -1578,6 +2281,7 @@ document.addEventListener(
         console.log(
             "GameRent JavaScript loaded successfully."
         );
+
     }
 );
 
@@ -1591,7 +2295,10 @@ window.addEventListener(
     () => {
 
         updateCartCount();
+
         updateProfileStats();
+
+        updateWishlistButtons();
 
     }
 );
@@ -1605,14 +2312,19 @@ function clearRentals() {
 
     rentals = [];
 
+
     localStorage.setItem(
         "rentals",
         JSON.stringify(rentals)
     );
 
+
     refreshAllData();
 
-    console.log("Rentals cleared.");
+
+    console.log(
+        "Rentals cleared."
+    );
 }
 
 
@@ -1620,14 +2332,19 @@ function clearWishlist() {
 
     wishlist = [];
 
+
     localStorage.setItem(
         "wishlist",
         JSON.stringify(wishlist)
     );
 
+
     refreshAllData();
 
-    console.log("Wishlist cleared.");
+
+    console.log(
+        "Wishlist cleared."
+    );
 }
 
 
