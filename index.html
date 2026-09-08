@@ -9,7 +9,6 @@
 
     <link rel="stylesheet" href="style.css">
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -17,60 +16,37 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <!-- Font Awesome -->
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 
-
 <body>
 
-    <!-- =========================
-         PARTICLES
-    ========================== -->
-
+    <!-- PARTICLES -->
     <canvas id="particles"></canvas>
 
-
-    <!-- =========================
-         LOADING SCREEN
-    ========================== -->
-
+    <!-- LOADING SCREEN -->
     <div id="loader">
-
-        <div class="loader-logo">
-            🎮 GameRent
-        </div>
+        <div class="loader-logo">🎮 GameRent</div>
 
         <div class="loader-bar">
             <span></span>
         </div>
-
     </div>
 
 
-
-    <!-- =========================
-         NAVIGATION
-    ========================== -->
-
+    <!-- NAVIGATION -->
     <nav class="navbar">
 
         <div class="logo">
             🎮 GameRent
         </div>
 
-
-        <!-- Hamburger -->
         <div class="menu-toggle" id="menuToggle">
-
             <i class="fa-solid fa-bars"></i>
-
         </div>
 
-
-        <!-- Navigation Links -->
         <ul class="nav-links" id="navLinks">
 
             <li>
@@ -97,22 +73,19 @@
                 <a href="#wishlist">Wishlist</a>
             </li>
 
-            <!-- ONLY ONE PROFILE LINK -->
             <li>
                 <a href="#profile">Profile</a>
             </li>
 
             <li>
-                <a href="#">Contact</a>
+                <a href="#contact">Contact</a>
             </li>
 
         </ul>
 
-
-        <!-- Right Side -->
         <div class="nav-right">
 
-            <!-- Search -->
+            <!-- SEARCH -->
             <div class="search">
 
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -120,13 +93,13 @@
                 <input
                     type="text"
                     id="searchBox"
+                    name="search"
                     placeholder="Search games..."
                     oninput="searchGame()">
 
             </div>
 
-
-            <!-- Cart -->
+            <!-- CART -->
             <button
                 class="cart-btn"
                 onclick="document.querySelector('#myrentals').scrollIntoView({behavior:'smooth'})"
@@ -142,10 +115,13 @@
 
             </button>
 
+            <!-- LOGIN -->
+            <button
+                class="login-btn"
+                onclick="loginUser()">
 
-            <!-- Login -->
-            <button class="login-btn">
                 Login
+
             </button>
 
         </div>
@@ -153,11 +129,7 @@
     </nav>
 
 
-
-    <!-- =========================
-         HERO
-    ========================== -->
-
+    <!-- HERO -->
     <section class="hero">
 
         <div class="overlay">
@@ -184,25 +156,16 @@
     </section>
 
 
-
-    <!-- =========================
-         FEATURED GAMES
-    ========================== -->
-
-    <section
-        id="featured"
-        class="section">
+    <!-- FEATURED GAMES -->
+    <section id="featured" class="section">
 
         <h2>
             🔥 Featured Games
         </h2>
 
-
         <div class="games">
 
-
-            <!-- Resident Evil 4 -->
-
+            <!-- RESIDENT EVIL 4 -->
             <div
                 class="card"
                 data-genre="horror"
@@ -242,9 +205,7 @@
             </div>
 
 
-
             <!-- GTA V -->
-
             <div
                 class="card"
                 data-genre="openworld"
@@ -284,9 +245,7 @@
             </div>
 
 
-
-            <!-- Elden Ring -->
-
+            <!-- ELDEN RING -->
             <div
                 class="card"
                 data-genre="rpg"
@@ -330,27 +289,16 @@
     </section>
 
 
-
-    <!-- =========================
-         TRENDING GAMES
-    ========================== -->
-
-    <section
-        id="games"
-        class="section">
+    <!-- TRENDING GAMES -->
+    <section id="games" class="section">
 
         <h2>
             Trending Games
         </h2>
 
+        <div class="games" id="gameList">
 
-        <div
-            class="games"
-            id="gameList">
-
-
-            <!-- Resident Evil 4 -->
-
+            <!-- RESIDENT EVIL 4 -->
             <div
                 class="card"
                 data-genre="horror">
@@ -383,13 +331,17 @@
                         <div class="button-group">
 
                             <button
-                                onclick="addWishlist('Resident Evil 4')">
+                                onclick="event.stopPropagation(); addWishlist('Resident Evil 4')">
+
                                 ❤️
+
                             </button>
 
                             <button
-                                onclick="rentGame('Resident Evil 4',199)">
+                                onclick="event.stopPropagation(); rentGame('Resident Evil 4',199)">
+
                                 Rent
+
                             </button>
 
                         </div>
@@ -401,9 +353,7 @@
             </div>
 
 
-
-            <!-- Elden Ring -->
-
+            <!-- ELDEN RING -->
             <div
                 class="card"
                 data-genre="rpg">
@@ -436,13 +386,17 @@
                         <div class="button-group">
 
                             <button
-                                onclick="addWishlist('Elden Ring')">
+                                onclick="event.stopPropagation(); addWishlist('Elden Ring')">
+
                                 ❤️
+
                             </button>
 
                             <button
-                                onclick="rentGame('Elden Ring',249)">
+                                onclick="event.stopPropagation(); rentGame('Elden Ring',249)">
+
                                 Rent
+
                             </button>
 
                         </div>
@@ -454,9 +408,7 @@
             </div>
 
 
-
-            <!-- Cyberpunk 2077 -->
-
+            <!-- CYBERPUNK 2077 -->
             <div
                 class="card"
                 data-genre="scifi rpg">
@@ -489,13 +441,17 @@
                         <div class="button-group">
 
                             <button
-                                onclick="addWishlist('Cyberpunk 2077')">
+                                onclick="event.stopPropagation(); addWishlist('Cyberpunk 2077')">
+
                                 ❤️
+
                             </button>
 
                             <button
-                                onclick="rentGame('Cyberpunk 2077',299)">
+                                onclick="event.stopPropagation(); rentGame('Cyberpunk 2077',299)">
+
                                 Rent
+
                             </button>
 
                         </div>
@@ -507,9 +463,7 @@
             </div>
 
 
-
             <!-- FIFA 25 -->
-
             <div
                 class="card"
                 data-genre="sports">
@@ -542,13 +496,17 @@
                         <div class="button-group">
 
                             <button
-                                onclick="addWishlist('FIFA 25')">
+                                onclick="event.stopPropagation(); addWishlist('FIFA 25')">
+
                                 ❤️
+
                             </button>
 
                             <button
-                                onclick="rentGame('FIFA 25',179)">
+                                onclick="event.stopPropagation(); rentGame('FIFA 25',179)">
+
                                 Rent
+
                             </button>
 
                         </div>
@@ -560,9 +518,7 @@
             </div>
 
 
-
             <!-- GTA V -->
-
             <div
                 class="card"
                 data-genre="openworld">
@@ -595,13 +551,17 @@
                         <div class="button-group">
 
                             <button
-                                onclick="addWishlist('GTA V')">
+                                onclick="event.stopPropagation(); addWishlist('GTA V')">
+
                                 ❤️
+
                             </button>
 
                             <button
-                                onclick="rentGame('GTA V',149)">
+                                onclick="event.stopPropagation(); rentGame('GTA V',149)">
+
                                 Rent
+
                             </button>
 
                         </div>
@@ -613,9 +573,7 @@
             </div>
 
 
-
-            <!-- Red Dead Redemption -->
-
+            <!-- RED DEAD REDEMPTION -->
             <div
                 class="card"
                 data-genre="adventure openworld">
@@ -648,13 +606,17 @@
                         <div class="button-group">
 
                             <button
-                                onclick="addWishlist('Red Dead Redemption')">
+                                onclick="event.stopPropagation(); addWishlist('Red Dead Redemption')">
+
                                 ❤️
+
                             </button>
 
                             <button
-                                onclick="rentGame('Red Dead Redemption',219)">
+                                onclick="event.stopPropagation(); rentGame('Red Dead Redemption',219)">
+
                                 Rent
+
                             </button>
 
                         </div>
@@ -670,22 +632,14 @@
     </section>
 
 
-
-    <!-- =========================
-         CATEGORIES
-    ========================== -->
-
-    <section
-        id="categories"
-        class="section">
+    <!-- CATEGORIES -->
+    <section id="categories" class="section">
 
         <h2>
             Browse by Category
         </h2>
 
-
         <div class="categories">
-
 
             <div
                 class="cat-card active"
@@ -782,19 +736,12 @@
     </section>
 
 
-
-    <!-- =========================
-         MY RENTALS
-    ========================== -->
-
-    <section
-        id="myrentals"
-        class="section">
+    <!-- MY RENTALS -->
+    <section id="myrentals" class="section">
 
         <h2>
             🛒 My Rentals
         </h2>
-
 
         <div
             class="games"
@@ -811,12 +758,10 @@
 
         </div>
 
-
         <h3
             class="cart-total"
             id="cartTotal">
         </h3>
-
 
         <button
             class="pay-btn"
@@ -829,19 +774,12 @@
     </section>
 
 
-
-    <!-- =========================
-         WISHLIST
-    ========================== -->
-
-    <section
-        id="wishlist"
-        class="section">
+    <!-- WISHLIST -->
+    <section id="wishlist" class="section">
 
         <h2>
             ❤️ My Wishlist
         </h2>
-
 
         <div
             class="games"
@@ -856,23 +794,15 @@
     </section>
 
 
-
-    <!-- =========================
-         ONE PROFILE SYSTEM
-    ========================== -->
-
-    <section
-        id="profile"
-        class="section">
+    <!-- PROFILE -->
+    <section id="profile" class="section">
 
         <h2>
             👤 My Profile
         </h2>
 
-
         <div class="profile-card">
 
-            <!-- Profile button -->
             <button
                 class="profile-btn"
                 onclick="openProfile()">
@@ -885,20 +815,11 @@
 
         </div>
 
-
-        <!-- Username -->
-
         <h3 id="profileName">
             Guest User
         </h3>
 
-
-        <!-- Profile Statistics -->
-
         <div class="profile-stats">
-
-
-            <!-- Rentals -->
 
             <div>
 
@@ -914,9 +835,6 @@
 
             </div>
 
-
-            <!-- Wishlist -->
-
             <div>
 
                 <i class="fa-solid fa-heart"></i>
@@ -930,9 +848,6 @@
                 </p>
 
             </div>
-
-
-            <!-- Money -->
 
             <div>
 
@@ -948,11 +863,7 @@
 
             </div>
 
-
         </div>
-
-
-        <!-- Logout -->
 
         <button
             class="logout-btn"
@@ -965,26 +876,18 @@
     </section>
 
 
-
-    <!-- =========================
-         CHECKOUT
-    ========================== -->
-
-    <section
-        id="checkout"
-        class="section">
+    <!-- CHECKOUT -->
+    <section id="checkout" class="section">
 
         <h2>
             💳 Checkout
         </h2>
-
 
         <div class="checkout-box">
 
             <h3>
                 Your Order
             </h3>
-
 
             <div id="checkoutItems">
 
@@ -994,13 +897,9 @@
 
             </div>
 
-
             <h3 id="checkoutTotal">
-
                 Total: ₹0
-
             </h3>
-
 
             <button
                 onclick="payNow()"
@@ -1015,15 +914,8 @@
     </section>
 
 
-
-    <!-- =========================
-         FEATURES
-    ========================== -->
-
+    <!-- FEATURES -->
     <section class="features">
-
-
-        <!-- Feature 1 -->
 
         <div class="feature">
 
@@ -1040,8 +932,6 @@
         </div>
 
 
-        <!-- Feature 2 -->
-
         <div class="feature">
 
             <i class="fa-solid fa-wallet"></i>
@@ -1057,8 +947,6 @@
         </div>
 
 
-        <!-- Feature 3 -->
-
         <div class="feature">
 
             <i class="fa-solid fa-shield-halved"></i>
@@ -1073,15 +961,24 @@
 
         </div>
 
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+
+        <h2>
+            📩 Contact GameRent
+        </h2>
+
+        <p>
+            Have a question? Get in touch with GameRent.
+        </p>
 
     </section>
 
 
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
+    <!-- FOOTER -->
     <footer>
 
         <h2>
@@ -1095,11 +992,7 @@
     </footer>
 
 
-
-    <!-- =========================
-         GAME POPUP
-    ========================== -->
-
+    <!-- GAME POPUP -->
     <div id="gamePopup">
 
         <div class="popup-box">
@@ -1111,16 +1004,13 @@
 
             </span>
 
-
             <h2 id="popupTitle">
                 Game Name
             </h2>
 
-
             <p id="popupDesc">
                 Game Description
             </p>
-
 
             <button
                 onclick="rentPopupGame()">
@@ -1134,20 +1024,12 @@
     </div>
 
 
-
-    <!-- =========================
-         PROFILE POPUP
-    ========================== -->
-
+    <!-- PROFILE POPUP -->
     <div
         class="profile-overlay"
         id="profileOverlay">
 
-
         <div class="profile-box">
-
-
-            <!-- Close -->
 
             <span
                 class="close-profile"
@@ -1157,13 +1039,9 @@
 
             </span>
 
-
             <h2>
                 Create Your Profile
             </h2>
-
-
-            <!-- Avatar Preview -->
 
             <div class="avatar-preview">
 
@@ -1174,65 +1052,49 @@
 
             </div>
 
-
-            <!-- IMPORTANT:
-                 This is NOT profileName anymore.
-                 It prevents duplicate IDs.
-            -->
-
             <input
                 type="text"
                 id="profileInputName"
+                name="profileName"
                 placeholder="Enter username">
-
 
             <h3>
                 Select Avatar
             </h3>
 
-
             <div class="avatar-list">
 
-
                 <img
-                    onclick="selectAvatar(this.src)"
+                    onclick="selectAvatar(this.src, this)"
                     src="https://i.pravatar.cc/150?img=1"
                     alt="Avatar 1">
 
-
                 <img
-                    onclick="selectAvatar(this.src)"
+                    onclick="selectAvatar(this.src, this)"
                     src="https://i.pravatar.cc/150?img=5"
                     alt="Avatar 2">
 
-
                 <img
-                    onclick="selectAvatar(this.src)"
+                    onclick="selectAvatar(this.src, this)"
                     src="https://i.pravatar.cc/150?img=12"
                     alt="Avatar 3">
 
-
                 <img
-                    onclick="selectAvatar(this.src)"
+                    onclick="selectAvatar(this.src, this)"
                     src="https://i.pravatar.cc/150?img=15"
                     alt="Avatar 4">
 
-
                 <img
-                    onclick="selectAvatar(this.src)"
+                    onclick="selectAvatar(this.src, this)"
                     src="https://i.pravatar.cc/150?img=20"
                     alt="Avatar 5">
 
-
                 <img
-                    onclick="selectAvatar(this.src)"
+                    onclick="selectAvatar(this.src, this)"
                     src="https://i.pravatar.cc/150?img=25"
                     alt="Avatar 6">
 
             </div>
-
-
-            <!-- Save -->
 
             <button
                 class="save-profile"
@@ -1242,24 +1104,17 @@
 
             </button>
 
-
         </div>
 
     </div>
 
 
-
-    <!-- =========================
-         GAME DETAILS MODAL
-    ========================== -->
-
+    <!-- GAME DETAILS MODAL -->
     <div
         class="game-modal"
         id="gameModal">
 
-
         <div class="modal-content">
-
 
             <span
                 class="close-modal"
@@ -1269,33 +1124,22 @@
 
             </span>
 
-
             <img
                 id="modalImage"
                 alt="Game">
 
-
             <h2 id="modalTitle"></h2>
 
-
             <p id="modalGenre"></p>
-
 
             <div
                 class="rating"
                 id="modalRating">
             </div>
 
+            <p id="modalDescription"></p>
 
-            <p
-                id="modalDescription">
-            </p>
-
-
-            <h3
-                id="modalPrice">
-            </h3>
-
+            <h3 id="modalPrice"></h3>
 
             <button
                 id="modalRentBtn">
@@ -1304,17 +1148,12 @@
 
             </button>
 
-
         </div>
 
     </div>
 
 
-
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
-
+    <!-- JAVASCRIPT -->
     <script src="script.js"></script>
 
 </body>
