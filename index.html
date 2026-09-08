@@ -48,11 +48,28 @@
         <li><a href="games.html">Games</a></li>
         <li><a href="#categories">Categories</a></li>
         <li><a href="#myrentals">My Rentals</a></li>
-        <li><a href="#">Contact</a></li>
-        <button class="nav-profile-btn" onclick="openProfile()">
-    <i class="fa-solid fa-user"></i>
-    Profile
-</button>
+        </div>
+        <!-- KEEP THIS PROFILE BUTTON -->
+    <button class="profile-btn" onclick="openProfile()">
+        <i class="fas fa-user"></i>
+        <span>Profile</span>
+    </button>
+
+    <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search games...">
+    </div>
+
+    <button class="cart-btn">
+        🛒
+        <span id="cartCount">0</span>
+    </button>
+
+    <button class="login-btn">
+        <i class="fas fa-user"></i>
+        Login
+    </button>
+</nav>
     </ul>
 
     <div class="nav-right">
