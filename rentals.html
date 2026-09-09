@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Rentals | GameRent</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body>
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<nav>
+
+    <div class="logo">
+        🎮 GameRent
+    </div>
+
+    <div class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="index.html#featured">
+            Featured
+        </a>
+
+        <a href="games.html">
+            Games
+        </a>
+
+        <a href="index.html#profile">
+            Profile
+        </a>
+
+    </div>
+
+    <div class="nav-actions">
+
+        <button class="login-btn" onclick="loginUser()">
+            👤 Login
+        </button>
+
+        <button class="cart-btn" onclick="window.location.href='rentals.html'">
+            🛒 Rentals
+            <span class="cart-count" id="cartCount">0</span>
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================================================
+     RENTALS PAGE
+========================================================= -->
+
+<section class="rentals-page">
+
+    <div class="rentals-container">
+
+        <div class="rentals-header">
+
+            <span class="game-badge">
+                YOUR LIBRARY
+            </span>
+
+            <h1>
+                My Rentals
+            </h1>
+
+            <p>
+                Manage the games you've rented from GameRent.
+            </p>
+
+        </div>
+
+
+        <!-- RENTAL CONTENT -->
+
+        <div id="rentalsContent">
+
+            <div id="rentalsList">
+                <!-- Games will appear here -->
+            </div>
+
+
+            <!-- TOTAL -->
+
+            <div class="rentals-summary">
+
+                <div>
+                    <span>
+                        Total
+                    </span>
+
+                    <strong id="cartTotal">
+                        ₹0
+                    </strong>
+                </div>
+
+                <button
+                    class="checkout-btn"
+                    onclick="goToCheckout()"
+                >
+                    Proceed to Checkout →
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- EMPTY CART -->
+
+        <div
+            id="emptyRentals"
+            class="empty-rentals"
+        >
+
+            <div class="empty-icon">
+                🛒
+            </div>
+
+            <h2>
+                Your rental cart is empty
+            </h2>
+
+            <p>
+                You haven't rented any games yet.
+            </p>
+
+            <a href="games.html">
+                Browse Games
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+
+            <h3>
+                🎮 GameRent
+            </h3>
+
+            <p>
+                Premium games. Flexible rentals.
+                Your next adventure starts here.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h4>
+                Quick Links
+            </h4>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="games.html">
+                Games
+            </a>
+
+            <a href="index.html#featured">
+                Featured
+            </a>
+
+            <a href="index.html#profile">
+                Profile
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h4>
+                GameRent
+            </h4>
+
+            <a href="games.html">
+                Game Library
+            </a>
+
+            <a href="index.html#contact">
+                Contact
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 GameRent. All rights reserved.
+        </p>
+    </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderRentalsPage();
+    });
+</script>
+
+</body>
+</html>
