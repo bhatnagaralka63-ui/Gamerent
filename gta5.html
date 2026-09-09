@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GameRent | GTA V</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav id="navbar">
+
+    <div class="logo">
+        🎮 GameRent
+    </div>
+
+    <div class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="games.html">
+            Games
+        </a>
+
+        <a href="games.html#categories">
+            Categories
+        </a>
+
+        <a href="index.html#rentals">
+            My Rentals
+        </a>
+
+        <a href="index.html#contact">
+            Contact
+        </a>
+
+    </div>
+
+    <div class="nav-actions">
+
+        <div class="search-container">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="searchBox"
+                placeholder="Search games..."
+                onkeyup="searchGame()">
+
+        </div>
+
+        <button
+            class="login-btn"
+            onclick="location.href='index.html#profile'">
+
+            <i class="fa-solid fa-user"></i>
+
+            Profile
+
+        </button>
+
+        <button
+            class="cart-btn"
+            onclick="location.href='index.html#rentals'">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            <span id="cartCount">
+                0
+            </span>
+
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+     GTA V HERO
+===================================================== -->
+
+<section
+    class="game-detail-hero"
+    style="
+        background-image:
+        linear-gradient(
+            90deg,
+            rgba(5,8,15,0.96),
+            rgba(5,8,15,0.72),
+            rgba(5,8,15,0.25)
+        ),
+        url('https://cdn.cloudflare.steamstatic.com/steam/apps/271590/library_hero.jpg');
+    ">
+
+    <div class="game-detail-content">
+
+        <span class="game-badge">
+            OPEN WORLD / ACTION
+        </span>
+
+        <h1>
+            Grand Theft Auto V
+        </h1>
+
+        <div class="game-rating">
+
+            <span>
+                ⭐ 9.5/10
+            </span>
+
+            <span>•</span>
+
+            <span>
+                2013
+            </span>
+
+            <span>•</span>
+
+            <span>
+                Open World
+            </span>
+
+        </div>
+
+        <p class="game-description">
+
+            Experience the lives of three very different criminals,
+            Michael, Franklin and Trevor, as they become involved
+            in a series of dangerous heists across Los Santos.
+
+            Explore a massive open world, drive hundreds of vehicles,
+            take on missions and build your criminal empire.
+
+        </p>
+
+
+        <!-- ACTION BUTTONS -->
+
+        <div class="game-actions">
+
+            <button
+                class="rent-btn"
+                onclick="rentGame('GTA V', 149)">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                Rent Now — ₹149
+
+            </button>
+
+
+            <button
+                class="wishlist-btn"
+                onclick="addWishlist('GTA V')">
+
+                <i class="fa-regular fa-heart"></i>
+
+                Add to Wishlist
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     GAME INFORMATION
+===================================================== -->
+
+<section class="game-info-section">
+
+    <div class="game-info-container">
+
+
+        <!-- MAIN INFORMATION -->
+
+        <div class="game-main-info">
+
+            <span class="section-label">
+                ABOUT THE GAME
+            </span>
+
+            <h2>
+                Grand Theft Auto V
+            </h2>
+
+            <p>
+
+                Grand Theft Auto V takes place in the sprawling
+                city of Los Santos and the surrounding countryside.
+                The game follows three criminals whose lives become
+                increasingly connected through a series of ambitious
+                heists.
+
+            </p>
+
+            <p>
+
+                Switch between Michael, Franklin and Trevor while
+                exploring the city, completing missions, purchasing
+                properties and creating chaos throughout Los Santos.
+
+            </p>
+
+        </div>
+
+
+        <!-- GAME SPECS -->
+
+        <div class="game-specs">
+
+            <div class="spec-item">
+
+                <i class="fa-solid fa-calendar"></i>
+
+                <div>
+
+                    <span>
+                        Release
+                    </span>
+
+                    <strong>
+                        September 17, 2013
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="spec-item">
+
+                <i class="fa-solid fa-building"></i>
+
+                <div>
+
+                    <span>
+                        Developer
+                    </span>
+
+                    <strong>
+                        Rockstar North
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="spec-item">
+
+                <i class="fa-solid fa-gamepad"></i>
+
+                <div>
+
+                    <span>
+                        Genre
+                    </span>
+
+                    <strong>
+                        Action / Open World
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="spec-item">
+
+                <i class="fa-solid fa-users"></i>
+
+                <div>
+
+                    <span>
+                        Mode
+                    </span>
+
+                    <strong>
+                        Single Player
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FEATURES
+===================================================== -->
+
+<section class="game-features">
+
+    <div class="section-title">
+
+        <span>
+            EXPERIENCE
+        </span>
+
+        <h2>
+            Why Play GTA V?
+        </h2>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-city"></i>
+
+            <h3>
+                Massive Open World
+            </h3>
+
+            <p>
+                Explore Los Santos, the countryside and
+                surrounding areas with almost complete freedom.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-car"></i>
+
+            <h3>
+                Huge Vehicle Collection
+            </h3>
+
+            <p>
+                Drive cars, motorcycles, aircraft, boats and
+                many other vehicles.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-gun"></i>
+
+            <h3>
+                Action & Heists
+            </h3>
+
+            <p>
+                Plan and execute spectacular heists while
+                fighting rival gangs and law enforcement.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-user-group"></i>
+
+            <h3>
+                Three Characters
+            </h3>
+
+            <p>
+                Switch between Michael, Franklin and Trevor
+                throughout the story.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SCREENSHOTS
+===================================================== -->
+
+<section class="game-screenshots">
+
+    <div class="section-title">
+
+        <span>
+            GAMEPLAY
+        </span>
+
+        <h2>
+            Screenshots
+        </h2>
+
+    </div>
+
+
+    <div class="screenshot-grid">
+
+        <img
+            src="https://cdn.cloudflare.steamstatic.com/steam/apps/271590/ss_1.jpg"
+            alt="GTA V gameplay">
+
+        <img
+            src="https://cdn.cloudflare.steamstatic.com/steam/apps/271590/ss_2.jpg"
+            alt="GTA V gameplay">
+
+        <img
+            src="https://cdn.cloudflare.steamstatic.com/steam/apps/271590/ss_3.jpg"
+            alt="GTA V gameplay">
+
+        <img
+            src="https://cdn.cloudflare.steamstatic.com/steam/apps/271590/ss_4.jpg"
+            alt="GTA V gameplay">
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     RENT CTA
+===================================================== -->
+
+<section class="game-rent-cta">
+
+    <div>
+
+        <span>
+            READY TO PLAY?
+        </span>
+
+        <h2>
+            Rent GTA V
+        </h2>
+
+        <p>
+            Experience Los Santos without buying the game.
+        </p>
+
+    </div>
+
+
+    <button
+        class="rent-btn"
+        onclick="rentGame('GTA V', 149)">
+
+        <i class="fa-solid fa-cart-shopping"></i>
+
+        Rent for ₹149
+
+    </button>
+
+</section>
+
+
+
+<!-- =====================================================
+     RELATED GAMES
+===================================================== -->
+
+<section class="related-games">
+
+    <div class="section-title">
+
+        <span>
+            YOU MAY ALSO LIKE
+        </span>
+
+        <h2>
+            Related Games
+        </h2>
+
+    </div>
+
+
+    <div class="games">
+
+
+        <!-- RED DEAD REDEMPTION 2 -->
+
+        <div
+            class="card"
+            onclick="location.href='rdr2.html'">
+
+            <img
+                src="https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg"
+                alt="Red Dead Redemption 2">
+
+            <div class="card-content">
+
+                <h3>
+                    Red Dead Redemption 2
+                </h3>
+
+                <p>
+                    Open-world western adventure.
+                </p>
+
+                <strong>
+                    ₹219
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- CYBERPUNK -->
+
+        <div
+            class="card"
+            onclick="location.href='cyberpunk.html'">
+
+            <img
+                src="https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg"
+                alt="Cyberpunk 2077">
+
+            <div class="card-content">
+
+                <h3>
+                    Cyberpunk 2077
+                </h3>
+
+                <p>
+                    Futuristic open-world RPG.
+                </p>
+
+                <strong>
+                    ₹299
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- SPIDER-MAN -->
+
+        <div
+            class="card"
+            onclick="location.href='spiderman2.html'">
+
+            <img
+                src="https://cdn.cloudflare.steamstatic.com/steam/apps/2651280/header.jpg"
+                alt="Marvel's Spider-Man 2">
+
+            <div class="card-content">
+
+                <h3>
+                    Spider-Man 2
+                </h3>
+
+                <p>
+                    Open-world superhero action.
+                </p>
+
+                <strong>
+                    ₹279
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-logo">
+        🎮 GameRent
+    </div>
+
+    <p>
+        Premium games. Affordable rentals.
+    </p>
+
+    <div class="footer-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="games.html">
+            Games
+        </a>
+
+        <a href="index.html#contact">
+            Contact
+        </a>
+
+    </div>
+
+    <p class="copyright">
+        © 2026 GameRent. All rights reserved.
+    </p>
+
+</footer>
+
+
+
+<!-- =====================================================
+     SCRIPT
+===================================================== -->
+
+<script src="script.js"></script>
+
+</body>
+</html>
