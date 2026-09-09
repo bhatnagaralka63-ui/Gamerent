@@ -3008,3 +3008,152 @@ section {
     }
 
 }
+
+/* =========================================================
+   FIX - YOU MAY ALSO LIKE
+========================================================= */
+
+.related-games {
+    padding: 90px 0;
+}
+
+.related-games .game-info-container {
+    display: block !important;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.related-games h2 {
+    margin-bottom: 30px;
+}
+
+
+/* GRID */
+
+.related-games-grid {
+    display: grid !important;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+
+    gap: 24px;
+
+    width: 100%;
+}
+
+
+/* CARD */
+
+.related-game-card {
+    display: block !important;
+
+    width: 100%;
+
+    background: #101620;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    text-decoration: none !important;
+
+    color: #ffffff !important;
+
+    transition: 0.3s ease;
+}
+
+
+/* CARD HOVER */
+
+.related-game-card:hover {
+    transform: translateY(-8px);
+
+    border-color: #00d4ff;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+
+/* IMAGE */
+
+.related-game-card img {
+    display: block !important;
+
+    width: 100% !important;
+
+    height: 170px !important;
+
+    object-fit: cover !important;
+
+    margin: 0;
+
+    transition: 0.3s ease;
+}
+
+.related-game-card:hover img {
+    transform: scale(1.05);
+}
+
+
+/* CONTENT */
+
+.related-game-content {
+    display: block;
+
+    padding: 20px;
+}
+
+.related-game-content h3 {
+    margin: 0 0 10px;
+
+    color: #ffffff;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.related-game-content p {
+    margin: 0 0 15px;
+
+    color: #9da7b6;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+.related-game-content span {
+    color: #00d4ff;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .related-games-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .related-games .game-info-container {
+        padding: 0 20px;
+    }
+
+    .related-games-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+}
