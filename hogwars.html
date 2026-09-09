@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hogwarts Legacy | GameRent</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body>
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<nav>
+
+    <div class="logo">
+        🎮 GameRent
+    </div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#featured">Featured</a>
+        <a href="games.html">Games</a>
+        <a href="index.html#profile">Profile</a>
+    </div>
+
+    <div class="nav-actions">
+
+        <button class="login-btn" onclick="loginUser()">
+            👤 Login
+        </button>
+
+        <button class="cart-btn" onclick="renderRentals()">
+            🛒 Rentals
+            <span class="cart-count" id="cartCount">0</span>
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================================================
+     GAME HERO
+========================================================= -->
+
+<section
+    class="game-detail-hero"
+    style="
+        background-image:
+        linear-gradient(
+            90deg,
+            rgba(5, 7, 12, 0.98) 0%,
+            rgba(5, 7, 12, 0.90) 35%,
+            rgba(5, 7, 12, 0.35) 75%,
+            rgba(5, 7, 12, 0.15) 100%
+        ),
+        url('https://cdn.cloudflare.steamstatic.com/steam/apps/990080/library_hero.jpg');
+    "
+>
+
+    <div class="game-detail-content">
+
+        <span class="game-badge">
+            RPG / OPEN WORLD
+        </span>
+
+        <h1>
+            Hogwarts Legacy
+        </h1>
+
+        <div class="game-rating">
+            ⭐ 4.6/5 &nbsp;&nbsp; 2023 &nbsp;&nbsp; RPG
+        </div>
+
+        <p class="game-description">
+            Experience the magic of Hogwarts in an immersive open-world
+            adventure. Explore the wizarding world, learn powerful spells,
+            uncover ancient secrets and create your own magical legacy.
+        </p>
+
+        <div class="game-actions">
+
+            <button
+                onclick="rentGame('Hogwarts Legacy', 259)"
+            >
+                🛒 Rent Now — ₹259
+            </button>
+
+            <button
+                onclick="addWishlist('Hogwarts Legacy')"
+            >
+                ♡ Add to Wishlist
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     GAME OVERVIEW
+========================================================= -->
+
+<section class="game-info-section">
+
+    <div class="game-info-container">
+
+        <div class="game-main-info">
+
+            <h2>
+                Game Overview
+            </h2>
+
+            <p>
+                Hogwarts Legacy is an open-world action RPG set in the
+                wizarding world. Step into the shoes of a student attending
+                Hogwarts School of Witchcraft and Wizardry during the 1800s.
+            </p>
+
+            <p>
+                Explore Hogwarts, Hogsmeade and the surrounding wilderness
+                while learning spells, brewing potions, taming magical
+                creatures and battling dangerous enemies.
+            </p>
+
+            <p>
+                Your choices and abilities help shape your own journey as
+                you uncover a mysterious story hidden within the wizarding
+                world.
+            </p>
+
+        </div>
+
+
+        <!-- GAME SPECS -->
+
+        <div class="game-specs">
+
+            <div class="spec-item">
+                <span>Developer</span>
+                <strong>Avalanche Software</strong>
+            </div>
+
+            <div class="spec-item">
+                <span>Publisher</span>
+                <strong>Warner Bros. Games</strong>
+            </div>
+
+            <div class="spec-item">
+                <span>Release</span>
+                <strong>2023</strong>
+            </div>
+
+            <div class="spec-item">
+                <span>Genre</span>
+                <strong>Action RPG</strong>
+            </div>
+
+            <div class="spec-item">
+                <span>Mode</span>
+                <strong>Single Player</strong>
+            </div>
+
+            <div class="spec-item">
+                <span>Rental Price</span>
+                <strong>₹259</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FEATURES
+========================================================= -->
+
+<section class="game-features">
+
+    <div class="game-info-container">
+
+        <h2>
+            Key Features
+        </h2>
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+                <div class="feature-icon">🪄</div>
+
+                <h3>Master Magic</h3>
+
+                <p>
+                    Learn spells, cast powerful magic and develop your
+                    character through an extensive progression system.
+                </p>
+            </div>
+
+
+            <div class="feature-card">
+                <div class="feature-icon">🏰</div>
+
+                <h3>Explore Hogwarts</h3>
+
+                <p>
+                    Discover classrooms, secret passages, dungeons and
+                    hidden locations throughout Hogwarts.
+                </p>
+            </div>
+
+
+            <div class="feature-card">
+                <div class="feature-icon">🌲</div>
+
+                <h3>Open World</h3>
+
+                <p>
+                    Explore forests, villages, ruins and magical locations
+                    beyond the castle.
+                </p>
+            </div>
+
+
+            <div class="feature-card">
+                <div class="feature-icon">🐉</div>
+
+                <h3>Magical Creatures</h3>
+
+                <p>
+                    Encounter and interact with a variety of magical
+                    creatures throughout your adventure.
+                </p>
+            </div>
+
+
+            <div class="feature-card">
+                <div class="feature-icon">⚔️</div>
+
+                <h3>Combat</h3>
+
+                <p>
+                    Combine spells, abilities and magical attacks to take
+                    down dangerous enemies.
+                </p>
+            </div>
+
+
+            <div class="feature-card">
+                <div class="feature-icon">🧙</div>
+
+                <h3>Create Your Wizard</h3>
+
+                <p>
+                    Customize your character and develop your own magical
+                    playstyle.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     GAME VISUALS
+========================================================= -->
+
+<section class="game-screenshots">
+
+    <div class="game-info-container">
+
+        <h2>
+            Game Visuals
+        </h2>
+
+        <div class="screenshot-grid">
+
+            <img
+                src="https://cdn.cloudflare.steamstatic.com/steam/apps/990080/header.jpg"
+                alt="Hogwarts Legacy artwork"
+            >
+
+            <img
+                src="https://cdn.cloudflare.steamstatic.com/steam/apps/990080/library_hero.jpg"
+                alt="Hogwarts Legacy hero artwork"
+            >
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     RENT CTA
+========================================================= -->
+
+<section class="game-rent-cta">
+
+    <div>
+
+        <h2>
+            Ready to enter the wizarding world?
+        </h2>
+
+        <p>
+            Rent Hogwarts Legacy and begin your magical adventure today.
+        </p>
+
+        <button
+            onclick="rentGame('Hogwarts Legacy', 259)"
+        >
+            🛒 Rent Hogwarts Legacy — ₹259
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     RELATED GAMES
+========================================================= -->
+
+<section class="related-games">
+
+    <div class="game-info-container">
+
+        <h2>
+            You May Also Like
+        </h2>
+
+        <div class="feature-grid">
+
+            <a
+                href="eldenring.html"
+                class="feature-card"
+                style="text-decoration:none;"
+            >
+                <h3>Elden Ring</h3>
+
+                <p>
+                    Explore a massive fantasy world filled with powerful
+                    enemies, mysterious locations and challenging combat.
+                </p>
+            </a>
+
+
+            <a
+                href="ghost.html"
+                class="feature-card"
+                style="text-decoration:none;"
+            >
+                <h3>Ghost of Tsushima</h3>
+
+                <p>
+                    Fight through a beautiful open world as a samurai
+                    defending your homeland.
+                </p>
+            </a>
+
+
+            <a
+                href="wukong.html"
+                class="feature-card"
+                style="text-decoration:none;"
+            >
+                <h3>Black Myth: Wukong</h3>
+
+                <p>
+                    Embark on an action-packed journey inspired by
+                    Chinese mythology.
+                </p>
+            </a>
+
+
+            <a
+                href="cyberpunk.html"
+                class="feature-card"
+                style="text-decoration:none;"
+            >
+                <h3>Cyberpunk 2077</h3>
+
+                <p>
+                    Explore Night City in a futuristic open-world RPG
+                    packed with action and choices.
+                </p>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+            <h3>🎮 GameRent</h3>
+
+            <p>
+                Premium games. Flexible rentals.
+                Your next adventure starts here.
+            </p>
+        </div>
+
+
+        <div>
+
+            <h4>Quick Links</h4>
+
+            <a href="index.html">Home</a>
+            <a href="games.html">Games</a>
+            <a href="index.html#featured">Featured</a>
+            <a href="index.html#profile">Profile</a>
+
+        </div>
+
+
+        <div>
+
+            <h4>GameRent</h4>
+
+            <a href="games.html">Game Library</a>
+            <a href="index.html#contact">Contact</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 GameRent. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     SCRIPT
+========================================================= -->
+
+<script src="script.js"></script>
+
+</body>
+</html>
