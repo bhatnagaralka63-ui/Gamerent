@@ -1,1 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>God of War Ragnarök | GameRent</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav>
+
+    <div class="logo">
+        🎮 GameRent
+    </div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#featured">Featured</a>
+        <a href="games.html">Games</a>
+        <a href="index.html#profile">Profile</a>
+    </div>
+
+    <div class="nav-actions">
+
+        <a href="index.html#profile" class="login-btn">
+            <i class="fa-solid fa-user"></i>
+            Profile
+        </a>
+
+        <a href="index.html#rentals" class="cart-btn">
+            <i class="fa-solid fa-cart-shopping"></i>
+            Rentals
+            <span id="cartCount" class="cart-count">0</span>
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     GAME HERO
+========================= -->
+
+<section
+    class="game-detail-hero"
+    style="
+        background-image:
+        linear-gradient(
+            90deg,
+            rgba(5,8,15,0.95),
+            rgba(5,8,15,0.65),
+            rgba(5,8,15,0.30)
+        ),
+        url('https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/library_hero.jpg');
+    "
+>
+
+    <div class="game-detail-content">
+
+        <span class="game-badge">
+            ACTION RPG
+        </span>
+
+        <h1>
+            God of War Ragnarök
+        </h1>
+
+        <div class="game-rating">
+
+            <span>⭐ 4.8/5</span>
+
+            <span>2022</span>
+
+            <span>Action RPG</span>
+
+        </div>
+
+        <p class="game-description">
+            Embark on an epic journey through the Nine Realms with
+            Kratos and Atreus. Face terrifying enemies, legendary
+            gods and the coming Ragnarök in one of gaming's most
+            cinematic adventures.
+        </p>
+
+        <div class="game-actions">
+
+            <button
+                class="primary-btn"
+                onclick="rentGame('God of War Ragnarok', 299)"
+            >
+                <i class="fa-solid fa-cart-shopping"></i>
+                Rent Now — ₹299
+            </button>
+
+            <button
+                class="secondary-btn"
+                onclick="addWishlist('God of War Ragnarok')"
+            >
+                <i class="fa-regular fa-heart"></i>
+                Add to Wishlist
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     GAME INFORMATION
+========================= -->
+
+<section class="game-info-section">
+
+    <div class="game-info-container">
+
+        <div class="game-main-info">
+
+            <span class="section-label">
+                GAME OVERVIEW
+            </span>
+
+            <h2>
+                Fate Awaits
+            </h2>
+
+            <p>
+                Fimbulwinter is approaching, and the realms are
+                descending toward an inevitable conflict.
+                Kratos and Atreus must travel across the Nine Realms
+                while confronting gods, monsters and their own destiny.
+            </p>
+
+            <p>
+                Fight using the Leviathan Axe, Blades of Chaos and
+                powerful new abilities while exploring massive
+                environments filled with secrets and challenges.
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             SPECS
+        ========================= -->
+
+        <div class="game-specs">
+
+            <div class="spec-item">
+
+                <i class="fa-solid fa-gamepad"></i>
+
+                <div>
+                    <span>Genre</span>
+                    <strong>Action RPG</strong>
+                </div>
+
+            </div>
+
+
+            <div class="spec-item">
+
+                <i class="fa-solid fa-calendar"></i>
+
+                <div>
+                    <span>Release</span>
+                    <strong>2022</strong>
+                </div>
+
+            </div>
+
+
+            <div class="spec-item">
+
+                <i class="fa-solid fa-user"></i>
+
+                <div>
+                    <span>Players</span>
+                    <strong>Single Player</strong>
+                </div>
+
+            </div>
+
+
+            <div class="spec-item">
+
+                <i class="fa-solid fa-swords"></i>
+
+                <div>
+                    <span>Combat</span>
+                    <strong>Third Person</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FEATURES
+========================= -->
+
+<section class="game-features">
+
+    <div class="section">
+
+        <span class="section-label">
+            FEATURES
+        </span>
+
+        <h2>
+            Become the God of War
+        </h2>
+
+        <div class="feature-grid">
+
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-swords"></i>
+
+                <h3>
+                    Brutal Combat
+                </h3>
+
+                <p>
+                    Master the Leviathan Axe, Blades of Chaos
+                    and powerful combat abilities.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-earth-americas"></i>
+
+                <h3>
+                    Nine Realms
+                </h3>
+
+                <p>
+                    Explore diverse environments across the
+                    Nine Realms of Norse mythology.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                <h3>
+                    Epic Battles
+                </h3>
+
+                <p>
+                    Face gods, monsters and enormous creatures
+                    in spectacular boss encounters.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-book-open"></i>
+
+                <h3>
+                    Deep Story
+                </h3>
+
+                <p>
+                    Experience a powerful story focused on
+                    family, fate and the consequences of choice.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     GAME VISUALS
+========================= -->
+
+<section class="game-screenshots">
+
+    <div class="section">
+
+        <span class="section-label">
+            GAME VISUALS
+        </span>
+
+        <h2>
+            Inside Ragnarök
+        </h2>
+
+        <div class="screenshot-grid">
+
+            <img
+                src="https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/header.jpg"
+                alt="God of War Ragnarök">
+
+            <img
+                src="https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/library_hero.jpg"
+                alt="God of War Ragnarök artwork">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     RENT CTA
+========================= -->
+
+<section class="game-rent-cta">
+
+    <div>
+
+        <span class="section-label">
+            READY FOR RAGNARÖK?
+        </span>
+
+        <h2>
+            Rent God of War Ragnarök
+        </h2>
+
+        <p>
+            Experience Kratos and Atreus's journey for just ₹299.
+        </p>
+
+        <button
+            class="primary-btn"
+            onclick="rentGame('God of War Ragnarok', 299)"
+        >
+            <i class="fa-solid fa-cart-shopping"></i>
+            Rent Now — ₹299
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     RELATED GAMES
+========================= -->
+
+<section class="related-games">
+
+    <div class="section">
+
+        <span class="section-label">
+            MORE GAMES
+        </span>
+
+        <h2>
+            You May Also Like
+        </h2>
+
+
+        <div class="games">
+
+
+            <!-- Elden Ring -->
+
+            <div class="card">
+
+                <img
+                    src="https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg"
+                    alt="Elden Ring">
+
+                <div class="card-content">
+
+                    <h3>
+                        Elden Ring
+                    </h3>
+
+                    <p>
+                        Action RPG
+                    </p>
+
+                    <a
+                        href="eldenring.html"
+                        class="primary-btn"
+                    >
+                        View Game
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Ghost of Tsushima -->
+
+            <div class="card">
+
+                <img
+                    src="https://cdn.cloudflare.steamstatic.com/steam/apps/2215430/header.jpg"
+                    alt="Ghost of Tsushima">
+
+                <div class="card-content">
+
+                    <h3>
+                        Ghost of Tsushima
+                    </h3>
+
+                    <p>
+                        Action Adventure
+                    </p>
+
+                    <a
+                        href="ghost.html"
+                        class="primary-btn"
+                    >
+                        View Game
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Black Myth Wukong -->
+
+            <div class="card">
+
+                <img
+                    src="https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg"
+                    alt="Black Myth Wukong">
+
+                <div class="card-content">
+
+                    <h3>
+                        Black Myth: Wukong
+                    </h3>
+
+                    <p>
+                        Action RPG
+                    </p>
+
+                    <a
+                        href="wukong.html"
+                        class="primary-btn"
+                    >
+                        View Game
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Spider-Man 2 -->
+
+            <div class="card">
+
+                <img
+                    src="https://cdn.cloudflare.steamstatic.com/steam/apps/2651280/header.jpg"
+                    alt="Spider-Man 2">
+
+                <div class="card-content">
+
+                    <h3>
+                        Spider-Man 2
+                    </h3>
+
+                    <p>
+                        Action / Open World
+                    </p>
+
+                    <a
+                        href="spiderman2.html"
+                        class="primary-btn"
+                    >
+                        View Game
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+
+            <h3>
+                🎮 GameRent
+            </h3>
+
+            <p>
+                Premium games. Better prices.
+                Play more, spend less.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h4>
+                Quick Links
+            </h4>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="games.html">
+                Games
+            </a>
+
+            <a href="index.html#featured">
+                Featured
+            </a>
+
+            <a href="index.html#contact">
+                Contact
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h4>
+                GameRent
+            </h4>
+
+            <a href="index.html#profile">
+                Profile
+            </a>
+
+            <a href="index.html#rentals">
+                Rentals
+            </a>
+
+            <a href="games.html">
+                Game Library
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 GameRent. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script src="script.js"></script>
+
+</body>
+</html>
