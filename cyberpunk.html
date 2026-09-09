@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cyberpunk 2077 | GameRent</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="logo">
+        🎮 GameRent
+    </div>
+
+    <div class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="games.html">Games</a>
+
+        <a href="games.html#categories">Categories</a>
+
+        <a href="index.html#rentals">My Rentals</a>
+
+        <a href="index.html#contact">Contact</a>
+
+    </div>
+
+    <div class="nav-actions">
+
+        <button class="login-btn"
+            onclick="location.href='index.html#profile'">
+
+            <i class="fa-solid fa-user"></i>
+            Profile
+
+        </button>
+
+        <button class="cart-btn"
+            onclick="location.href='index.html#rentals'">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            <span id="cartCount">0</span>
+
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="game-detail-hero"
+    style="
+    background-image:
+    linear-gradient(
+        90deg,
+        rgba(5,8,15,0.96),
+        rgba(5,8,15,0.72),
+        rgba(5,8,15,0.25)
+    ),
+    url('https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/library_hero.jpg');
+    ">
+
+    <div class="game-detail-content">
+
+        <span class="game-badge">
+            RPG
+        </span>
+
+        <h1>
+            Cyberpunk 2077
+        </h1>
+
+        <div class="game-rating">
+
+            <span>
+                ⭐ 4.7
+            </span>
+
+            <span>
+                2020
+            </span>
+
+            <span>
+                Action RPG
+            </span>
+
+        </div>
+
+        <p class="game-description">
+
+            Enter Night City, a massive futuristic metropolis
+            driven by technology, corporations and crime.
+            Become V, a mercenary looking for a unique implant
+            that could unlock the key to immortality.
+
+        </p>
+
+        <div class="game-actions">
+
+            <button class="rent-btn"
+                onclick="rentGame('Cyberpunk 2077', 299)">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                Rent Now — ₹299
+
+            </button>
+
+            <button class="wishlist-btn"
+                onclick="addWishlist('Cyberpunk 2077')">
+
+                <i class="fa-solid fa-heart"></i>
+
+                Wishlist
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= GAME INFORMATION ================= -->
+
+<section class="game-info-section">
+
+    <div class="game-info-container">
+
+        <div class="game-main-info">
+
+            <h2>
+                About the Game
+            </h2>
+
+            <p>
+
+                Cyberpunk 2077 is an open-world action RPG
+                developed by CD PROJEKT RED.
+
+            </p>
+
+            <p>
+
+                Explore Night City, complete missions, upgrade
+                your cyberware and make decisions that influence
+                the story.
+
+            </p>
+
+        </div>
+
+
+        <!-- SPECS -->
+
+        <div class="game-specs">
+
+            <div class="spec-item">
+
+                <i class="fa-solid fa-calendar"></i>
+
+                <div>
+
+                    <span>Release</span>
+
+                    <strong>
+                        2020
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="spec-item">
+
+                <i class="fa-solid fa-gamepad"></i>
+
+                <div>
+
+                    <span>Genre</span>
+
+                    <strong>
+                        Action RPG
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="spec-item">
+
+                <i class="fa-solid fa-city"></i>
+
+                <div>
+
+                    <span>World</span>
+
+                    <strong>
+                        Open World
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="spec-item">
+
+                <i class="fa-solid fa-user"></i>
+
+                <div>
+
+                    <span>Players</span>
+
+                    <strong>
+                        Single Player
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="game-features">
+
+    <h2>
+        Why Play Cyberpunk 2077?
+    </h2>
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-city"></i>
+
+            <h3>
+                Night City
+            </h3>
+
+            <p>
+                Explore a massive futuristic city filled with
+                districts, characters and activities.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-crosshairs"></i>
+
+            <h3>
+                Intense Combat
+            </h3>
+
+            <p>
+                Use guns, cyberware, melee weapons and advanced
+                technology to take down enemies.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-microchip"></i>
+
+            <h3>
+                Cyberware
+            </h3>
+
+            <p>
+                Upgrade your body with powerful cybernetic
+                implants and abilities.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-code-branch"></i>
+
+            <h3>
+                Your Choices
+            </h3>
+
+            <p>
+                Your decisions can change missions, relationships
+                and the story.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= GAME GALLERY ================= -->
+
+<section class="game-screenshots">
+
+    <h2>
+        Cyberpunk 2077
+    </h2>
+
+    <div class="screenshot-grid">
+
+        <img
+            src="https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg"
+            alt="Cyberpunk 2077">
+
+        <img
+            src="https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/library_hero.jpg"
+            alt="Cyberpunk 2077">
+
+    </div>
+
+</section>
+
+
+<!-- ================= RENT CTA ================= -->
+
+<section class="game-rent-cta">
+
+    <div>
+
+        <h2>
+            Ready to enter Night City?
+        </h2>
+
+        <p>
+            Rent Cyberpunk 2077 and explore the future.
+        </p>
+
+    </div>
+
+    <button
+        onclick="rentGame('Cyberpunk 2077', 299)">
+
+        Rent for ₹299
+
+    </button>
+
+</section>
+
+
+<!-- ================= RELATED GAMES ================= -->
+
+<section class="related-games">
+
+    <h2>
+        You May Also Like
+    </h2>
+
+    <div class="games">
+
+
+        <!-- ELDEN RING -->
+
+        <div class="card"
+            onclick="location.href='eldenring.html'">
+
+            <img
+                src="https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg"
+                alt="Elden Ring">
+
+            <div class="card-content">
+
+                <h3>
+                    Elden Ring
+                </h3>
+
+                <p>
+                    Action RPG
+                </p>
+
+                <strong>
+                    ₹249
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- GTA V -->
+
+        <div class="card"
+            onclick="location.href='gta5.html'">
+
+            <img
+                src="https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg"
+                alt="GTA V">
+
+            <div class="card-content">
+
+                <h3>
+                    GTA V
+                </h3>
+
+                <p>
+                    Open World
+                </p>
+
+                <strong>
+                    ₹149
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- RDR2 -->
+
+        <div class="card"
+            onclick="location.href='rdr2.html'">
+
+            <img
+                src="https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg"
+                alt="Red Dead Redemption 2">
+
+            <div class="card-content">
+
+                <h3>
+                    Red Dead Redemption 2
+                </h3>
+
+                <p>
+                    Open World
+                </p>
+
+                <strong>
+                    ₹219
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- SPIDER-MAN -->
+
+        <div class="card"
+            onclick="location.href='spiderman2.html'">
+
+            <img
+                src="https://cdn.cloudflare.steamstatic.com/steam/apps/2651280/header.jpg"
+                alt="Spider-Man 2">
+
+            <div class="card-content">
+
+                <h3>
+                    Spider-Man 2
+                </h3>
+
+                <p>
+                    Action Open World
+                </p>
+
+                <strong>
+                    ₹279
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+
+            <h2>
+                🎮 GameRent
+            </h2>
+
+            <p>
+                Premium games. Simple rentals.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Quick Links
+            </h3>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="games.html">
+                Games
+            </a>
+
+            <a href="index.html#contact">
+                Contact
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <p class="copyright">
+
+        © 2026 GameRent. All Rights Reserved.
+
+    </p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
