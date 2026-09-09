@@ -1,132 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Red Dead Redemption 2 | GameRent</title>
+    <title>FIFA 25 | GameRent</title>
 
     <link rel="stylesheet" href="style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
 
     <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
+<!-- =========================
+     NAVBAR
+========================= -->
 
 <nav>
-
     <div class="logo">
         🎮 GameRent
     </div>
 
     <div class="nav-links">
-
         <a href="index.html">Home</a>
-
+        <a href="index.html#featured">Featured</a>
         <a href="games.html">Games</a>
-
-        <a href="games.html#categories">Categories</a>
-
-        <a href="index.html#rentals">My Rentals</a>
-
-        <a href="index.html#contact">Contact</a>
-
+        <a href="index.html#profile">Profile</a>
     </div>
 
     <div class="nav-actions">
-
-        <button class="login-btn"
-            onclick="location.href='index.html#profile'">
-
+        <a href="index.html#profile" class="login-btn">
             <i class="fa-solid fa-user"></i>
             Profile
+        </a>
 
-        </button>
-
-        <button class="cart-btn"
-            onclick="location.href='index.html#rentals'">
-
+        <a href="index.html#rentals" class="cart-btn">
             <i class="fa-solid fa-cart-shopping"></i>
-
-            <span id="cartCount">0</span>
-
-        </button>
-
+            Rentals
+            <span id="cartCount" class="cart-count">0</span>
+        </a>
     </div>
-
 </nav>
 
 
-<!-- ================= GAME HERO ================= -->
+<!-- =========================
+     GAME HERO
+========================= -->
 
 <section class="game-detail-hero"
     style="
-    background-image:
-    linear-gradient(
-        90deg,
-        rgba(5,8,15,0.96),
-        rgba(5,8,15,0.70),
-        rgba(5,8,15,0.20)
-    ),
-    url('https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/library_hero.jpg');
+        background-image:
+        linear-gradient(
+            90deg,
+            rgba(5,8,15,0.95),
+            rgba(5,8,15,0.65),
+            rgba(5,8,15,0.35)
+        ),
+        url('https://cdn.cloudflare.steamstatic.com/steam/apps/2669320/library_hero.jpg');
     ">
 
     <div class="game-detail-content">
 
         <span class="game-badge">
-            OPEN WORLD
+            SPORTS
         </span>
 
         <h1>
-            Red Dead Redemption 2
+            FIFA 25
         </h1>
 
         <div class="game-rating">
-
-            <span>⭐ 4.9</span>
-
-            <span>2018</span>
-
-            <span>Action Adventure</span>
-
+            <span>⭐ 4.4/5</span>
+            <span>2024</span>
+            <span>Sports</span>
         </div>
 
         <p class="game-description">
-
-            Experience the story of Arthur Morgan and the Van der
-            Linde gang as they survive in a dangerous and changing
-            American frontier.
-
+            Experience the next generation of football with FIFA 25.
+            Build your dream squad, compete against players around the
+            world and enjoy realistic football action powered by
+            modern gameplay technology.
         </p>
 
         <div class="game-actions">
 
-            <button class="rent-btn"
-                onclick="rentGame('Red Dead Redemption 2', 219)">
-
+            <button
+                class="primary-btn"
+                onclick="rentGame('FIFA 25', 179)">
                 <i class="fa-solid fa-cart-shopping"></i>
-
-                Rent Now — ₹219
-
+                Rent Now — ₹179
             </button>
 
-            <button class="wishlist-btn"
-                onclick="addWishlist('Red Dead Redemption 2')">
-
-                <i class="fa-solid fa-heart"></i>
-
-                Wishlist
-
+            <button
+                class="secondary-btn"
+                onclick="addWishlist('FIFA 25')">
+                <i class="fa-regular fa-heart"></i>
+                Add to Wishlist
             </button>
 
         </div>
@@ -136,7 +113,9 @@
 </section>
 
 
-<!-- ================= GAME INFORMATION ================= -->
+<!-- =========================
+     GAME INFORMATION
+========================= -->
 
 <section class="game-info-section">
 
@@ -144,95 +123,72 @@
 
         <div class="game-main-info">
 
+            <span class="section-label">
+                GAME OVERVIEW
+            </span>
+
             <h2>
-                About the Game
+                The World's Game
             </h2>
 
             <p>
-
-                Red Dead Redemption 2 is an open-world action
-                adventure game developed by Rockstar Games.
-
+                FIFA 25 brings football closer to reality with
+                authentic teams, players, stadiums and competitive
+                game modes.
             </p>
 
             <p>
-
-                Ride across huge landscapes, interact with towns,
-                hunt wildlife, take part in robberies and experience
-                a cinematic story set in the American frontier.
-
+                Take control of your favourite club, create your own
+                Ultimate Team or compete in career mode as you work
+                toward becoming a football legend.
             </p>
 
         </div>
 
+
+        <!-- =========================
+             GAME SPECS
+        ========================= -->
 
         <div class="game-specs">
 
             <div class="spec-item">
-
-                <i class="fa-solid fa-calendar"></i>
-
-                <div>
-
-                    <span>Release</span>
-
-                    <strong>
-                        2018
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-            <div class="spec-item">
-
                 <i class="fa-solid fa-gamepad"></i>
 
                 <div>
-
                     <span>Genre</span>
-
-                    <strong>
-                        Action Adventure
-                    </strong>
-
+                    <strong>Sports</strong>
                 </div>
-
             </div>
 
 
             <div class="spec-item">
-
-                <i class="fa-solid fa-map"></i>
+                <i class="fa-solid fa-calendar"></i>
 
                 <div>
-
-                    <span>World</span>
-
-                    <strong>
-                        Open World
-                    </strong>
-
+                    <span>Release</span>
+                    <strong>2024</strong>
                 </div>
-
             </div>
 
 
             <div class="spec-item">
-
-                <i class="fa-solid fa-user"></i>
+                <i class="fa-solid fa-users"></i>
 
                 <div>
-
                     <span>Players</span>
-
-                    <strong>
-                        Single Player
-                    </strong>
-
+                    <strong>Single / Multiplayer</strong>
                 </div>
+            </div>
 
+
+            <div class="spec-item">
+                <i class="fa-solid fa-trophy"></i>
+
+                <div>
+                    <span>Mode</span>
+                    <strong>Competitive</strong>
+                </div>
             </div>
 
         </div>
@@ -242,76 +198,78 @@
 </section>
 
 
-<!-- ================= FEATURES ================= -->
+<!-- =========================
+     FEATURES
+========================= -->
 
 <section class="game-features">
 
-    <h2>
-        Why Play Red Dead Redemption 2?
-    </h2>
+    <div class="section">
 
-    <div class="feature-grid">
+        <span class="section-label">
+            FEATURES
+        </span>
 
-        <div class="feature-card">
+        <h2>
+            Play Your Way
+        </h2>
 
-            <i class="fa-solid fa-horse"></i>
+        <div class="feature-grid">
 
-            <h3>
-                Explore the Frontier
-            </h3>
+            <div class="feature-card">
+                <i class="fa-solid fa-futbol"></i>
 
-            <p>
-                Travel through mountains, forests, towns,
-                deserts and rivers across a massive world.
-            </p>
+                <h3>
+                    Realistic Football
+                </h3>
 
-        </div>
-
-
-        <div class="feature-card">
-
-            <i class="fa-solid fa-gun"></i>
-
-            <h3>
-                Gunfights & Robberies
-            </h3>
-
-            <p>
-                Take part in intense shootouts, train robberies,
-                bank heists and dangerous missions.
-            </p>
-
-        </div>
+                <p>
+                    Experience fluid movement, realistic matches
+                    and responsive football gameplay.
+                </p>
+            </div>
 
 
-        <div class="feature-card">
+            <div class="feature-card">
+                <i class="fa-solid fa-users"></i>
 
-            <i class="fa-solid fa-paw"></i>
+                <h3>
+                    Ultimate Team
+                </h3>
 
-            <h3>
-                Wildlife
-            </h3>
-
-            <p>
-                Hunt and track a huge variety of animals
-                throughout the wilderness.
-            </p>
-
-        </div>
+                <p>
+                    Build your dream squad and compete against
+                    other players.
+                </p>
+            </div>
 
 
-        <div class="feature-card">
+            <div class="feature-card">
+                <i class="fa-solid fa-user-tie"></i>
 
-            <i class="fa-solid fa-film"></i>
+                <h3>
+                    Career Mode
+                </h3>
 
-            <h3>
-                Cinematic Story
-            </h3>
+                <p>
+                    Manage your club, develop players and chase
+                    trophies.
+                </p>
+            </div>
 
-            <p>
-                Follow Arthur Morgan through one of gaming's
-                most memorable stories.
-            </p>
+
+            <div class="feature-card">
+                <i class="fa-solid fa-globe"></i>
+
+                <h3>
+                    Global Competition
+                </h3>
+
+                <p>
+                    Compete with football fans from around the
+                    world.
+                </p>
+            </div>
 
         </div>
 
@@ -320,164 +278,198 @@
 </section>
 
 
-<!-- ================= GAME VISUALS ================= -->
+<!-- =========================
+     GAME VISUALS
+========================= -->
 
 <section class="game-screenshots">
 
-    <h2>
-        Game Visuals
-    </h2>
+    <div class="section">
 
-    <div class="screenshot-grid">
+        <span class="section-label">
+            GAME VISUALS
+        </span>
 
-        <img
-            src="https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg"
-            alt="Red Dead Redemption 2">
+        <h2>
+            Inside FIFA 25
+        </h2>
 
-        <img
-            src="https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/library_hero.jpg"
-            alt="Red Dead Redemption 2">
+        <div class="screenshot-grid">
+
+            <img
+                src="https://cdn.cloudflare.steamstatic.com/steam/apps/2669320/header.jpg"
+                alt="FIFA 25">
+
+            <img
+                src="https://cdn.cloudflare.steamstatic.com/steam/apps/2669320/library_hero.jpg"
+                alt="FIFA 25 gameplay">
+
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- ================= RENT CTA ================= -->
+<!-- =========================
+     RENT CTA
+========================= -->
 
 <section class="game-rent-cta">
 
     <div>
 
+        <span class="section-label">
+            READY TO PLAY?
+        </span>
+
         <h2>
-            Ready to ride into the Wild West?
+            Rent FIFA 25 Today
         </h2>
 
         <p>
-            Rent Red Dead Redemption 2 and begin Arthur Morgan's journey.
+            Get access to FIFA 25 for just ₹179.
         </p>
 
+        <button
+            class="primary-btn"
+            onclick="rentGame('FIFA 25', 179)">
+            <i class="fa-solid fa-cart-shopping"></i>
+            Rent FIFA 25 — ₹179
+        </button>
+
     </div>
-
-    <button
-        onclick="rentGame('Red Dead Redemption 2', 219)">
-
-        Rent for ₹219
-
-    </button>
 
 </section>
 
 
-<!-- ================= RELATED GAMES ================= -->
+<!-- =========================
+     RELATED GAMES
+========================= -->
 
 <section class="related-games">
 
-    <h2>
-        You May Also Like
-    </h2>
+    <div class="section">
 
-    <div class="games">
+        <span class="section-label">
+            MORE GAMES
+        </span>
 
-
-        <div class="card"
-            onclick="location.href='gta5.html'">
-
-            <img
-                src="https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg"
-                alt="GTA V">
-
-            <div class="card-content">
-
-                <h3>
-                    GTA V
-                </h3>
-
-                <p>
-                    Open World
-                </p>
-
-                <strong>
-                    ₹149
-                </strong>
-
-            </div>
-
-        </div>
+        <h2>
+            You May Also Like
+        </h2>
 
 
-        <div class="card"
-            onclick="location.href='cyberpunk.html'">
+        <div class="games">
 
-            <img
-                src="https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg"
-                alt="Cyberpunk 2077">
+            <!-- GTA V -->
 
-            <div class="card-content">
+            <div class="card">
 
-                <h3>
-                    Cyberpunk 2077
-                </h3>
+                <img
+                    src="https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg"
+                    alt="GTA V">
 
-                <p>
-                    Action RPG
-                </p>
+                <div class="card-content">
 
-                <strong>
-                    ₹299
-                </strong>
+                    <h3>
+                        GTA V
+                    </h3>
+
+                    <p>
+                        Open World
+                    </p>
+
+                    <a href="gta5.html"
+                       class="primary-btn">
+                        View Game
+                    </a>
+
+                </div>
 
             </div>
 
-        </div>
 
+            <!-- Red Dead Redemption 2 -->
 
-        <div class="card"
-            onclick="location.href='ghost.html'">
+            <div class="card">
 
-            <img
-                src="https://cdn.cloudflare.steamstatic.com/steam/apps/2215430/header.jpg"
-                alt="Ghost of Tsushima">
+                <img
+                    src="https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg"
+                    alt="Red Dead Redemption 2">
 
-            <div class="card-content">
+                <div class="card-content">
 
-                <h3>
-                    Ghost of Tsushima
-                </h3>
+                    <h3>
+                        Red Dead Redemption 2
+                    </h3>
 
-                <p>
-                    Action Adventure
-                </p>
+                    <p>
+                        Open World
+                    </p>
 
-                <strong>
-                    ₹269
-                </strong>
+                    <a href="rdr2.html"
+                       class="primary-btn">
+                        View Game
+                    </a>
+
+                </div>
 
             </div>
 
-        </div>
+
+            <!-- Spider-Man 2 -->
+
+            <div class="card">
+
+                <img
+                    src="https://cdn.cloudflare.steamstatic.com/steam/apps/2651280/header.jpg"
+                    alt="Spider-Man 2">
+
+                <div class="card-content">
+
+                    <h3>
+                        Spider-Man 2
+                    </h3>
+
+                    <p>
+                        Action / Open World
+                    </p>
+
+                    <a href="spiderman2.html"
+                       class="primary-btn">
+                        View Game
+                    </a>
+
+                </div>
+
+            </div>
 
 
-        <div class="card"
-            onclick="location.href='eldenring.html'">
+            <!-- Forza Horizon 5 -->
 
-            <img
-                src="https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg"
-                alt="Elden Ring">
+            <div class="card">
 
-            <div class="card-content">
+                <img
+                    src="https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg"
+                    alt="Forza Horizon 5">
 
-                <h3>
-                    Elden Ring
-                </h3>
+                <div class="card-content">
 
-                <p>
-                    Action RPG
-                </p>
+                    <h3>
+                        Forza Horizon 5
+                    </h3>
 
-                <strong>
-                    ₹249
-                </strong>
+                    <p>
+                        Racing / Open World
+                    </p>
+
+                    <a href="forza5.html"
+                       class="primary-btn">
+                        View Game
+                    </a>
+
+                </div>
 
             </div>
 
@@ -488,57 +480,65 @@
 </section>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
     <div class="footer-content">
 
         <div>
-
-            <h2>
-                🎮 GameRent
-            </h2>
+            <h3>🎮 GameRent</h3>
 
             <p>
-                Premium games. Simple rentals.
+                Premium games. Better prices.
+                Play more, spend less.
             </p>
+        </div>
+
+
+        <div>
+
+            <h4>Quick Links</h4>
+
+            <a href="index.html">Home</a>
+            <a href="games.html">Games</a>
+            <a href="index.html#featured">Featured</a>
+            <a href="index.html#contact">Contact</a>
 
         </div>
 
 
         <div>
 
-            <h3>
-                Quick Links
-            </h3>
+            <h4>GameRent</h4>
 
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="games.html">
-                Games
-            </a>
-
-            <a href="index.html#contact">
-                Contact
-            </a>
+            <a href="index.html#profile">Profile</a>
+            <a href="index.html#rentals">Rentals</a>
+            <a href="games.html">Game Library</a>
 
         </div>
 
     </div>
 
 
-    <p class="copyright">
-        © 2026 GameRent. All Rights Reserved.
-    </p>
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 GameRent. All rights reserved.
+        </p>
+
+    </div>
 
 </footer>
 
 
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script src="script.js"></script>
 
 </body>
-
 </html>
