@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Red Dead Redemption 2 | GameRent</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="logo">
+        🎮 GameRent
+    </div>
+
+    <div class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="games.html">Games</a>
+
+        <a href="games.html#categories">Categories</a>
+
+        <a href="index.html#rentals">My Rentals</a>
+
+        <a href="index.html#contact">Contact</a>
+
+    </div>
+
+    <div class="nav-actions">
+
+        <button class="login-btn"
+            onclick="location.href='index.html#profile'">
+
+            <i class="fa-solid fa-user"></i>
+            Profile
+
+        </button>
+
+        <button class="cart-btn"
+            onclick="location.href='index.html#rentals'">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            <span id="cartCount">0</span>
+
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= GAME HERO ================= -->
+
+<section class="game-detail-hero"
+    style="
+    background-image:
+    linear-gradient(
+        90deg,
+        rgba(5,8,15,0.96),
+        rgba(5,8,15,0.70),
+        rgba(5,8,15,0.20)
+    ),
+    url('https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/library_hero.jpg');
+    ">
+
+    <div class="game-detail-content">
+
+        <span class="game-badge">
+            OPEN WORLD
+        </span>
+
+        <h1>
+            Red Dead Redemption 2
+        </h1>
+
+        <div class="game-rating">
+
+            <span>⭐ 4.9</span>
+
+            <span>2018</span>
+
+            <span>Action Adventure</span>
+
+        </div>
+
+        <p class="game-description">
+
+            Experience the story of Arthur Morgan and the Van der
+            Linde gang as they survive in a dangerous and changing
+            American frontier.
+
+        </p>
+
+        <div class="game-actions">
+
+            <button class="rent-btn"
+                onclick="rentGame('Red Dead Redemption 2', 219)">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                Rent Now — ₹219
+
+            </button>
+
+            <button class="wishlist-btn"
+                onclick="addWishlist('Red Dead Redemption 2')">
+
+                <i class="fa-solid fa-heart"></i>
+
+                Wishlist
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= GAME INFORMATION ================= -->
+
+<section class="game-info-section">
+
+    <div class="game-info-container">
+
+        <div class="game-main-info">
+
+            <h2>
+                About the Game
+            </h2>
+
+            <p>
+
+                Red Dead Redemption 2 is an open-world action
+                adventure game developed by Rockstar Games.
+
+            </p>
+
+            <p>
+
+                Ride across huge landscapes, interact with towns,
+                hunt wildlife, take part in robberies and experience
+                a cinematic story set in the American frontier.
+
+            </p>
+
+        </div>
+
+
+        <div class="game-specs">
+
+            <div class="spec-item">
+
+                <i class="fa-solid fa-calendar"></i>
+
+                <div>
+
+                    <span>Release</span>
+
+                    <strong>
+                        2018
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="spec-item">
+
+                <i class="fa-solid fa-gamepad"></i>
+
+                <div>
+
+                    <span>Genre</span>
+
+                    <strong>
+                        Action Adventure
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="spec-item">
+
+                <i class="fa-solid fa-map"></i>
+
+                <div>
+
+                    <span>World</span>
+
+                    <strong>
+                        Open World
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="spec-item">
+
+                <i class="fa-solid fa-user"></i>
+
+                <div>
+
+                    <span>Players</span>
+
+                    <strong>
+                        Single Player
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="game-features">
+
+    <h2>
+        Why Play Red Dead Redemption 2?
+    </h2>
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-horse"></i>
+
+            <h3>
+                Explore the Frontier
+            </h3>
+
+            <p>
+                Travel through mountains, forests, towns,
+                deserts and rivers across a massive world.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-gun"></i>
+
+            <h3>
+                Gunfights & Robberies
+            </h3>
+
+            <p>
+                Take part in intense shootouts, train robberies,
+                bank heists and dangerous missions.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-paw"></i>
+
+            <h3>
+                Wildlife
+            </h3>
+
+            <p>
+                Hunt and track a huge variety of animals
+                throughout the wilderness.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-film"></i>
+
+            <h3>
+                Cinematic Story
+            </h3>
+
+            <p>
+                Follow Arthur Morgan through one of gaming's
+                most memorable stories.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= GAME VISUALS ================= -->
+
+<section class="game-screenshots">
+
+    <h2>
+        Game Visuals
+    </h2>
+
+    <div class="screenshot-grid">
+
+        <img
+            src="https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg"
+            alt="Red Dead Redemption 2">
+
+        <img
+            src="https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/library_hero.jpg"
+            alt="Red Dead Redemption 2">
+
+    </div>
+
+</section>
+
+
+<!-- ================= RENT CTA ================= -->
+
+<section class="game-rent-cta">
+
+    <div>
+
+        <h2>
+            Ready to ride into the Wild West?
+        </h2>
+
+        <p>
+            Rent Red Dead Redemption 2 and begin Arthur Morgan's journey.
+        </p>
+
+    </div>
+
+    <button
+        onclick="rentGame('Red Dead Redemption 2', 219)">
+
+        Rent for ₹219
+
+    </button>
+
+</section>
+
+
+<!-- ================= RELATED GAMES ================= -->
+
+<section class="related-games">
+
+    <h2>
+        You May Also Like
+    </h2>
+
+    <div class="games">
+
+
+        <div class="card"
+            onclick="location.href='gta5.html'">
+
+            <img
+                src="https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg"
+                alt="GTA V">
+
+            <div class="card-content">
+
+                <h3>
+                    GTA V
+                </h3>
+
+                <p>
+                    Open World
+                </p>
+
+                <strong>
+                    ₹149
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="card"
+            onclick="location.href='cyberpunk.html'">
+
+            <img
+                src="https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg"
+                alt="Cyberpunk 2077">
+
+            <div class="card-content">
+
+                <h3>
+                    Cyberpunk 2077
+                </h3>
+
+                <p>
+                    Action RPG
+                </p>
+
+                <strong>
+                    ₹299
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="card"
+            onclick="location.href='ghost.html'">
+
+            <img
+                src="https://cdn.cloudflare.steamstatic.com/steam/apps/2215430/header.jpg"
+                alt="Ghost of Tsushima">
+
+            <div class="card-content">
+
+                <h3>
+                    Ghost of Tsushima
+                </h3>
+
+                <p>
+                    Action Adventure
+                </p>
+
+                <strong>
+                    ₹269
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="card"
+            onclick="location.href='eldenring.html'">
+
+            <img
+                src="https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg"
+                alt="Elden Ring">
+
+            <div class="card-content">
+
+                <h3>
+                    Elden Ring
+                </h3>
+
+                <p>
+                    Action RPG
+                </p>
+
+                <strong>
+                    ₹249
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+
+            <h2>
+                🎮 GameRent
+            </h2>
+
+            <p>
+                Premium games. Simple rentals.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Quick Links
+            </h3>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="games.html">
+                Games
+            </a>
+
+            <a href="index.html#contact">
+                Contact
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <p class="copyright">
+        © 2026 GameRent. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
