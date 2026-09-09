@@ -1,380 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Ghost of Tsushima | GameRent</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet"
-    >
-</head>
-
-<body>
-
-<!-- =========================================================
-     NAVBAR
-========================================================= -->
-
-<nav>
-
-    <div class="logo">
-        🎮 GameRent
-    </div>
-
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="index.html#featured">Featured</a>
-        <a href="games.html">Games</a>
-        <a href="index.html#profile">Profile</a>
-    </div>
-
-    <div class="nav-actions">
-
-        <button class="login-btn" onclick="loginUser()">
-            👤 Login
-        </button>
-
-        <button class="cart-btn" onclick="renderRentals()">
-            🛒 Rentals
-            <span class="cart-count" id="cartCount">0</span>
-        </button>
-
-    </div>
-
-</nav>
-
-
-<!-- =========================================================
-     GAME HERO
-========================================================= -->
-
-<section
-    class="game-detail-hero"
-    style="
-        background-image:
-        linear-gradient(
-            90deg,
-            rgba(5, 7, 12, 0.98) 0%,
-            rgba(5, 7, 12, 0.88) 35%,
-            rgba(5, 7, 12, 0.35) 75%,
-            rgba(5, 7, 12, 0.12) 100%
-        ),
-        url('https://cdn.cloudflare.steamstatic.com/steam/apps/2215430/library_hero.jpg');
-    "
->
-
-    <div class="game-detail-content">
-
-        <span class="game-badge">
-            ACTION / OPEN WORLD
-        </span>
-
-        <h1>
-            Ghost of Tsushima
-        </h1>
-
-        <div class="game-rating">
-            ⭐ 4.8/5 &nbsp;&nbsp; 2024 &nbsp;&nbsp; Action
-        </div>
-
-        <p class="game-description">
-            Become Jin Sakai, a samurai fighting to protect Tsushima from
-            a devastating invasion. Explore a breathtaking open world,
-            master the way of the samurai and discover your own path
-            between honor and survival.
-        </p>
-
-        <div class="game-actions">
-
-            <button
-                onclick="rentGame('Ghost of Tsushima', 269)"
-            >
-                🛒 Rent Now — ₹269
-            </button>
-
-            <button
-                onclick="addWishlist('Ghost of Tsushima')"
-            >
-                ♡ Add to Wishlist
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     GAME OVERVIEW
-========================================================= -->
-
-<section class="game-info-section">
-
-    <div class="game-info-container">
-
-        <div class="game-main-info">
-
-            <h2>
-                Game Overview
-            </h2>
-
-            <p>
-                Ghost of Tsushima is an open-world action adventure set
-                during the Mongol invasion of Japan. You play as Jin Sakai,
-                one of the last surviving samurai on Tsushima Island.
-            </p>
-
-            <p>
-                Travel across forests, mountains, villages and ancient
-                temples while uncovering the island's secrets and helping
-                its people survive the invasion.
-            </p>
-
-            <p>
-                Fight with the katana, use stealth techniques and master
-                different combat abilities as you decide how Jin will
-                defend his homeland.
-            </p>
-
-        </div>
-
-
-        <!-- GAME SPECS -->
-
-        <div class="game-specs">
-
-            <div class="spec-item">
-                <span>Developer</span>
-                <strong>Sucker Punch Productions</strong>
-            </div>
-
-            <div class="spec-item">
-                <span>Publisher</span>
-                <strong>PlayStation Publishing LLC</strong>
-            </div>
-
-            <div class="spec-item">
-                <span>Release</span>
-                <strong>2024</strong>
-            </div>
-
-            <div class="spec-item">
-                <span>Genre</span>
-                <strong>Action Adventure</strong>
-            </div>
-
-            <div class="spec-item">
-                <span>Mode</span>
-                <strong>Single Player</strong>
-            </div>
-
-            <div class="spec-item">
-                <span>Rental Price</span>
-                <strong>₹269</strong>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     FEATURES
-========================================================= -->
-
-<section class="game-features">
-
-    <div class="game-info-container">
-
-        <h2>
-            Key Features
-        </h2>
-
-        <div class="feature-grid">
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    ⚔️
-                </div>
-
-                <h3>
-                    Samurai Combat
-                </h3>
-
-                <p>
-                    Master precise sword combat and face enemies in
-                    intense one-on-one battles.
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    🥷
-                </div>
-
-                <h3>
-                    Stealth
-                </h3>
-
-                <p>
-                    Use stealth, distractions and strategic attacks to
-                    eliminate enemies from the shadows.
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    🌸
-                </div>
-
-                <h3>
-                    Open World
-                </h3>
-
-                <p>
-                    Explore a beautiful Japanese landscape filled with
-                    forests, villages, shrines and hidden locations.
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    🏯
-                </div>
-
-                <h3>
-                    Explore Tsushima
-                </h3>
-
-                <p>
-                    Discover ancient locations, enemy camps, settlements
-                    and landmarks throughout the island.
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    🌪️
-                </div>
-
-                <h3>
-                    Stances
-                </h3>
-
-                <p>
-                    Switch between different combat stances to counter
-                    different types of enemies.
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    🦊
-                </div>
-
-                <h3>
-                    Discover Secrets
-                </h3>
-
-                <p>
-                    Follow foxes, discover hidden shrines and uncover
-                    secrets scattered throughout Tsushima.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     GAME VISUALS
-========================================================= -->
-
-<section class="game-screenshots">
-
-    <div class="game-info-container">
-
-        <h2>
-            Game Visuals
-        </h2>
-
-        <div class="screenshot-grid">
-
-            <img
-                src="https://cdn.cloudflare.steamstatic.com/steam/apps/2215430/header.jpg"
-                alt="Ghost of Tsushima artwork"
-            >
-
-            <img
-                src="https://cdn.cloudflare.steamstatic.com/steam/apps/2215430/library_hero.jpg"
-                alt="Ghost of Tsushima hero artwork"
-            >
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     RENT CTA
-========================================================= -->
-
-<section class="game-rent-cta">
-
-    <div>
-
-        <h2>
-            Become the Ghost of Tsushima
-        </h2>
-
-        <p>
-            Pick up your sword and defend Tsushima.
-        </p>
-
-        <button
-            onclick="rentGame('Ghost of Tsushima', 269)"
-        >
-            🛒 Rent Ghost of Tsushima — ₹269
-        </button>
-
-    </div>
-
-</section>
-
-
 <!-- =========================================================
      RELATED GAMES
 ========================================================= -->
@@ -387,76 +10,116 @@
             You May Also Like
         </h2>
 
-        <div class="feature-grid">
+        <div class="related-games-grid">
 
-            <a
-                href="eldenring.html"
-                class="feature-card"
-                style="text-decoration:none;"
-            >
+            <!-- ELDEN RING -->
+            <a href="eldenring.html" class="related-game-card">
 
-                <h3>
-                    Elden Ring
-                </h3>
+                <img
+                    src="https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg"
+                    alt="Elden Ring"
+                >
 
-                <p>
-                    Explore a massive fantasy world filled with dangerous
-                    enemies and challenging combat.
-                </p>
+                <div class="related-game-content">
 
-            </a>
+                    <h3>
+                        Elden Ring
+                    </h3>
 
+                    <p>
+                        Explore a massive fantasy world filled with
+                        dangerous enemies and challenging combat.
+                    </p>
 
-            <a
-                href="gowr.html"
-                class="feature-card"
-                style="text-decoration:none;"
-            >
+                    <span>
+                        RPG • ₹249
+                    </span>
 
-                <h3>
-                    God of War Ragnarök
-                </h3>
-
-                <p>
-                    Join Kratos and Atreus on an epic journey through
-                    the realms of Norse mythology.
-                </p>
+                </div>
 
             </a>
 
 
-            <a
-                href="wukong.html"
-                class="feature-card"
-                style="text-decoration:none;"
-            >
+            <!-- GOD OF WAR -->
+            <a href="gowr.html" class="related-game-card">
 
-                <h3>
-                    Black Myth: Wukong
-                </h3>
+                <img
+                    src="https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/header.jpg"
+                    alt="God of War Ragnarök"
+                >
 
-                <p>
-                    Experience a visually stunning action RPG inspired
-                    by Chinese mythology.
-                </p>
+                <div class="related-game-content">
+
+                    <h3>
+                        God of War Ragnarök
+                    </h3>
+
+                    <p>
+                        Join Kratos and Atreus on an epic journey
+                        through the realms of Norse mythology.
+                    </p>
+
+                    <span>
+                        Action RPG • ₹299
+                    </span>
+
+                </div>
 
             </a>
 
 
-            <a
-                href="rdr2.html"
-                class="feature-card"
-                style="text-decoration:none;"
-            >
+            <!-- BLACK MYTH WUKONG -->
+            <a href="wukong.html" class="related-game-card">
 
-                <h3>
-                    Red Dead Redemption 2
-                </h3>
+                <img
+                    src="https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg"
+                    alt="Black Myth Wukong"
+                >
 
-                <p>
-                    Experience an unforgettable open-world western
-                    adventure.
-                </p>
+                <div class="related-game-content">
+
+                    <h3>
+                        Black Myth: Wukong
+                    </h3>
+
+                    <p>
+                        Experience a visually stunning action RPG
+                        inspired by Chinese mythology.
+                    </p>
+
+                    <span>
+                        Action RPG • ₹349
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <!-- RED DEAD REDEMPTION 2 -->
+            <a href="rdr2.html" class="related-game-card">
+
+                <img
+                    src="https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg"
+                    alt="Red Dead Redemption 2"
+                >
+
+                <div class="related-game-content">
+
+                    <h3>
+                        Red Dead Redemption 2
+                    </h3>
+
+                    <p>
+                        Experience an unforgettable open-world
+                        western adventure.
+                    </p>
+
+                    <span>
+                        Open World • ₹219
+                    </span>
+
+                </div>
 
             </a>
 
@@ -465,90 +128,3 @@
     </div>
 
 </section>
-
-
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
-<footer>
-
-    <div class="footer-content">
-
-        <div>
-
-            <h3>
-                🎮 GameRent
-            </h3>
-
-            <p>
-                Premium games. Flexible rentals.
-                Your next adventure starts here.
-            </p>
-
-        </div>
-
-
-        <div>
-
-            <h4>
-                Quick Links
-            </h4>
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="games.html">
-                Games
-            </a>
-
-            <a href="index.html#featured">
-                Featured
-            </a>
-
-            <a href="index.html#profile">
-                Profile
-            </a>
-
-        </div>
-
-
-        <div>
-
-            <h4>
-                GameRent
-            </h4>
-
-            <a href="games.html">
-                Game Library
-            </a>
-
-            <a href="index.html#contact">
-                Contact
-            </a>
-
-        </div>
-
-    </div>
-
-
-    <div class="footer-bottom">
-
-        <p>
-            © 2026 GameRent. All rights reserved.
-        </p>
-
-    </div>
-
-</footer>
-
-
-<!-- =========================================================
-     SCRIPT
-========================================================= -->
-
-<script src="script.js"></script>
-
-</body>
-</html>
