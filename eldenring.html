@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Elden Ring | GameRent</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="logo">
+        🎮 GameRent
+    </div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="games.html">Games</a>
+        <a href="games.html#categories">Categories</a>
+        <a href="index.html#rentals">My Rentals</a>
+        <a href="index.html#contact">Contact</a>
+    </div>
+
+    <div class="nav-actions">
+
+        <button class="login-btn"
+            onclick="location.href='index.html#profile'">
+
+            <i class="fa-solid fa-user"></i>
+            Profile
+
+        </button>
+
+        <button class="cart-btn"
+            onclick="location.href='index.html#rentals'">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            <span id="cartCount">0</span>
+
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= GAME HERO ================= -->
+
+<section class="game-detail-hero"
+    style="background-image:
+    linear-gradient(
+        90deg,
+        rgba(5,8,15,0.96),
+        rgba(5,8,15,0.72),
+        rgba(5,8,15,0.25)
+    ),
+    url('https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/library_hero.jpg');">
+
+    <div class="game-detail-content">
+
+        <span class="game-badge">
+            RPG
+        </span>
+
+        <h1>
+            Elden Ring
+        </h1>
+
+        <div class="game-rating">
+
+            <span>
+                ⭐ 4.9
+            </span>
+
+            <span>
+                2022
+            </span>
+
+            <span>
+                Action RPG
+            </span>
+
+        </div>
+
+        <p class="game-description">
+
+            Enter the vast world of the Lands Between in
+            Elden Ring. Explore dangerous landscapes, battle
+            terrifying enemies, discover powerful weapons and
+            uncover a massive fantasy world filled with secrets.
+
+        </p>
+
+        <div class="game-actions">
+
+            <button class="rent-btn"
+                onclick="rentGame('Elden Ring', 249)">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                Rent Now — ₹249
+
+            </button>
+
+            <button class="wishlist-btn"
+                onclick="addWishlist('Elden Ring')">
+
+                <i class="fa-solid fa-heart"></i>
+
+                Wishlist
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= GAME INFORMATION ================= -->
+
+<section class="game-info-section">
+
+    <div class="game-info-container">
+
+        <div class="game-main-info">
+
+            <h2>
+                About the Game
+            </h2>
+
+            <p>
+
+                Elden Ring is an open-world action RPG developed
+                by FromSoftware and published by Bandai Namco
+                Entertainment.
+
+            </p>
+
+            <p>
+
+                Travel across the Lands Between, defeat powerful
+                bosses, customize your character and discover
+                countless hidden areas.
+
+            </p>
+
+        </div>
+
+
+        <!-- ================= SPECS ================= -->
+
+        <div class="game-specs">
+
+            <div class="spec-item">
+
+                <i class="fa-solid fa-calendar"></i>
+
+                <div>
+                    <span>Release</span>
+                    <strong>2022</strong>
+                </div>
+
+            </div>
+
+
+            <div class="spec-item">
+
+                <i class="fa-solid fa-gamepad"></i>
+
+                <div>
+                    <span>Genre</span>
+                    <strong>Action RPG</strong>
+                </div>
+
+            </div>
+
+
+            <div class="spec-item">
+
+                <i class="fa-solid fa-users"></i>
+
+                <div>
+                    <span>Players</span>
+                    <strong>Single / Multiplayer</strong>
+                </div>
+
+            </div>
+
+
+            <div class="spec-item">
+
+                <i class="fa-solid fa-globe"></i>
+
+                <div>
+                    <span>World</span>
+                    <strong>Open World</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="game-features">
+
+    <h2>
+        Why Play Elden Ring?
+    </h2>
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-map"></i>
+
+            <h3>
+                Massive Open World
+            </h3>
+
+            <p>
+                Explore the enormous Lands Between filled
+                with hidden locations and secrets.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-skull-crossbones"></i>
+
+            <h3>
+                Epic Boss Battles
+            </h3>
+
+            <p>
+                Fight challenging bosses and powerful enemies
+                throughout your journey.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <h3>
+                Deep Combat
+            </h3>
+
+            <p>
+                Combine weapons, magic, skills and different
+                playstyles to defeat your enemies.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-person-running"></i>
+
+            <h3>
+                Freedom to Explore
+            </h3>
+
+            <p>
+                Choose your own path and discover the world
+                at your own pace.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SCREENSHOTS ================= -->
+
+<section class="game-screenshots">
+
+    <h2>
+        Screenshots
+    </h2>
+
+    <div class="screenshot-grid">
+
+        <img
+            src="https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/ss_1.jpg"
+            alt="Elden Ring screenshot">
+
+        <img
+            src="https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/ss_2.jpg"
+            alt="Elden Ring screenshot">
+
+        <img
+            src="https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/ss_3.jpg"
+            alt="Elden Ring screenshot">
+
+        <img
+            src="https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/ss_4.jpg"
+            alt="Elden Ring screenshot">
+
+    </div>
+
+</section>
+
+
+<!-- ================= RENT CTA ================= -->
+
+<section class="game-rent-cta">
+
+    <div>
+
+        <h2>
+            Ready to enter the Lands Between?
+        </h2>
+
+        <p>
+            Rent Elden Ring and begin your journey.
+        </p>
+
+    </div>
+
+    <button
+        onclick="rentGame('Elden Ring', 249)">
+
+        Rent for ₹249
+
+    </button>
+
+</section>
+
+
+<!-- ================= RELATED GAMES ================= -->
+
+<section class="related-games">
+
+    <h2>
+        You May Also Like
+    </h2>
+
+    <div class="games">
+
+        <div class="card"
+            onclick="location.href='gowr.html'">
+
+            <img
+                src="https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/header.jpg"
+                alt="God of War Ragnarok">
+
+            <div class="card-content">
+
+                <h3>
+                    God of War Ragnarök
+                </h3>
+
+                <p>
+                    Action RPG
+                </p>
+
+                <strong>
+                    ₹299
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="card"
+            onclick="location.href='cyberpunk.html'">
+
+            <img
+                src="https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg"
+                alt="Cyberpunk 2077">
+
+            <div class="card-content">
+
+                <h3>
+                    Cyberpunk 2077
+                </h3>
+
+                <p>
+                    Open World RPG
+                </p>
+
+                <strong>
+                    ₹299
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="card"
+            onclick="location.href='wukong.html'">
+
+            <img
+                src="https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg"
+                alt="Black Myth Wukong">
+
+            <div class="card-content">
+
+                <h3>
+                    Black Myth: Wukong
+                </h3>
+
+                <p>
+                    Action RPG
+                </p>
+
+                <strong>
+                    ₹349
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="card"
+            onclick="location.href='ghost.html'">
+
+            <img
+                src="https://cdn.cloudflare.steamstatic.com/steam/apps/2215430/header.jpg"
+                alt="Ghost of Tsushima">
+
+            <div class="card-content">
+
+                <h3>
+                    Ghost of Tsushima
+                </h3>
+
+                <p>
+                    Action Adventure
+                </p>
+
+                <strong>
+                    ₹269
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+
+            <h2>
+                🎮 GameRent
+            </h2>
+
+            <p>
+                Premium games. Simple rentals.
+            </p>
+
+        </div>
+
+        <div>
+
+            <h3>
+                Quick Links
+            </h3>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="games.html">
+                Games
+            </a>
+
+            <a href="index.html#contact">
+                Contact
+            </a>
+
+        </div>
+
+    </div>
+
+    <p class="copyright">
+        © 2026 GameRent. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<!-- ================= SCRIPT ================= -->
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
