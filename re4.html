@@ -5,64 +5,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Resident Evil 4 | GameRent</title>
+    <title>GameRent | Resident Evil 4</title>
 
-    <link rel="stylesheet" href="style.css">
-
+    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
+    <!-- Font Awesome -->
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
 
 <nav id="navbar">
 
     <div class="logo">
-        <i class="fa-solid fa-gamepad"></i>
-        GameRent
+        🎮 GameRent
     </div>
 
     <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="games.html">Games</a>
-        <a href="games.html#categories">Categories</a>
-        <a href="index.html#rentals">My Rentals</a>
-        <a href="index.html#contact">Contact</a>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="games.html">
+            Games
+        </a>
+
+        <a href="games.html#categories">
+            Categories
+        </a>
+
+        <a href="index.html#rentals">
+            My Rentals
+        </a>
+
+        <a href="index.html#contact">
+            Contact
+        </a>
+
     </div>
 
     <div class="nav-actions">
 
-        <div class="search-box">
+        <div class="search-container">
+
             <i class="fa-solid fa-magnifying-glass"></i>
+
             <input
                 type="text"
-                id="searchBox"
                 placeholder="Search games..."
-                onkeyup="searchGame()">
+                onkeyup="searchGame()"
+                id="searchBox">
+
         </div>
 
         <button
             class="login-btn"
             onclick="location.href='index.html#profile'">
+
             <i class="fa-solid fa-user"></i>
+
             Profile
+
         </button>
 
         <button
             class="cart-btn"
             onclick="location.href='index.html#rentals'">
+
             <i class="fa-solid fa-cart-shopping"></i>
-            <span id="cartCount">0</span>
+
+            <span id="cartCount">
+                0
+            </span>
+
         </button>
 
     </div>
@@ -70,7 +102,9 @@
 </nav>
 
 
-<!-- ================= GAME HERO ================= -->
+<!-- =====================================================
+     GAME HERO
+===================================================== -->
 
 <section
     class="game-detail-hero"
@@ -78,66 +112,83 @@
         background-image:
         linear-gradient(
             90deg,
-            rgba(5,8,15,0.95),
-            rgba(5,8,15,0.65),
+            rgba(5,8,15,0.96),
+            rgba(5,8,15,0.72),
             rgba(5,8,15,0.25)
         ),
-        url('https://wallpapercave.com/w/wp12153240');
+        url('https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/library_hero.jpg');
     ">
 
     <div class="game-detail-content">
 
         <span class="game-badge">
-            HORROR
+            HORROR / ACTION
         </span>
 
         <h1>
             Resident Evil 4
         </h1>
 
-        <p class="game-tagline">
-            Fear. Survival. Redemption.
-        </p>
-
         <div class="game-rating">
 
             <span>
-                <i class="fa-solid fa-star"></i>
-                9.6/10
+                ⭐ 9.5/10
             </span>
 
             <span>
-                <i class="fa-solid fa-calendar"></i>
+                •
+            </span>
+
+            <span>
                 2023
             </span>
 
             <span>
-                <i class="fa-solid fa-gamepad"></i>
-                Action Horror
+                •
+            </span>
+
+            <span>
+                Survival Horror
             </span>
 
         </div>
 
         <p class="game-description">
-            Resident Evil 4 is a survival horror masterpiece following
-            Leon S. Kennedy as he attempts to rescue the president's
-            daughter from a mysterious cult in rural Europe.
+
+            Six years after the events of Raccoon City,
+            Leon S. Kennedy is sent to a remote European village
+            to rescue the president's kidnapped daughter.
+
+            Face terrifying enemies, solve dangerous puzzles,
+            and survive one of the most iconic horror adventures
+            ever created.
+
         </p>
+
+
+        <!-- ACTION BUTTONS -->
 
         <div class="game-actions">
 
             <button
                 class="rent-btn"
-                onclick="event.stopPropagation(); rentGame('Resident Evil 4', 199)">
+                onclick="rentGame('Resident Evil 4', 199)">
+
                 <i class="fa-solid fa-cart-shopping"></i>
+
                 Rent Now — ₹199
+
             </button>
+
 
             <button
                 class="wishlist-btn"
-                onclick="event.stopPropagation(); addWishlist('Resident Evil 4')">
+                onclick="addWishlist('Resident Evil 4')">
+
                 <i class="fa-regular fa-heart"></i>
-                Wishlist
+
+                Add to Wishlist
+
             </button>
 
         </div>
@@ -147,64 +198,126 @@
 </section>
 
 
-<!-- ================= GAME INFO ================= -->
+
+<!-- =====================================================
+     GAME INFORMATION
+===================================================== -->
 
 <section class="game-info-section">
 
     <div class="game-info-container">
 
+
+        <!-- MAIN INFO -->
+
         <div class="game-main-info">
+
+            <span class="section-label">
+                ABOUT THE GAME
+            </span>
 
             <h2>
                 Resident Evil 4
             </h2>
 
             <p>
-                A complete reimagining of the legendary survival horror
-                experience. Fight terrifying enemies, solve puzzles and
-                survive one of the most dangerous missions Leon Kennedy
-                has ever faced.
+
+                Resident Evil 4 completely reimagines the legendary
+                survival horror experience with modern visuals,
+                redesigned gameplay and a darker atmosphere.
+
             </p>
 
             <p>
-                With modern graphics, intense combat and a darker
-                atmosphere, Resident Evil 4 delivers an unforgettable
-                horror experience.
+
+                Play as Leon S. Kennedy as he travels to a mysterious
+                village in Europe while searching for Ashley Graham.
+                Fight infected villagers, terrifying creatures and
+                powerful enemies while uncovering the secrets behind
+                the mysterious Las Plagas parasite.
+
             </p>
 
         </div>
 
 
+        <!-- GAME SPECS -->
+
         <div class="game-specs">
 
             <div class="spec-item">
-                <span>Developer</span>
-                <strong>Capcom</strong>
+
+                <i class="fa-solid fa-calendar"></i>
+
+                <div>
+
+                    <span>
+                        Release
+                    </span>
+
+                    <strong>
+                        March 24, 2023
+                    </strong>
+
+                </div>
+
             </div>
 
-            <div class="spec-item">
-                <span>Publisher</span>
-                <strong>Capcom</strong>
-            </div>
 
             <div class="spec-item">
-                <span>Release</span>
-                <strong>24 March 2023</strong>
+
+                <i class="fa-solid fa-building"></i>
+
+                <div>
+
+                    <span>
+                        Developer
+                    </span>
+
+                    <strong>
+                        Capcom
+                    </strong>
+
+                </div>
+
             </div>
 
-            <div class="spec-item">
-                <span>Genre</span>
-                <strong>Survival Horror</strong>
-            </div>
 
             <div class="spec-item">
-                <span>Platform</span>
-                <strong>PC / PlayStation / Xbox</strong>
+
+                <i class="fa-solid fa-gamepad"></i>
+
+                <div>
+
+                    <span>
+                        Genre
+                    </span>
+
+                    <strong>
+                        Survival Horror / Action
+                    </strong>
+
+                </div>
+
             </div>
 
+
             <div class="spec-item">
-                <span>Players</span>
-                <strong>Single Player</strong>
+
+                <i class="fa-solid fa-users"></i>
+
+                <div>
+
+                    <span>
+                        Players
+                    </span>
+
+                    <strong>
+                        Single Player
+                    </strong>
+
+                </div>
+
             </div>
 
         </div>
@@ -214,16 +327,21 @@
 </section>
 
 
-<!-- ================= FEATURES ================= -->
+
+<!-- =====================================================
+     FEATURES
+===================================================== -->
 
 <section class="game-features">
 
     <div class="section-title">
 
-        <span>WHY PLAY</span>
+        <span>
+            EXPERIENCE
+        </span>
 
         <h2>
-            Experience the Horror
+            Why Play Resident Evil 4?
         </h2>
 
     </div>
@@ -231,17 +349,18 @@
 
     <div class="feature-grid">
 
+
         <div class="feature-card">
 
             <i class="fa-solid fa-skull"></i>
 
             <h3>
-                Intense Horror
+                Survival Horror
             </h3>
 
             <p>
-                Experience a darker and more terrifying version
-                of the legendary Resident Evil story.
+                Fight terrifying enemies while managing
+                limited resources and ammunition.
             </p>
 
         </div>
@@ -252,12 +371,28 @@
             <i class="fa-solid fa-crosshairs"></i>
 
             <h3>
-                Modern Combat
+                Intense Combat
             </h3>
 
             <p>
-                Fight enemies using a huge variety of weapons,
-                abilities and tactical strategies.
+                Aim, dodge, parry and use a huge variety
+                of weapons to survive.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-map"></i>
+
+            <h3>
+                Explore
+            </h3>
+
+            <p>
+                Discover hidden treasures, secret locations
+                and dangerous environments.
             </p>
 
         </div>
@@ -268,28 +403,12 @@
             <i class="fa-solid fa-puzzle-piece"></i>
 
             <h3>
-                Solve Puzzles
+                Puzzles
             </h3>
 
             <p>
-                Explore dangerous environments and solve puzzles
-                to progress through the story.
-            </p>
-
-        </div>
-
-
-        <div class="feature-card">
-
-            <i class="fa-solid fa-film"></i>
-
-            <h3>
-                Cinematic Story
-            </h3>
-
-            <p>
-                Follow Leon Kennedy through a cinematic survival
-                horror adventure.
+                Solve environmental puzzles and uncover
+                the secrets hidden throughout the village.
             </p>
 
         </div>
@@ -299,13 +418,18 @@
 </section>
 
 
-<!-- ================= SCREENSHOTS ================= -->
+
+<!-- =====================================================
+     SCREENSHOTS
+===================================================== -->
 
 <section class="game-screenshots">
 
     <div class="section-title">
 
-        <span>GAMEPLAY</span>
+        <span>
+            GAMEPLAY
+        </span>
 
         <h2>
             Screenshots
@@ -316,24 +440,35 @@
 
     <div class="screenshot-grid">
 
-        <img
-            src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80"
-            alt="Resident Evil gameplay">
 
         <img
-            src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&w=1200&q=80"
-            alt="Game screenshot">
+            src="https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/ss_1.jpg"
+            alt="Resident Evil 4 gameplay">
+
 
         <img
-            src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?auto=format&fit=crop&w=1200&q=80"
-            alt="Gameplay screenshot">
+            src="https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/ss_2.jpg"
+            alt="Resident Evil 4 gameplay">
+
+
+        <img
+            src="https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/ss_3.jpg"
+            alt="Resident Evil 4 gameplay">
+
+
+        <img
+            src="https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/ss_4.jpg"
+            alt="Resident Evil 4 gameplay">
 
     </div>
 
 </section>
 
 
-<!-- ================= RENT CTA ================= -->
+
+<!-- =====================================================
+     RENT CTA
+===================================================== -->
 
 <section class="game-rent-cta">
 
@@ -348,31 +483,40 @@
         </h2>
 
         <p>
-            Start your survival horror adventure today.
+            Experience the nightmare without buying the game.
         </p>
 
     </div>
 
+
     <button
         class="rent-btn"
         onclick="rentGame('Resident Evil 4', 199)">
+
         <i class="fa-solid fa-cart-shopping"></i>
+
         Rent for ₹199
+
     </button>
 
 </section>
 
 
-<!-- ================= RELATED GAMES ================= -->
+
+<!-- =====================================================
+     RELATED GAMES
+===================================================== -->
 
 <section class="related-games">
 
     <div class="section-title">
 
-        <span>MORE GAMES</span>
+        <span>
+            YOU MAY ALSO LIKE
+        </span>
 
         <h2>
-            You May Also Like
+            Related Games
         </h2>
 
     </div>
@@ -380,12 +524,15 @@
 
     <div class="games">
 
+
+        <!-- GTA -->
+
         <div
             class="card"
             onclick="location.href='gta5.html'">
 
             <img
-                src="https://images.unsplash.com/photo-1511882150382-421056c89033?auto=format&fit=crop&w=900&q=80"
+                src="https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg"
                 alt="GTA V">
 
             <div class="card-content">
@@ -395,7 +542,7 @@
                 </h3>
 
                 <p>
-                    Open World
+                    Open-world action.
                 </p>
 
                 <strong>
@@ -407,12 +554,14 @@
         </div>
 
 
+        <!-- ELDEN RING -->
+
         <div
             class="card"
             onclick="location.href='eldenring.html'">
 
             <img
-                src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=900&q=80"
+                src="https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg"
                 alt="Elden Ring">
 
             <div class="card-content">
@@ -422,7 +571,7 @@
                 </h3>
 
                 <p>
-                    RPG
+                    Dark fantasy RPG.
                 </p>
 
                 <strong>
@@ -434,22 +583,24 @@
         </div>
 
 
+        <!-- CYBERPUNK -->
+
         <div
             class="card"
-            onclick="location.href='gowr.html'">
+            onclick="location.href='cyberpunk.html'">
 
             <img
-                src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=900&q=80"
-                alt="God of War">
+                src="https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg"
+                alt="Cyberpunk 2077">
 
             <div class="card-content">
 
                 <h3>
-                    God of War Ragnarök
+                    Cyberpunk 2077
                 </h3>
 
                 <p>
-                    Action RPG
+                    Futuristic open-world RPG.
                 </p>
 
                 <strong>
@@ -465,59 +616,48 @@
 </section>
 
 
-<!-- ================= FOOTER ================= -->
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
-    <div class="footer-content">
+    <div class="footer-logo">
+        🎮 GameRent
+    </div>
 
-        <div>
+    <p>
+        Premium games. Affordable rentals.
+    </p>
 
-            <div class="logo">
-                <i class="fa-solid fa-gamepad"></i>
-                GameRent
-            </div>
+    <div class="footer-links">
 
-            <p>
-                Premium games. Better prices. Infinite adventures.
-            </p>
+        <a href="index.html">
+            Home
+        </a>
 
-        </div>
+        <a href="games.html">
+            Games
+        </a>
 
-
-        <div class="footer-links">
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="games.html">
-                Games
-            </a>
-
-            <a href="index.html#contact">
-                Contact
-            </a>
-
-            <a href="index.html#profile">
-                Profile
-            </a>
-
-        </div>
+        <a href="index.html#contact">
+            Contact
+        </a>
 
     </div>
 
-
-    <div class="footer-bottom">
-
-        <p>
-            © 2026 GameRent. All rights reserved.
-        </p>
-
-    </div>
+    <p class="copyright">
+        © 2026 GameRent. All rights reserved.
+    </p>
 
 </footer>
 
+
+
+<!-- =====================================================
+     SCRIPT
+===================================================== -->
 
 <script src="script.js"></script>
 
