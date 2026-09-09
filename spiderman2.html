@@ -1,1 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Spider-Man 2 | GameRent</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav>
+
+    <div class="logo">
+        🎮 GameRent
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="index.html#featured">
+            Featured
+        </a>
+
+        <a href="games.html">
+            Games
+        </a>
+
+        <a href="index.html#profile">
+            Profile
+        </a>
+
+    </div>
+
+
+    <div class="nav-actions">
+
+        <a
+            href="index.html#profile"
+            class="login-btn"
+        >
+            <i class="fa-solid fa-user"></i>
+            Profile
+        </a>
+
+
+        <a
+            href="index.html#rentals"
+            class="cart-btn"
+        >
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            Rentals
+
+            <span
+                id="cartCount"
+                class="cart-count"
+            >
+                0
+            </span>
+
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     GAME HERO
+========================= -->
+
+<section
+    class="game-detail-hero"
+    style="
+        background-image:
+        linear-gradient(
+            90deg,
+            rgba(5,8,15,0.96),
+            rgba(5,8,15,0.68),
+            rgba(5,8,15,0.30)
+        ),
+        url('https://cdn.cloudflare.steamstatic.com/steam/apps/2651280/library_hero.jpg');
+    "
+>
+
+
+    <div class="game-detail-content">
+
+
+        <span class="game-badge">
+            ACTION / OPEN WORLD
+        </span>
+
+
+        <h1>
+            Spider-Man 2
+        </h1>
+
+
+        <div class="game-rating">
+
+            <span>
+                ⭐ 4.7/5
+            </span>
+
+            <span>
+                2023
+            </span>
+
+            <span>
+                Action
+            </span>
+
+        </div>
+
+
+        <p class="game-description">
+
+            Swing through the streets of New York as Peter Parker
+            and Miles Morales in an explosive superhero adventure.
+            Face powerful enemies, explore a massive open world
+            and experience an emotional Spider-Man story.
+
+        </p>
+
+
+        <div class="game-actions">
+
+
+            <button
+                class="primary-btn"
+                onclick="rentGame('Spider-Man 2', 279)"
+            >
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                Rent Now — ₹279
+
+            </button>
+
+
+            <button
+                class="secondary-btn"
+                onclick="addWishlist('Spider-Man 2')"
+            >
+
+                <i class="fa-regular fa-heart"></i>
+
+                Add to Wishlist
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     GAME INFORMATION
+========================= -->
+
+<section class="game-info-section">
+
+
+    <div class="game-info-container">
+
+
+        <div class="game-main-info">
+
+
+            <span class="section-label">
+                GAME OVERVIEW
+            </span>
+
+
+            <h2>
+                Be Greater. Together.
+            </h2>
+
+
+            <p>
+
+                Experience the next chapter of the Spider-Man
+                universe as Peter Parker and Miles Morales join
+                forces to protect New York from dangerous new
+                threats.
+
+            </p>
+
+
+            <p>
+
+                Move freely through the city using enhanced web
+                swinging, powerful combat abilities and new
+                traversal mechanics.
+
+            </p>
+
+
+            <p>
+
+                Switch between Peter and Miles as you fight
+                iconic villains and discover what it truly means
+                to be a hero.
+
+            </p>
+
+
+        </div>
+
+
+
+        <!-- =========================
+             GAME SPECS
+        ========================= -->
+
+        <div class="game-specs">
+
+
+            <div class="spec-item">
+
+                <i class="fa-solid fa-gamepad"></i>
+
+                <div>
+
+                    <span>
+                        Genre
+                    </span>
+
+                    <strong>
+                        Action / Open World
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="spec-item">
+
+                <i class="fa-solid fa-calendar"></i>
+
+                <div>
+
+                    <span>
+                        Release
+                    </span>
+
+                    <strong>
+                        2023
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="spec-item">
+
+                <i class="fa-solid fa-user"></i>
+
+                <div>
+
+                    <span>
+                        Players
+                    </span>
+
+                    <strong>
+                        Single Player
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="spec-item">
+
+                <i class="fa-solid fa-city"></i>
+
+                <div>
+
+                    <span>
+                        World
+                    </span>
+
+                    <strong>
+                        New York City
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================
+     FEATURES
+========================= -->
+
+<section class="game-features">
+
+
+    <div class="section">
+
+
+        <span class="section-label">
+            FEATURES
+        </span>
+
+
+        <h2>
+            Become Spider-Man
+        </h2>
+
+
+        <div class="feature-grid">
+
+
+            <!-- FEATURE 1 -->
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-spider"></i>
+
+                <h3>
+                    Two Spider-Men
+                </h3>
+
+                <p>
+
+                    Play as both Peter Parker and Miles Morales,
+                    each with their own abilities and combat style.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- FEATURE 2 -->
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-building"></i>
+
+                <h3>
+                    Open World New York
+                </h3>
+
+                <p>
+
+                    Explore an expanded New York City filled with
+                    missions, activities and hidden secrets.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- FEATURE 3 -->
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-bolt"></i>
+
+                <h3>
+                    Powerful Abilities
+                </h3>
+
+                <p>
+
+                    Unlock devastating abilities, gadgets and
+                    combat techniques.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- FEATURE 4 -->
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-mask"></i>
+
+                <h3>
+                    Iconic Villains
+                </h3>
+
+                <p>
+
+                    Face legendary enemies and discover new
+                    threats across the city.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================
+     GAME VISUALS
+========================= -->
+
+<section class="game-screenshots">
+
+
+    <div class="section">
+
+
+        <span class="section-label">
+            GAME VISUALS
+        </span>
+
+
+        <h2>
+            Inside Spider-Man 2
+        </h2>
+
+
+        <div class="screenshot-grid">
+
+
+            <img
+                src="https://4kwallpapers.com/images/walls/thumbs/11661.jpg"
+                alt="Spider-Man 2"
+            >
+
+
+            <img
+                src="https://cdn.cloudflare.steamstatic.com/steam/apps/2651280/library_hero.jpg"
+                alt="Spider-Man 2 artwork"
+            >
+          
+          <img
+                src="https://wallpapercg.com/media/ts_orig/16643.webp"
+                alt="Spider-Man 2 artwork"
+            >
+          
+          <img
+                src=https://images.hdqwalls.com/wallpapers/bthumb/venom-in-marvels-spider-man-2-game-2024-wi.jpg"
+                alt="Spider-Man 2 artwork"
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================
+     RENT CTA
+========================= -->
+
+<section class="game-rent-cta">
+
+
+    <div>
+
+
+        <span class="section-label">
+            READY TO SWING?
+        </span>
+
+
+        <h2>
+            Rent Spider-Man 2
+        </h2>
+
+
+        <p>
+            Explore New York and become a hero for just ₹279.
+        </p>
+
+
+        <button
+            class="primary-btn"
+            onclick="rentGame('Spider-Man 2', 279)"
+        >
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            Rent Spider-Man 2 — ₹279
+
+        </button>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================
+     RELATED GAMES
+========================= -->
+
+<section class="related-games">
+
+
+    <div class="section">
+
+
+        <span class="section-label">
+            MORE GAMES
+        </span>
+
+
+        <h2>
+            You May Also Like
+        </h2>
+
+
+        <div class="games">
+
+
+            <!-- GOD OF WAR -->
+
+            <div class="card">
+
+
+                <img
+                    src="https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/header.jpg"
+                    alt="God of War Ragnarok"
+                >
+
+
+                <div class="card-content">
+
+                    <h3>
+                        God of War Ragnarök
+                    </h3>
+
+                    <p>
+                        Action RPG
+                    </p>
+
+                    <a
+                        href="gowr.html"
+                        class="primary-btn"
+                    >
+                        View Game
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- GTA V -->
+
+            <div class="card">
+
+
+                <img
+                    src="https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg"
+                    alt="GTA V"
+                >
+
+
+                <div class="card-content">
+
+                    <h3>
+                        GTA V
+                    </h3>
+
+                    <p>
+                        Open World
+                    </p>
+
+                    <a
+                        href="gta5.html"
+                        class="primary-btn"
+                    >
+                        View Game
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- RDR2 -->
+
+            <div class="card">
+
+
+                <img
+                    src="https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg"
+                    alt="Red Dead Redemption 2"
+                >
+
+
+                <div class="card-content">
+
+                    <h3>
+                        Red Dead Redemption 2
+                    </h3>
+
+                    <p>
+                        Open World
+                    </p>
+
+                    <a
+                        href="rdr2.html"
+                        class="primary-btn"
+                    >
+                        View Game
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- GHOST -->
+
+            <div class="card">
+
+
+                <img
+                    src="https://cdn.cloudflare.steamstatic.com/steam/apps/2215430/header.jpg"
+                    alt="Ghost of Tsushima"
+                >
+
+
+                <div class="card-content">
+
+                    <h3>
+                        Ghost of Tsushima
+                    </h3>
+
+                    <p>
+                        Action Adventure
+                    </p>
+
+                    <a
+                        href="ghost.html"
+                        class="primary-btn"
+                    >
+                        View Game
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+
+    <div class="footer-content">
+
+
+        <div>
+
+            <h3>
+                🎮 GameRent
+            </h3>
+
+            <p>
+                Premium games. Better prices.
+                Play more, spend less.
+            </p>
+
+        </div>
+
+
+
+        <div>
+
+            <h4>
+                Quick Links
+            </h4>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="games.html">
+                Games
+            </a>
+
+            <a href="index.html#featured">
+                Featured
+            </a>
+
+            <a href="index.html#contact">
+                Contact
+            </a>
+
+        </div>
+
+
+
+        <div>
+
+            <h4>
+                GameRent
+            </h4>
+
+            <a href="index.html#profile">
+                Profile
+            </a>
+
+            <a href="index.html#rentals">
+                Rentals
+            </a>
+
+            <a href="games.html">
+                Game Library
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 GameRent. All rights reserved.
+        </p>
+
+    </div>
+
+
+</footer>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
