@@ -2735,3 +2735,276 @@ section {
     }
 
 }
+
+/* =========================================================
+   GAME DETAIL PAGE FIX
+========================================================= */
+
+.game-detail-hero {
+    min-height: 640px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    background-size: cover;
+    background-position: center;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.game-detail-content {
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+    padding: 100px 40px 80px;
+
+    position: relative;
+    z-index: 2;
+}
+
+.game-detail-content h1 {
+    font-size: clamp(55px, 7vw, 90px);
+    line-height: 1;
+    margin: 25px 0 15px;
+
+    color: #ffffff;
+}
+
+.game-detail-content .game-description {
+    max-width: 680px;
+
+    font-size: 17px;
+    line-height: 1.8;
+
+    color: #d0d7e2;
+
+    margin: 25px 0 30px;
+}
+
+.game-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+
+/* =========================================================
+   GAME INFO
+========================================================= */
+
+.game-info-section {
+    padding: 90px 0;
+}
+
+.game-info-container {
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+    padding: 0 40px;
+
+    display: block;
+}
+
+.game-main-info {
+    max-width: 850px;
+    margin-bottom: 60px;
+}
+
+.game-main-info h2,
+.game-features h2,
+.game-screenshots h2,
+.related-games h2 {
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+.game-main-info p {
+    color: #aeb7c5;
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+
+/* =========================================================
+   SPECS
+========================================================= */
+
+.game-specs {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+
+    margin-top: 30px;
+}
+
+.spec-item {
+    padding: 22px;
+
+    background: #101620;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 14px;
+}
+
+.spec-item span {
+    display: block;
+
+    color: #8994a5;
+
+    font-size: 13px;
+
+    margin-bottom: 6px;
+}
+
+.spec-item strong {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   FEATURES FIX
+========================================================= */
+
+.game-features {
+    padding: 90px 0;
+}
+
+.game-features .game-info-container {
+    display: block;
+}
+
+.feature-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.feature-card {
+    width: 100%;
+    min-height: 210px;
+
+    padding: 28px;
+
+    background: #101620;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 16px;
+}
+
+
+/* =========================================================
+   SCREENSHOTS
+========================================================= */
+
+.game-screenshots {
+    padding: 90px 0;
+}
+
+.game-screenshots .game-info-container {
+    display: block;
+}
+
+.screenshot-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+.screenshot-grid img {
+    width: 100%;
+    height: 300px;
+
+    object-fit: cover;
+
+    border-radius: 16px;
+
+    display: block;
+}
+
+
+/* =========================================================
+   RELATED GAMES
+========================================================= */
+
+.related-games {
+    padding: 90px 0;
+}
+
+.related-games .game-info-container {
+    display: block;
+}
+
+.related-games .feature-grid {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .game-detail-hero {
+        min-height: 600px;
+    }
+
+    .game-detail-content {
+        padding: 80px 25px 60px;
+    }
+
+    .game-detail-content h1 {
+        font-size: 52px;
+    }
+
+    .game-specs {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .related-games .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .game-detail-content h1 {
+        font-size: 42px;
+    }
+
+    .game-detail-content {
+        padding: 70px 20px 50px;
+    }
+
+    .game-specs,
+    .feature-grid,
+    .related-games .feature-grid,
+    .screenshot-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .game-actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
