@@ -2011,3 +2011,150 @@ function closeProfile() {
         overlay.style.display = "none";
     }
 }
+/* =========================================================
+   RENTALS PAGE
+========================================================= */
+
+function renderRentalsPage() {
+
+    const rentalsList = document.getElementById("rentalsList");
+    const cartTotal = document.getElementById("cartTotal");
+    const emptyRentals = document.getElementById("emptyRentals");
+    const rentalsContent = document.getElementById("rentalsContent");
+
+    if (!rentalsList) return;
+
+    rentalsList.innerHTML = "";
+
+    let total = 0;
+
+    if (rentals.length === 0) {
+
+        rentalsContent.style.display = "none";
+        emptyRentals.style.display = "block";
+
+        return;
+    }
+
+    rentalsContent.style.display = "block";
+    emptyRentals.style.display = "none";
+
+
+    rentals.forEach((rental, index) => {
+
+        total += Number(rental.price);
+
+
+        const item = document.createElement("div");
+
+        item.className = "rental-item";
+
+
+        item.innerHTML = `
+
+            <div class="rental-info">
+
+                <div class="rental-icon">
+                    🎮
+                </div>
+
+                <div>
+
+                    <h3>
+                        ${rental.game}
+                    </h3>
+
+                    <p>
+                        Premium Game Rental
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="rental-price">
+
+                <strong>
+                    ₹${rental.price}
+                </strong>
+
+                <button
+                    class="remove-rental"
+                    onclick="removeRentalFromPage(${index})"
+                >
+                    Remove
+                </button>
+
+            </div>
+
+        `;
+
+
+        rentalsList.appendChild(item);
+
+    });
+
+
+    cartTotal.textContent = `₹${total}`;
+
+
+    updateCartCount();
+
+}
+
+
+/* =========================================================
+   REMOVE FROM RENTALS PAGE
+========================================================= */
+
+function removeRentalFromPage(index) {
+
+    rentals.splice(index, 1);
+
+    localStorage.setItem(
+        "rentals",
+        JSON.stringify(rentals)
+    );
+
+    renderRentalsPage();
+
+    updateCartCount();
+
+}
+
+
+/* =========================================================
+   CART COUNT
+========================================================= */
+
+function updateCartCount() {
+
+    const cartCount =
+        document.getElementById("cartCount");
+
+    if (cartCount) {
+
+        cartCount.textContent =
+            rentals.length;
+
+    }
+
+}
+
+
+/* =========================================================
+   CHECKOUT
+========================================================= */
+
+function goToCheckout() {
+
+    if (rentals.length === 0) {
+
+        alert("Your rental cart is empty.");
+
+        return;
+    }
+
+    window.location.href = "checkout.html";
+}
