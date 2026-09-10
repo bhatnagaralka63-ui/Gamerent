@@ -1,23 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>GameRent - Rent Premium Games</title>
 
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
+
 </head>
-<body>
-  <canvas id="particles"></canvas>
 
-  <!-- Loading Screen -->
+
+<body>
+
+
+<!-- =====================================================
+     PARTICLES
+===================================================== -->
+
+<canvas id="particles"></canvas>
+
+
+
+<!-- =====================================================
+     LOADING SCREEN
+===================================================== -->
 
 <div id="loader">
 
@@ -29,48 +55,153 @@
         <span></span>
     </div>
 
-<div class="menu-toggle" id="menuToggle"> 
-    <i class="fa-solid fa-bars"></i> 
-</div> <ul class="nav-links" id="navLinks"> 
-    <li><a href="#">Home</a></li> <li>
-        <a href="#featured">Featured</a></li> 
-    <li><a href="games.html">
-        Games</a></li> <li><a href="#categories">
-            Categories</a></li> <li><a href="#myrentals">My Rentals</a></li> </div> 
-    <!-- KEEP THIS PROFILE BUTTON --> 
-    <button class="profile-btn" onclick="openProfile()"> 
-        <i class="fas fa-user"></i> <span>Profile</span> 
-    </button> <div class="search-box"> 
-        <i class="fas fa-search">
-            
-        </i> <input type="text" placeholder="Search games..."> 
-    </div> <button class="cart-btn"> 
-        🛒 <span id="cartCount">0</span> 
-    </button> 
-    <button class="login-btn"> 
-        <i class="fas fa-user">
-            
-        </i> Login
-    </button>
-</nav> 
-</ul>
+</div>
+
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar">
+
+
+    <!-- LOGO -->
+
+    <div class="logo">
+        🎮 <span>GameRent</span>
+    </div>
+
+
+    <!-- MOBILE MENU -->
+
+    <div class="menu-toggle" id="menuToggle">
+
+        <i class="fa-solid fa-bars"></i>
+
+    </div>
+
+
+    <!-- NAV LINKS -->
+
+    <ul class="nav-links" id="navLinks">
+
+        <li>
+            <a href="index.html">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="#featured">
+                Featured
+            </a>
+        </li>
+
+        <li>
+            <a href="games.html">
+                Games
+            </a>
+        </li>
+
+        <li>
+            <a href="#categories">
+                Categories
+            </a>
+        </li>
+
+        <li>
+            <a href="#myrentals">
+                My Rentals
+            </a>
+        </li>
+
+
+        <!-- PROFILE -->
+
+        <li>
+
+            <button
+                class="profile-btn"
+                onclick="openProfile()"
+            >
+
+                <i class="fas fa-user"></i>
+
+                Profile
+
+            </button>
+
+        </li>
+
+    </ul>
+
+
+
+    <!-- RIGHT SIDE -->
+
     <div class="nav-right">
-        <div class="search"> <i class="fa-solid fa-magnifying-glass">
-            
-        </i> 
-            <input type="text" id="searchBox" placeholder="Search games..." oninput="searchGame()"> 
+
+
+        <!-- SEARCH -->
+
+        <div class="search">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="searchBox"
+                placeholder="Search games..."
+                oninput="searchGame()"
+            >
+
         </div>
-        <button class="cart-btn" onclick="document.querySelector('#myrentals').scrollIntoView({behavior:'smooth'})" title="My Rentals">
-            <i class="fa-solid fa-cart-shopping">
-                
-            </i> 
-            <span class="cart-count" id="cartCount">0</span> 
+
+
+
+        <!-- CART -->
+
+        <button
+            class="cart-btn"
+            onclick="document.querySelector('#myrentals').scrollIntoView({behavior:'smooth'})"
+            title="My Rentals"
+        >
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            <span
+                class="cart-count"
+                id="cartCount"
+            >
+                0
+            </span>
+
         </button>
-        <button class="login-btn"> 
-            Login </button> 
-    </div> 
+
+
+
+        <!-- LOGIN -->
+
+        <button class="login-btn">
+
+            <i class="fas fa-user"></i>
+
+            Login
+
+        </button>
+
+
+    </div>
+
 </nav>
-<!-- Hero -->
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
 <section class="hero">
 
     <div class="overlay">
@@ -84,7 +215,10 @@
             Elden Ring and many more without paying full price.
         </p>
 
-        <button class="hero-btn">
+        <button
+            class="hero-btn"
+            onclick="document.querySelector('#games').scrollIntoView({behavior:'smooth'})"
+        >
             Browse Games
         </button>
 
@@ -92,554 +226,1171 @@
 
 </section>
 
-</div>
-
-</section>
-<!-- Featured -->
-<section id="featured" class="section">
 
-<h2>🔥 Featured Games</h2>
 
-<div class="games">
+<!-- =====================================================
+     FEATURED GAMES
+===================================================== -->
 
-<div class="card" data-genre="horror">
-  <div class="card"
-data-genre="horror"
-onclick="openPopup('Resident Evil 4','Survival horror adventure',199)">
-<img src="https://wallpapers.com/images/hd/resident-evil4-remake-light-up-vcx284czh2w1fqj4.jpg">
-<div class="info">
-<h3>Resident Evil 4</h3>
-<div class="bottom">
-<span>₹199 / Week</span>
-<button onclick="rentGame('Resident Evil 4', 199)">Rent Now</button>
-</div>
-</div>
-</div>
+<section
+    id="featured"
+    class="section"
+>
 
-<div class="card" data-genre="openworld">
-  <div class="card"
-data-genre="openworld"
-onclick="openPopup('GTA V','Open world crime adventure',149)">
-<img src="https://wallpapercave.com/wp/wp5315389.jpg">
-<div class="info">
-<h3>GTA V</h3>
-<div class="bottom">
-<span>₹149 / Week</span>
-<button onclick="rentGame('GTA V', 149)">Rent Now</button>
-</div>
-</div>
-</div>
+    <h2>
+        🔥 Featured Games
+    </h2>
 
-<div class="card" data-genre="rpg">
-  <div class="card"
-data-genre="rpg"
-onclick="openPopup('Elden Ring','Fantasy action RPG adventure',249)">
-<img src="https://i.pinimg.com/originals/24/40/4d/24404d0281de48c41b737719e4bd9dd1.jpg">
-<div class="info">
-<h3>Elden Ring</h3>
-<div class="bottom">
-<span>₹249 / Week</span>
-<button onclick="rentGame('Elden Ring', 249)">Rent Now</button>
-</div>
-</div>
-</div>
 
-</div>
+    <div class="games">
 
-</section>
 
-<!-- Trending -->
-<section id="games" class="section">
+        <!-- RESIDENT EVIL 4 -->
 
-<h2>Trending Games</h2>
+        <div
+            class="card"
+            data-genre="horror"
+            onclick="openPopup(
+                'Resident Evil 4',
+                'Survival horror adventure',
+                199
+            )"
+        >
 
-<div class="games" id="gameList">
+            <img
+                src="https://wallpapers.com/images/hd/resident-evil4-remake-light-up-vcx284czh2w1fqj4.jpg"
+                alt="Resident Evil 4"
+            >
 
-<!-- Card -->
-<div class="card" data-genre="horror">
+            <div class="info">
 
-<img src="https://wallpapers.com/images/hd/leon-kennedy-flashlight-resident-evil4-remake-5mzhg9boped0re6q.jpg">
+                <h3>
+                    Resident Evil 4
+                </h3>
 
-<div class="info">
+                <div class="bottom">
 
-<h3>Resident Evil 4</h3>
+                    <span>
+                        ₹199 / Week
+                    </span>
 
-<p>Survival Horror</p>
+                    <button
+                        onclick="event.stopPropagation(); rentGame('Resident Evil 4', 199)"
+                    >
+                        Rent Now
+                    </button>
 
-<div class="rating">
-    ⭐⭐⭐⭐⭐
-    <span>4.8</span>
-</div>
+                </div>
 
-<div class="bottom">
+            </div>
 
-<span>₹199</span>
+        </div>
 
-<div class="button-group">
-    <button onclick="addWishlist('Resident Evil 4')">
-        ❤️
-    </button>
 
-    <button onclick="rentGame('Resident Evil 4',199)">
-        Rent
-    </button>
-</div>
 
-</div>
+        <!-- GTA V -->
 
-</div>
+        <div
+            class="card"
+            data-genre="openworld"
+            onclick="openPopup(
+                'GTA V',
+                'Open world crime adventure',
+                149
+            )"
+        >
 
-</div>
+            <img
+                src="https://wallpapercave.com/wp/wp5315389.jpg"
+                alt="GTA V"
+            >
 
-<!-- Card -->
-<div class="card" data-genre="rpg">
+            <div class="info">
 
-<img src="https://wallpaperaccess.com/full/7994818.jpg">
+                <h3>
+                    GTA V
+                </h3>
 
-<div class="info">
+                <div class="bottom">
 
-<h3>Elden Ring</h3>
+                    <span>
+                        ₹149 / Week
+                    </span>
 
-<p>Action RPG</p>
+                    <button
+                        onclick="event.stopPropagation(); rentGame('GTA V', 149)"
+                    >
+                        Rent Now
+                    </button>
 
-<div class="rating">
-    ⭐⭐⭐⭐⭐
-    <span>4.9</span>
-</div>
+                </div>
 
-<div class="bottom">
+            </div>
 
-<span>₹249</span>
+        </div>
 
-<div class="button-group">
-    <button onclick="addWishlist('Elden Ring')">
-        ❤️
-    </button>
 
-    <button onclick="rentGame('Elden Ring',249)">
-        Rent
-    </button>
-</div>
-</div>
 
-</div>
+        <!-- ELDEN RING -->
 
-</div>
+        <div
+            class="card"
+            data-genre="rpg"
+            onclick="openPopup(
+                'Elden Ring',
+                'Fantasy action RPG adventure',
+                249
+            )"
+        >
 
-<!-- Card -->
-<div class="card" data-genre="scifi rpg">
+            <img
+                src="https://i.pinimg.com/originals/24/40/4d/24404d0281de48c41b737719e4bd9dd1.jpg"
+                alt="Elden Ring"
+            >
 
-<img src="https://wallpapercave.com/wp/wp3496656.jpg">
+            <div class="info">
 
-<div class="info">
+                <h3>
+                    Elden Ring
+                </h3>
 
-<h3>Cyberpunk 2077</h3>
+                <div class="bottom">
 
-<p>Sci-Fi RPG</p>
+                    <span>
+                        ₹249 / Week
+                    </span>
 
-<div class="rating">
-⭐⭐⭐⭐ <span>4.5</span>
-</div>
+                    <button
+                        onclick="event.stopPropagation(); rentGame('Elden Ring', 249)"
+                    >
+                        Rent Now
+                    </button>
 
-<div class="bottom">
+                </div>
 
-<span>₹299</span>
+            </div>
 
-<div class="button-group">
-    <button onclick="addWishlist('Cyberpunk 2077')">
-        ❤️
-    </button>
+        </div>
 
-    <button onclick="rentGame('Cyberpunk 2077',299)">
-        Rent
-    </button>
-</div>
 
-</div>
-
-</div>
-
-</div>
-
-<!-- Card -->
-<div class="card" data-genre="sports">
-
-<img src="https://wallpapercat.com/w/full/3/e/b/125115-1920x1080-desktop-full-hd-fifa-wallpaper-image.jpg">
-
-<div class="info">
-
-<h3>FIFA 25</h3>
-
-<p>Sports Football</p>
-
-<div class="rating">
-⭐⭐⭐⭐ <span>4.4</span>
-</div>
-
-<div class="bottom">
-
-<span>₹179</span>
-<div class="button-group">
-    <button onclick="addWishlist('FIFA 25')">
-        ❤️
-    </button>
-
-    <button onclick="rentGame('FIFA 25',179)">
-        Rent
-    </button>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- Card -->
-<div class="card" data-genre="openworld">
-
-<img src="https://wallpaperaccess.com/full/3401175.jpg">
-
-<div class="info">
-
-<h3>GTA V</h3>
-
-<p>Open World</p>
-
-<div class="rating">
-    ⭐⭐⭐⭐⭐
-    <span>4.7</span>
-</div>
-
-<div class="bottom">
-
-<span>₹149</span>
-
-<div class="button-group">
-    <button onclick="addWishlist('GTA V')">
-        ❤️
-    </button>
-
-    <button onclick="rentGame('GTA V',149)">
-        Rent
-    </button>
-</div>
-</div>
-
-</div>
-
-</div>
-
-<!-- Card -->
-<div class="card" data-genre="adventure openworld">
-
-<img src="https://wallpapercat.com/w/full/8/f/e/675-3840x2160-desktop-4k-red-dead-redemption-wallpaper-image.jpg">
-
-<div class="info">
-
-<h3>Red Dead Redemption</h3>
-
-<p>Action Adventure</p>
-
-<div class="rating">
-⭐⭐⭐⭐⭐ <span>4.9</span>
-</div>
-
-
-<div class="bottom">
-
-<span>₹219</span>
-
-<div class="button-group">
-    <button onclick="addWishlist('Red Dead Redemption')">
-        ❤️
-    </button>
-
-    <button onclick="rentGame('Red Dead Redemption',219)">
-        Rent
-    </button>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- Categories -->
-<section id="categories" class="section">
-
-<h2>Browse by Category</h2>
-
-<div class="categories">
-
-<div class="cat-card active" onclick="filterCategory('all', this)">
-<i class="fa-solid fa-grip"></i>
-<h3>All Games</h3>
-</div>
-
-<div class="cat-card" onclick="filterCategory('horror', this)">
-<i class="fa-solid fa-ghost"></i>
-<h3>Horror</h3>
-</div>
-
-<div class="cat-card" onclick="filterCategory('rpg', this)">
-<i class="fa-solid fa-dragon"></i>
-<h3>RPG</h3>
-</div>
-
-<div class="cat-card" onclick="filterCategory('scifi', this)">
-<i class="fa-solid fa-robot"></i>
-<h3>Sci-Fi</h3>
-</div>
-
-<div class="cat-card" onclick="filterCategory('sports', this)">
-<i class="fa-solid fa-futbol"></i>
-<h3>Sports</h3>
-</div>
-
-<div class="cat-card" onclick="filterCategory('openworld', this)">
-<i class="fa-solid fa-earth-americas"></i>
-<h3>Open World</h3>
-</div>
-
-<div class="cat-card" onclick="filterCategory('adventure', this)">
-<i class="fa-solid fa-mountain-sun"></i>
-<h3>Adventure</h3>
-</div>
-
-</div>
-
-</section>
-
-<!-- My Rentals -->
-<section id="myrentals" class="section">
-
-<h2>🛒 My Rentals</h2>
-
-<div class="games" id="rentalsList">
-<p class="empty-msg" id="emptyMsg">Your cart is empty. Rent some games to see them here!</p>
-</div>
-
-<h3 class="cart-total" id="cartTotal"></h3>
-  <button class="pay-btn" onclick="openCheckout()">
-    Checkout
-</button>
-
-</section>
-  
-<section class="section" id="wishlist">
-    <h2>❤️ My Wishlist</h2>
-
-    <div class="games" id="wishlistList">
-        <p class="empty-msg">Your wishlist is empty.</p>
-    </div>
-</section>
-<!-- User Profile -->
-
-<section id="profile" class="section">
-
-<h2>👤 My Profile</h2>
-
-<div class="profile-card">
-
-    <button class="profile-btn" onclick="openProfile()">
-    <i class="fa-solid fa-user"></i>
-    Profile
-</button>
     </div>
 
-    <h3 id="profileName">
+</section>
+
+
+
+<!-- =====================================================
+     TRENDING GAMES
+===================================================== -->
+
+<section
+    id="games"
+    class="section"
+>
+
+    <h2>
+        Trending Games
+    </h2>
+
+
+    <div
+        class="games"
+        id="gameList"
+    >
+
+
+        <!-- RESIDENT EVIL 4 -->
+
+        <div
+            class="card"
+            data-genre="horror"
+        >
+
+            <img
+                src="https://wallpapers.com/images/hd/leon-kennedy-flashlight-resident-evil4-remake-5mzhg9boped0re6q.jpg"
+                alt="Resident Evil 4"
+            >
+
+            <div class="info">
+
+                <h3>
+                    Resident Evil 4
+                </h3>
+
+                <p>
+                    Survival Horror
+                </p>
+
+                <div class="rating">
+
+                    ⭐⭐⭐⭐⭐
+
+                    <span>
+                        4.8
+                    </span>
+
+                </div>
+
+
+                <div class="bottom">
+
+                    <span>
+                        ₹199
+                    </span>
+
+
+                    <div class="button-group">
+
+                        <button
+                            onclick="addWishlist('Resident Evil 4')"
+                        >
+                            ❤️
+                        </button>
+
+                        <button
+                            onclick="rentGame('Resident Evil 4',199)"
+                        >
+                            Rent
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ELDEN RING -->
+
+        <div
+            class="card"
+            data-genre="rpg"
+        >
+
+            <img
+                src="https://wallpaperaccess.com/full/7994818.jpg"
+                alt="Elden Ring"
+            >
+
+            <div class="info">
+
+                <h3>
+                    Elden Ring
+                </h3>
+
+                <p>
+                    Action RPG
+                </p>
+
+                <div class="rating">
+
+                    ⭐⭐⭐⭐⭐
+
+                    <span>
+                        4.9
+                    </span>
+
+                </div>
+
+
+                <div class="bottom">
+
+                    <span>
+                        ₹249
+                    </span>
+
+
+                    <div class="button-group">
+
+                        <button
+                            onclick="addWishlist('Elden Ring')"
+                        >
+                            ❤️
+                        </button>
+
+                        <button
+                            onclick="rentGame('Elden Ring',249)"
+                        >
+                            Rent
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CYBERPUNK 2077 -->
+
+        <div
+            class="card"
+            data-genre="scifi rpg"
+        >
+
+            <img
+                src="https://wallpapercave.com/wp/wp3496656.jpg"
+                alt="Cyberpunk 2077"
+            >
+
+            <div class="info">
+
+                <h3>
+                    Cyberpunk 2077
+                </h3>
+
+                <p>
+                    Sci-Fi RPG
+                </p>
+
+                <div class="rating">
+
+                    ⭐⭐⭐⭐
+
+                    <span>
+                        4.5
+                    </span>
+
+                </div>
+
+
+                <div class="bottom">
+
+                    <span>
+                        ₹299
+                    </span>
+
+
+                    <div class="button-group">
+
+                        <button
+                            onclick="addWishlist('Cyberpunk 2077')"
+                        >
+                            ❤️
+                        </button>
+
+                        <button
+                            onclick="rentGame('Cyberpunk 2077',299)"
+                        >
+                            Rent
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FIFA 25 -->
+
+        <div
+            class="card"
+            data-genre="sports"
+        >
+
+            <img
+                src="https://wallpapercat.com/w/full/3/e/b/125115-1920x1080-desktop-full-hd-fifa-wallpaper-image.jpg"
+                alt="FIFA 25"
+            >
+
+            <div class="info">
+
+                <h3>
+                    FIFA 25
+                </h3>
+
+                <p>
+                    Sports Football
+                </p>
+
+                <div class="rating">
+
+                    ⭐⭐⭐⭐
+
+                    <span>
+                        4.4
+                    </span>
+
+                </div>
+
+
+                <div class="bottom">
+
+                    <span>
+                        ₹179
+                    </span>
+
+
+                    <div class="button-group">
+
+                        <button
+                            onclick="addWishlist('FIFA 25')"
+                        >
+                            ❤️
+                        </button>
+
+                        <button
+                            onclick="rentGame('FIFA 25',179)"
+                        >
+                            Rent
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- GTA V -->
+
+        <div
+            class="card"
+            data-genre="openworld"
+        >
+
+            <img
+                src="https://wallpaperaccess.com/full/3401175.jpg"
+                alt="GTA V"
+            >
+
+            <div class="info">
+
+                <h3>
+                    GTA V
+                </h3>
+
+                <p>
+                    Open World
+                </p>
+
+                <div class="rating">
+
+                    ⭐⭐⭐⭐⭐
+
+                    <span>
+                        4.7
+                    </span>
+
+                </div>
+
+
+                <div class="bottom">
+
+                    <span>
+                        ₹149
+                    </span>
+
+
+                    <div class="button-group">
+
+                        <button
+                            onclick="addWishlist('GTA V')"
+                        >
+                            ❤️
+                        </button>
+
+                        <button
+                            onclick="rentGame('GTA V',149)"
+                        >
+                            Rent
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- RED DEAD REDEMPTION -->
+
+        <div
+            class="card"
+            data-genre="adventure openworld"
+        >
+
+            <img
+                src="https://wallpapercat.com/w/full/8/f/e/675-3840x2160-desktop-4k-red-dead-redemption-wallpaper-image.jpg"
+                alt="Red Dead Redemption"
+            >
+
+            <div class="info">
+
+                <h3>
+                    Red Dead Redemption
+                </h3>
+
+                <p>
+                    Action Adventure
+                </p>
+
+                <div class="rating">
+
+                    ⭐⭐⭐⭐⭐
+
+                    <span>
+                        4.9
+                    </span>
+
+                </div>
+
+
+                <div class="bottom">
+
+                    <span>
+                        ₹219
+                    </span>
+
+
+                    <div class="button-group">
+
+                        <button
+                            onclick="addWishlist('Red Dead Redemption')"
+                        >
+                            ❤️
+                        </button>
+
+                        <button
+                            onclick="rentGame('Red Dead Redemption',219)"
+                        >
+                            Rent
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CATEGORIES
+===================================================== -->
+
+<section
+    id="categories"
+    class="section"
+>
+
+    <h2>
+        Browse by Category
+    </h2>
+
+
+    <div class="categories">
+
+
+        <div
+            class="cat-card active"
+            onclick="filterCategory('all', this)"
+        >
+
+            <i class="fa-solid fa-grip"></i>
+
+            <h3>
+                All Games
+            </h3>
+
+        </div>
+
+
+        <div
+            class="cat-card"
+            onclick="filterCategory('horror', this)"
+        >
+
+            <i class="fa-solid fa-ghost"></i>
+
+            <h3>
+                Horror
+            </h3>
+
+        </div>
+
+
+        <div
+            class="cat-card"
+            onclick="filterCategory('rpg', this)"
+        >
+
+            <i class="fa-solid fa-dragon"></i>
+
+            <h3>
+                RPG
+            </h3>
+
+        </div>
+
+
+        <div
+            class="cat-card"
+            onclick="filterCategory('scifi', this)"
+        >
+
+            <i class="fa-solid fa-robot"></i>
+
+            <h3>
+                Sci-Fi
+            </h3>
+
+        </div>
+
+
+        <div
+            class="cat-card"
+            onclick="filterCategory('sports', this)"
+        >
+
+            <i class="fa-solid fa-futbol"></i>
+
+            <h3>
+                Sports
+            </h3>
+
+        </div>
+
+
+        <div
+            class="cat-card"
+            onclick="filterCategory('openworld', this)"
+        >
+
+            <i class="fa-solid fa-earth-americas"></i>
+
+            <h3>
+                Open World
+            </h3>
+
+        </div>
+
+
+        <div
+            class="cat-card"
+            onclick="filterCategory('adventure', this)"
+        >
+
+            <i class="fa-solid fa-mountain-sun"></i>
+
+            <h3>
+                Adventure
+            </h3>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MY RENTALS
+===================================================== -->
+
+<section
+    id="myrentals"
+    class="section"
+>
+
+    <h2>
+        🛒 My Rentals
+    </h2>
+
+
+    <div
+        class="games"
+        id="rentalsList"
+    >
+
+        <p
+            class="empty-msg"
+            id="emptyMsg"
+        >
+            Your cart is empty.
+            Rent some games to see them here!
+        </p>
+
+    </div>
+
+
+    <h3
+        class="cart-total"
+        id="cartTotal"
+    ></h3>
+
+
+    <button
+        class="pay-btn"
+        onclick="openCheckout()"
+    >
+        Checkout
+    </button>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     WISHLIST
+===================================================== -->
+
+<section
+    id="wishlist"
+    class="section"
+>
+
+    <h2>
+        ❤️ My Wishlist
+    </h2>
+
+
+    <div
+        class="games"
+        id="wishlistList"
+    >
+
+        <p class="empty-msg">
+            Your wishlist is empty.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PROFILE
+===================================================== -->
+
+<section
+    id="profile"
+    class="section"
+>
+
+    <h2>
+        👤 My Profile
+    </h2>
+
+
+    <div class="profile-card">
+
+        <button
+            class="profile-btn"
+            onclick="openProfile()"
+        >
+
+            <i class="fa-solid fa-user"></i>
+
+            Profile
+
+        </button>
+
+    </div>
+
+
+    <h3 id="profileDisplayName">
         Guest User
     </h3>
 
+
     <div class="profile-stats">
 
+
         <div>
+
             <i class="fa-solid fa-gamepad"></i>
-            <h4 id="rentedCount">0</h4>
-            <p>Games Rented</p>
+
+            <h4 id="rentedCount">
+                0
+            </h4>
+
+            <p>
+                Games Rented
+            </p>
+
         </div>
 
 
         <div>
+
             <i class="fa-solid fa-heart"></i>
-            <h4 id="wishlistCount">0</h4>
-            <p>Wishlist</p>
+
+            <h4 id="wishlistCount">
+                0
+            </h4>
+
+            <p>
+                Wishlist
+            </p>
+
         </div>
 
 
         <div>
+
             <i class="fa-solid fa-wallet"></i>
-            <h4 id="moneySpent">₹0</h4>
-            <p>Total Spent</p>
+
+            <h4 id="moneySpent">
+                ₹0
+            </h4>
+
+            <p>
+                Total Spent
+            </p>
+
         </div>
+
 
     </div>
 
 
-    <button class="logout-btn" onclick="logoutUser()">
+    <button
+        class="logout-btn"
+        onclick="logoutUser()"
+    >
         Logout
     </button>
 
 
-</div>
+</section>
+
+
+
+<!-- =====================================================
+     CHECKOUT
+===================================================== -->
+
+<section
+    id="checkout"
+    class="section"
+>
+
+    <h2>
+        💳 Checkout
+    </h2>
+
+
+    <div class="checkout-box">
+
+        <h3>
+            Your Order
+        </h3>
+
+
+        <div id="checkoutItems">
+
+            <p>
+                No games selected.
+            </p>
+
+        </div>
+
+
+        <h3 id="checkoutTotal">
+            Total: ₹0
+        </h3>
+
+
+        <button
+            onclick="payNow()"
+            class="pay-btn"
+        >
+            Proceed to Payment
+        </button>
+
+    </div>
 
 </section>
-  <!-- Checkout -->
-<section id="checkout" class="section">
 
-<h2>💳 Checkout</h2>
 
-<div class="checkout-box">
 
-<h3>Your Order</h3>
+<!-- =====================================================
+     FEATURES
+===================================================== -->
 
-<div id="checkoutItems">
-    <p>No games selected.</p>
-</div>
-
-<h3 id="checkoutTotal">
-    Total: ₹0
-</h3>
-
-<button onclick="payNow()" class="pay-btn">
-    Proceed to Payment
-</button>
-
-</div>
-
-</section>
-<!-- Features -->
 <section class="features">
 
-<div class="feature">
 
-<i class="fa-solid fa-bolt"></i>
+    <div class="feature">
 
-<h3>Instant Access</h3>
+        <i class="fa-solid fa-bolt"></i>
 
-<p>
-Rent and start playing immediately.
-</p>
+        <h3>
+            Instant Access
+        </h3>
 
-</div>
+        <p>
+            Rent and start playing immediately.
+        </p>
 
-<div class="feature">
+    </div>
 
-<i class="fa-solid fa-wallet"></i>
 
-<h3>Affordable</h3>
 
-<p>
-Premium games at low rental prices.
-</p>
+    <div class="feature">
 
-</div>
+        <i class="fa-solid fa-wallet"></i>
 
-<div class="feature">
+        <h3>
+            Affordable
+        </h3>
 
-<i class="fa-solid fa-shield-halved"></i>
+        <p>
+            Premium games at low rental prices.
+        </p>
 
-<h3>Secure Payments</h3>
+    </div>
 
-<p>
-100% Safe Payment Gateway.
-</p>
 
-</div>
+
+    <div class="feature">
+
+        <i class="fa-solid fa-shield-halved"></i>
+
+        <h3>
+            Secure Payments
+        </h3>
+
+        <p>
+            100% Safe Payment Gateway.
+        </p>
+
+    </div>
+
 
 </section>
 
-<!-- Footer -->
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer>
 
-<h2>GameRent</h2>
+    <h2>
+        🎮 GameRent
+    </h2>
 
-<p>
 
-© 2026 GameRent
+    <p>
+        Premium games. Affordable rentals.
+    </p>
 
-</p>
-<!-- Game Popup -->
+
+    <h3>
+        Quick Links
+    </h3>
+
+
+    <div class="quick-links">
+
+        <a href="#">
+            Home
+        </a>
+
+        <a href="#games">
+            Games
+        </a>
+
+        <a href="#categories">
+            Categories
+        </a>
+
+        <a href="#myrentals">
+            My Rentals
+        </a>
+
+    </div>
+
+
+    <p>
+        © 2026 GameRent. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+
+<!-- =====================================================
+     GAME POPUP
+===================================================== -->
 
 <div id="gamePopup">
 
-<div class="popup-box">
-
-<span onclick="closePopup()">✖</span>
-
-<h2 id="popupTitle">
-Game Name
-</h2>
-
-<p id="popupDesc">
-Game Description
-</p>
+    <div class="popup-box">
 
 
-<button onclick="rentPopupGame()">
-Rent Now
-</button>
+        <span
+            onclick="closePopup()"
+        >
+            ✖
+        </span>
 
+
+        <h2 id="popupTitle">
+            Game Name
+        </h2>
+
+
+        <p id="popupDesc">
+            Game Description
+        </p>
+
+
+        <button
+            onclick="rentPopupGame()"
+        >
+            Rent Now
+        </button>
+
+
+    </div>
 
 </div>
 
-</div>
-  <!-- Profile Popup -->
 
-<div class="profile-overlay" id="profileOverlay">
+
+<!-- =====================================================
+     PROFILE POPUP
+===================================================== -->
+
+<div
+    class="profile-overlay"
+    id="profileOverlay"
+>
 
     <div class="profile-box">
 
-        <span class="close-profile" onclick="closeProfile()">
+
+        <!-- CLOSE -->
+
+        <span
+            class="close-profile"
+            onclick="closeProfile()"
+        >
             &times;
         </span>
 
-        <h2>Create Your Profile</h2>
+
+        <!-- TITLE -->
+
+        <h2>
+            Create Your Profile
+        </h2>
+
+
+        <!-- AVATAR PREVIEW -->
 
         <div class="avatar-preview">
-            <img id="selectedAvatar" 
-            src="https://i.pravatar.cc/150?img=12">
+
+            <img
+                id="selectedAvatar"
+                src="https://i.pravatar.cc/150?img=12"
+                alt="Profile Avatar"
+            >
+
         </div>
 
 
-        <input 
-        type="text" 
-        id="profileName" 
-        placeholder="Enter username">
+        <!-- USERNAME -->
+
+        <input
+            type="text"
+            id="profileName"
+            placeholder="Enter username"
+        >
 
 
-        <h3>Select Avatar</h3>
+        <h3>
+            Select Avatar
+        </h3>
+
+
+        <!-- AVATARS -->
 
         <div class="avatar-list">
 
-            <img onclick="selectAvatar(this.src)"
-            src="https://i.pravatar.cc/150?img=1">
 
-            <img onclick="selectAvatar(this.src)"
-            src="https://i.pravatar.cc/150?img=5">
+            <img
+                onclick="selectAvatar(this.src)"
+                src="https://i.pravatar.cc/150?img=1"
+                alt="Avatar"
+            >
 
-            <img onclick="selectAvatar(this.src)"
-            src="https://i.pravatar.cc/150?img=12">
 
-            <img onclick="selectAvatar(this.src)"
-            src="https://i.pravatar.cc/150?img=15">
+            <img
+                onclick="selectAvatar(this.src)"
+                src="https://i.pravatar.cc/150?img=5"
+                alt="Avatar"
+            >
 
-            <img onclick="selectAvatar(this.src)"
-            src="https://i.pravatar.cc/150?img=20">
 
-            <img onclick="selectAvatar(this.src)"
-            src="https://i.pravatar.cc/150?img=25">
+            <img
+                onclick="selectAvatar(this.src)"
+                src="https://i.pravatar.cc/150?img=12"
+                alt="Avatar"
+            >
+
+
+            <img
+                onclick="selectAvatar(this.src)"
+                src="https://i.pravatar.cc/150?img=15"
+                alt="Avatar"
+            >
+
+
+            <img
+                onclick="selectAvatar(this.src)"
+                src="https://i.pravatar.cc/150?img=20"
+                alt="Avatar"
+            >
+
+
+            <img
+                onclick="selectAvatar(this.src)"
+                src="https://i.pravatar.cc/150?img=25"
+                alt="Avatar"
+            >
+
 
         </div>
 
 
-        <button class="save-profile"
-        onclick="saveProfile()">
+        <!-- SAVE -->
+
+        <button
+            class="save-profile"
+            onclick="saveProfile()"
+        >
             Save Profile
         </button>
 
@@ -647,192 +1398,71 @@ Rent Now
     </div>
 
 </div>
-</footer>
-<!-- Game Details Popup -->
 
-<div class="game-modal" id="gameModal">
+
+
+<!-- =====================================================
+     GAME DETAILS MODAL
+===================================================== -->
+
+<div
+    class="game-modal"
+    id="gameModal"
+>
 
     <div class="modal-content">
 
-        <span class="close-modal" onclick="closeGameModal()">
+
+        <span
+            class="close-modal"
+            onclick="closeGameModal()"
+        >
             &times;
         </span>
 
-        <img id="modalImage">
+
+        <img
+            id="modalImage"
+            alt="Game"
+        >
+
 
         <h2 id="modalTitle"></h2>
 
+
         <p id="modalGenre"></p>
 
-        <div class="rating" id="modalRating"></div>
+
+        <div
+            class="rating"
+            id="modalRating"
+        ></div>
+
 
         <p id="modalDescription"></p>
 
+
         <h3 id="modalPrice"></h3>
+
 
         <button id="modalRentBtn">
             Rent Now
         </button>
 
+
     </div>
 
 </div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
 <script src="script.js"></script>
-<!-- ==========================================
-     PROFILE POPUP
-========================================== -->
-
-<div id="profileOverlay" class="profile-overlay">
-
-    <div class="profile-modal">
-
-        <!-- CLOSE -->
-        <button class="profile-close" onclick="closeProfile()">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-
-        <!-- HEADER -->
-        <div class="profile-header">
-
-            <div class="profile-avatar-wrapper">
-                <img
-                    id="selectedAvatar"
-                    src="https://i.pravatar.cc/150?img=12"
-                    alt="Profile Avatar"
-                >
-            </div>
-
-            <h2>My Profile</h2>
-
-            <p>
-                Manage your GameRent profile
-            </p>
-
-        </div>
 
 
-        <!-- USERNAME -->
-        <div class="profile-field">
-
-            <label for="profileInputName">
-                Username
-            </label>
-
-            <div class="profile-input-wrapper">
-
-                <i class="fa-solid fa-user"></i>
-
-                <input
-                    type="text"
-                    id="profileInputName"
-                    placeholder="Enter username"
-                >
-
-            </div>
-
-        </div>
-
-
-        <!-- AVATARS -->
-        <div class="profile-field">
-
-            <label>
-                Choose Avatar
-            </label>
-
-            <div class="avatar-list">
-
-                <img
-                    src="https://i.pravatar.cc/150?img=12"
-                    onclick="selectAvatar(this.src, this)"
-                    alt="Avatar"
-                >
-
-                <img
-                    src="https://i.pravatar.cc/150?img=11"
-                    onclick="selectAvatar(this.src, this)"
-                    alt="Avatar"
-                >
-
-                <img
-                    src="https://i.pravatar.cc/150?img=13"
-                    onclick="selectAvatar(this.src, this)"
-                    alt="Avatar"
-                >
-
-                <img
-                    src="https://i.pravatar.cc/150?img=14"
-                    onclick="selectAvatar(this.src, this)"
-                    alt="Avatar"
-                >
-
-                <img
-                    src="https://i.pravatar.cc/150?img=15"
-                    onclick="selectAvatar(this.src, this)"
-                    alt="Avatar"
-                >
-
-            </div>
-
-        </div>
-
-
-        <!-- STATS -->
-        <div class="profile-popup-stats">
-
-            <div class="profile-stat">
-
-                <span class="profile-stat-icon">
-                    🎮
-                </span>
-
-                <div>
-                    <strong id="profileRentals">0</strong>
-                    <small>Rentals</small>
-                </div>
-
-            </div>
-
-
-            <div class="profile-stat">
-
-                <span class="profile-stat-icon">
-                    ❤️
-                </span>
-
-                <div>
-                    <strong id="profileWishlist">0</strong>
-                    <small>Wishlist</small>
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- BUTTONS -->
-        <div class="profile-actions">
-
-            <button
-                class="profile-save-btn"
-                onclick="saveProfile()"
-            >
-                <i class="fa-solid fa-check"></i>
-                Save Profile
-            </button>
-
-            <button
-                class="profile-logout-btn"
-                onclick="logoutUser()"
-            >
-                <i class="fa-solid fa-right-from-bracket"></i>
-                Logout
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
 </body>
+
 </html>
