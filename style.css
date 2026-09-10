@@ -3437,3 +3437,149 @@ footer .quick-links {
 footer .quick-links a {
     text-decoration: none;
 }
+/* =========================
+   NAV RIGHT SECTION
+========================= */
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+
+/* =========================
+   PROFILE BUTTON
+========================= */
+
+.profile-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    color: #ffffff;
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    padding: 9px 14px;
+    border: 1px solid #303844;
+    border-radius: 7px;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    transition: 0.25s ease;
+}
+
+.profile-btn:hover {
+    color: #00d4ff;
+    border-color: #00d4ff;
+    background: rgba(0, 212, 255, 0.08);
+}
+
+
+/* =========================
+   SEARCH BOX
+========================= */
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    height: 40px;
+    padding: 0 12px;
+
+    border: 1px solid #303844;
+    border-radius: 7px;
+
+    background: #10151d;
+
+    transition: 0.25s ease;
+}
+
+.search-box i {
+    color: #a9b0bb;
+    font-size: 14px;
+}
+
+.search-box input {
+    width: 145px;
+
+    background: transparent;
+    border: none;
+    outline: none;
+
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.search-box input::placeholder {
+    color: #858c98;
+}
+
+.search-box:focus-within {
+    border-color: #00d4ff;
+    box-shadow: 0 0 12px rgba(0, 212, 255, 0.12);
+}
+
+
+/* =========================
+   CART
+========================= */
+
+.cart-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    color: #ffffff;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+.cart-btn:hover {
+    color: #00d4ff;
+}
+
+#cartCount {
+    font-size: 15px;
+    color: #ffffff;
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+.login-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    background: #55c9f2;
+    color: #071018;
+
+    padding: 11px 22px;
+
+    border-radius: 25px;
+
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    transition: 0.25s ease;
+}
+
+.login-btn:hover {
+    background: #00d4ff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 212, 255, 0.25);
+}
