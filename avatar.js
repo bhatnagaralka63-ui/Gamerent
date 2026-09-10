@@ -2,24 +2,34 @@
 // AVATAR EDITOR
 // ==========================================
 
-let selectedAvatar = localStorage.getItem("profileAvatar") ||
-    "https://avatarfiles.alphacoders.com/343/thumb-1920-343468.png";
-
-
-// ==========================================
-// LOAD SAVED AVATAR
-// ==========================================
-
 document.addEventListener("DOMContentLoaded", function () {
 
-    const currentAvatar = document.getElementById("currentAvatar");
+    const savedAvatar =
+        localStorage.getItem("profileAvatar");
 
-    if (currentAvatar) {
-        currentAvatar.src = selectedAvatar;
+    const savedName =
+        localStorage.getItem("username");
+
+    const currentAvatar =
+        document.getElementById("currentAvatar");
+
+    const nameInput =
+        document.getElementById("profileName");
+
+
+    // Load avatar
+    if (savedAvatar && currentAvatar) {
+        currentAvatar.src = savedAvatar;
+        selectedAvatar = savedAvatar;
+    }
+
+
+    // Load name
+    if (savedName && nameInput) {
+        nameInput.value = savedName;
     }
 
 });
-
 
 // ==========================================
 // SELECT AVATAR
@@ -58,21 +68,30 @@ function selectAvatar(card) {
 
 function saveAvatar() {
 
-    // Save avatar permanently in browser
+    // Get the name
+    const nameInput = document.getElementById("profileName");
+
+    let name = nameInput.value.trim();
+
+    // Don't allow empty name
+    if (!name) {
+        name = "Rudra";
+    }
+
+    // Save avatar
     localStorage.setItem("profileAvatar", selectedAvatar);
 
-    // Also save using profile object
+    // Save name
+    localStorage.setItem("username", name);
+
+    // Save profile object too
     let profile = JSON.parse(localStorage.getItem("profile")) || {};
 
+    profile.name = name;
     profile.avatar = selectedAvatar;
-
-    // Keep existing name if there is one
-    if (!profile.name) {
-        profile.name = "Rudra";
-    }
 
     localStorage.setItem("profile", JSON.stringify(profile));
 
-    // Go back to GameRent
+    // Return to GameRent
     window.location.href = "index.html";
 }
