@@ -38,66 +38,69 @@
     </div>
 
     <!-- Hamburger Menu -->
+    <nav>
+
+    <!-- LOGO -->
+    <div class="logo">
+        🎮 <span>GameRent</span>
+    </div>
+
+    <!-- MOBILE MENU -->
     <div class="menu-toggle" id="menuToggle">
         <i class="fa-solid fa-bars"></i>
     </div>
 
+    <!-- NAV LINKS -->
     <ul class="nav-links" id="navLinks">
-        <li><a href="#">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="#featured">Featured</a></li>
         <li><a href="games.html">Games</a></li>
         <li><a href="#categories">Categories</a></li>
         <li><a href="#myrentals">My Rentals</a></li>
-        </div>
-        <!-- KEEP THIS PROFILE BUTTON -->
-    <button class="profile-btn" onclick="openProfile()">
-        <i class="fas fa-user"></i>
-        <span>Profile</span>
-    </button>
 
-    <div class="search-box">
-        <i class="fas fa-search"></i>
-        <input type="text" placeholder="Search games...">
-    </div>
-
-    <button class="cart-btn">
-        🛒
-        <span id="cartCount">0</span>
-    </button>
-
-    <button class="login-btn">
-        <i class="fas fa-user"></i>
-        Login
-    </button>
-</nav>
+        <!-- PROFILE -->
+        <li>
+            <button class="profile-btn" onclick="openProfile()">
+                <i class="fas fa-user"></i>
+                Profile
+            </button>
+        </li>
     </ul>
 
+    <!-- RIGHT SIDE -->
     <div class="nav-right">
 
+        <!-- SEARCH -->
         <div class="search">
             <i class="fa-solid fa-magnifying-glass"></i>
+
             <input
                 type="text"
                 id="searchBox"
                 placeholder="Search games..."
-                oninput="searchGame()">
+                oninput="searchGame()"
+            >
         </div>
 
-        <button class="cart-btn"
+        <!-- CART -->
+        <button
+            class="cart-btn"
             onclick="document.querySelector('#myrentals').scrollIntoView({behavior:'smooth'})"
-            title="My Rentals">
+            title="My Rentals"
+        >
             <i class="fa-solid fa-cart-shopping"></i>
             <span class="cart-count" id="cartCount">0</span>
         </button>
 
+        <!-- LOGIN -->
         <button class="login-btn">
+            <i class="fas fa-user"></i>
             Login
         </button>
 
     </div>
 
 </nav>
-  
 <!-- Hero -->
 <section class="hero">
 
