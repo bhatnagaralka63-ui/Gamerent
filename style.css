@@ -3976,3 +3976,40 @@ footer .quick-links a {
     }
 
 }
+/* =========================
+   NAVBAR AVATAR
+========================= */
+
+.avatar-nav-btn {
+    width: 48px;
+    height: 48px;
+
+    padding: 0;
+    border: 2px solid #2d394d;
+    border-radius: 50%;
+
+    background: #111722;
+
+    cursor: pointer;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.25s ease;
+}
+
+.avatar-nav-btn img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    display: block;
+}
+
+.avatar-nav-btn:hover {
+    border-color: #00d4ff;
+    transform: scale(1.08);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.35);
+}
