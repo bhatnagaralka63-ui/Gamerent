@@ -3583,3 +3583,396 @@ footer .quick-links a {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(0, 212, 255, 0.25);
 }
+
+/* =========================================================
+   PROFILE POPUP
+========================================================= */
+
+.profile-overlay {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(3, 7, 15, 0.78);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    z-index: 9999;
+
+    padding: 20px;
+}
+
+
+/* Show popup */
+
+.profile-overlay.active {
+    display: flex;
+}
+
+
+/* =========================================================
+   PROFILE BOX
+========================================================= */
+
+.profile-box {
+    position: relative;
+
+    width: 420px;
+    max-width: 100%;
+
+    padding: 35px;
+
+    background: #101620;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.65),
+        0 0 40px rgba(0, 212, 255, 0.08);
+
+    text-align: center;
+
+    animation: profilePopup 0.25s ease;
+}
+
+
+/* Popup animation */
+
+@keyframes profilePopup {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.close-profile {
+    position: absolute;
+
+    top: 15px;
+    right: 18px;
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #aeb7c4;
+
+    font-size: 22px;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.close-profile:hover {
+    color: #ffffff;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    transform: rotate(90deg);
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.profile-box h2 {
+    margin-bottom: 25px;
+
+    color: #ffffff;
+
+    font-size: 26px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   MAIN AVATAR
+========================================================= */
+
+.avatar-preview {
+    width: 120px;
+    height: 120px;
+
+    margin: 0 auto 20px;
+
+    padding: 4px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #00d4ff,
+        #5b7cff
+    );
+
+    box-shadow:
+        0 0 25px rgba(0, 212, 255, 0.25);
+}
+
+
+.avatar-preview img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 3px solid #101620;
+}
+
+
+/* =========================================================
+   USERNAME INPUT
+========================================================= */
+
+#profileName {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    margin-bottom: 22px;
+
+    background: #080d15;
+
+    border: 1px solid #293241;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    color: #ffffff;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 14px;
+
+    transition: 0.2s ease;
+}
+
+
+#profileName::placeholder {
+    color: #707b8c;
+}
+
+
+#profileName:focus {
+    border-color: #00d4ff;
+
+    box-shadow:
+        0 0 0 3px rgba(0, 212, 255, 0.1);
+}
+
+
+/* =========================================================
+   SELECT AVATAR TITLE
+========================================================= */
+
+.profile-box h3 {
+    margin-bottom: 15px;
+
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   AVATAR LIST
+========================================================= */
+
+.avatar-list {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 25px;
+}
+
+
+.avatar-list img {
+    width: 52px;
+    height: 52px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 2px solid transparent;
+
+    cursor: pointer;
+
+    opacity: 0.75;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.avatar-list img:hover {
+    opacity: 1;
+
+    transform: translateY(-3px) scale(1.05);
+
+    border-color: #00d4ff;
+
+    box-shadow:
+        0 0 15px rgba(0, 212, 255, 0.25);
+}
+
+
+/* =========================================================
+   SAVE PROFILE BUTTON
+========================================================= */
+
+.save-profile {
+    width: 100%;
+
+    padding: 13px 20px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #00c8f5;
+
+    color: #061018;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.save-profile:hover {
+    background: #24d4ff;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 25px rgba(0, 212, 255, 0.25);
+}
+
+
+.save-profile:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   PROFILE NAV BUTTON
+========================================================= */
+
+.profile-btn {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 10px 16px;
+
+    border: 1px solid #303b4b;
+
+    border-radius: 9px;
+
+    background: #111822;
+
+    color: #ffffff;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.profile-btn:hover {
+    background: #182230;
+
+    border-color: #00d4ff;
+
+    color: #00d4ff;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .profile-box {
+        width: 100%;
+
+        padding: 28px 22px;
+
+        border-radius: 16px;
+    }
+
+
+    .profile-box h2 {
+        font-size: 22px;
+    }
+
+
+    .avatar-preview {
+        width: 105px;
+        height: 105px;
+    }
+
+
+    .avatar-list img {
+        width: 48px;
+        height: 48px;
+    }
+
+}
