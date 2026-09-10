@@ -1,11 +1,15 @@
-/* ================================
+/* =========================================
    AVATAR PAGE
-================================ */
+========================================= */
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -16,27 +20,40 @@ body {
 }
 
 
-/* ================================
+/* =========================================
    TOP BAR
-================================ */
+========================================= */
 
 .avatar-header {
     height: 90px;
+    background: #111216;
+    border-bottom: 1px solid #252832;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     padding: 0 45px;
 
-    background: #101116;
-    border-bottom: 1px solid #24262d;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .back-btn {
+    background: none;
+    border: none;
     color: white;
-    text-decoration: none;
-    font-size: 38px;
-    font-weight: 300;
+
+    font-size: 34px;
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.back-btn:hover {
+    color: #55c9f5;
+    transform: translateX(-4px);
 }
 
 .avatar-header h1 {
@@ -47,175 +64,181 @@ body {
 .done-btn {
     background: none;
     border: none;
-    color: #777;
-    font-size: 18px;
+
+    color: #777a83;
+
+    font-family: inherit;
+    font-size: 17px;
     font-weight: 600;
+
     cursor: pointer;
 }
 
-
-/* ================================
-   MAIN PROFILE AREA
-================================ */
-
-.avatar-main {
-    width: 100%;
-    max-width: 1100px;
-    margin: auto;
-    padding: 70px 30px 100px;
+.done-btn:hover {
+    color: #55c9f5;
 }
 
 
-/* ================================
-   CURRENT AVATAR
-================================ */
+/* =========================================
+   PROFILE HERO
+========================================= */
 
-.current-profile {
+.avatar-profile {
     text-align: center;
-    margin-bottom: 80px;
+    padding: 100px 20px 90px;
 }
 
 .current-avatar {
     width: 195px;
     height: 195px;
 
-    object-fit: cover;
-
     border-radius: 50%;
+
+    object-fit: cover;
 
     border: 4px solid white;
 
     display: block;
-    margin: 0 auto 20px;
+    margin: 0 auto 25px;
 
-    background: #181a21;
+    background: #191b22;
+
+    box-shadow:
+        0 0 25px rgba(85, 201, 245, 0.15);
 }
 
-.profile-name {
+.avatar-profile h2 {
     font-size: 30px;
     font-weight: 700;
 }
 
 
-/* ================================
-   AVATAR CATEGORIES
-================================ */
+/* =========================================
+   AVATAR SECTIONS
+========================================= */
+
+.avatar-container {
+    max-width: 1200px;
+    margin: auto;
+
+    padding: 0 45px 80px;
+}
 
 .avatar-category {
     margin-bottom: 65px;
 }
 
 .avatar-category h2 {
-    font-size: 36px;
-    margin-bottom: 35px;
+    font-size: 32px;
+    margin-bottom: 30px;
+
     font-weight: 700;
 }
 
 
-/* ================================
+/* =========================================
    AVATAR GRID
-================================ */
+========================================= */
 
 .avatar-grid {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns:
+        repeat(3, 1fr);
 
-    gap: 55px;
-
-    padding: 0 20px;
+    gap: 45px;
 }
 
-
-/* ================================
-   AVATAR IMAGE
-================================ */
-
 .avatar-option {
-    width: 190px;
-    height: 190px;
+    width: 180px;
+    height: 180px;
 
     border-radius: 50%;
 
     object-fit: cover;
-
-    display: block;
-
-    margin: auto;
 
     cursor: pointer;
 
     border: 4px solid transparent;
 
     transition:
-        transform 0.25s ease,
-        border 0.25s ease,
-        box-shadow 0.25s ease;
+        transform 0.25s,
+        border 0.25s,
+        box-shadow 0.25s;
 }
 
 .avatar-option:hover {
-    transform: scale(1.07);
+    transform: scale(1.06);
+
+    border-color: #55c9f5;
+
+    box-shadow:
+        0 0 25px rgba(85, 201, 245, 0.35);
 }
 
 .avatar-option.selected {
-    border: 4px solid #58c9f3;
+    border-color: #55c9f5;
 
     box-shadow:
-        0 0 15px rgba(88, 201, 243, 0.7),
-        0 0 35px rgba(88, 201, 243, 0.25);
+        0 0 30px rgba(85, 201, 245, 0.5);
+
+    transform: scale(1.06);
 }
 
 
-/* ================================
+/* =========================================
    MOBILE
-================================ */
+========================================= */
 
 @media (max-width: 700px) {
 
     .avatar-header {
-        height: 70px;
+        height: 75px;
         padding: 0 20px;
     }
 
     .avatar-header h1 {
-        font-size: 22px;
+        font-size: 23px;
     }
 
     .back-btn {
-        font-size: 32px;
+        font-size: 28px;
     }
 
     .done-btn {
-        font-size: 16px;
+        font-size: 15px;
     }
 
-    .avatar-main {
-        padding: 45px 15px 80px;
+    .avatar-profile {
+        padding: 70px 20px 65px;
     }
 
     .current-avatar {
-        width: 150px;
-        height: 150px;
+        width: 170px;
+        height: 170px;
     }
 
-    .profile-name {
+    .avatar-profile h2 {
         font-size: 26px;
     }
 
+    .avatar-container {
+        padding: 0 25px 60px;
+    }
+
     .avatar-category h2 {
-        font-size: 30px;
-        margin-left: 15px;
+        font-size: 27px;
     }
 
     .avatar-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 25px 10px;
-        padding: 0;
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap: 20px;
     }
 
     .avatar-option {
         width: 100px;
         height: 100px;
-        border-width: 3px;
     }
 }
