@@ -1,282 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <title>Edit Avatar - GameRent</title>
 
-    <title>Edit Avatar | GameRent</title>
-
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="avatar.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
->
-
-<link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
->
+    <link rel="stylesheet" href="avatar.css">
 </head>
 
 <body>
 
-    <!-- ================================
-         TOP BAR
-    ================================= -->
-
+    <!-- HEADER -->
     <header class="avatar-header">
 
-        <button class="back-btn"
-                onclick="window.location.href='index.html'">
-
-            <i class="fa-solid fa-arrow-left"></i>
-
+        <button class="back-btn" onclick="history.back()">
+            &#10094;
         </button>
 
         <h1>Edit Avatar</h1>
 
-        <button class="done-btn"
-                onclick="saveAvatar()">
-
+        <button class="done-btn" onclick="saveAvatar()">
             Done
-
         </button>
 
     </header>
 
 
-    <!-- ================================
-         PROFILE PREVIEW
-    ================================= -->
-
-    <section class="avatar-profile">
+    <!-- CURRENT AVATAR -->
+    <section class="profile-preview">
 
         <div class="current-avatar">
-
             <img
                 id="currentAvatar"
-                src="https://i.pravatar.cc/300?img=12"
+                src="https://avatarfiles.alphacoders.com/343/thumb-1920-343468.png"
                 alt="Current Avatar"
             >
-
         </div>
 
-        <h2 id="currentName">
-            Rudra
-        </h2>
+        <h2 id="profileName">Rudra</h2>
 
     </section>
 
 
-    <!-- ================================
-         AVATAR CATEGORIES
-    ================================= -->
+    <!-- ATTACK ON TITAN -->
+    <section class="avatar-section">
 
-    <main class="avatar-container">
+        <h2>Attack on Titan</h2>
 
+        <div class="avatar-grid">
 
-        <!-- ATTACK ON TITAN -->
-
-        <section class="avatar-category">
-
-            <h2>Attack on Titan</h2>
-
-            <div class="avatar-grid">
-
-                <div class="avatar-option">
-
-                    <img
-                        src="https://i.pravatar.cc/300?img=1"
-                        alt="Avatar"
-                        onclick="selectAvatar(this.src)"
-                    >
-
-                </div>
-
-
-                <div class="avatar-option">
-
-                    <img
-                        src="https://i.pravatar.cc/300?img=5"
-                        alt="Avatar"
-                        onclick="selectAvatar(this.src)"
-                    >
-
-                </div>
-
-
-                <div class="avatar-option">
-
-                    <img
-                        src="https://i.pravatar.cc/300?img=12"
-                        alt="Avatar"
-                        onclick="selectAvatar(this.src)"
-                    >
-
-                </div>
-
+            <div class="avatar-card"
+                 onclick="selectAvatar(this)">
+                <img
+                    src="https://avatarfiles.alphacoders.com/343/thumb-1920-343468.png"
+                    alt="Levi"
+                >
+                <span>Levi</span>
             </div>
 
-        </section>
 
-
-        <!-- BANANYA -->
-
-        <section class="avatar-category">
-
-            <h2>Bananya</h2>
-
-            <div class="avatar-grid">
-
-                <div class="avatar-option">
-
-                    <img
-                        src="https://i.pravatar.cc/300?img=15"
-                        alt="Avatar"
-                        onclick="selectAvatar(this.src)"
-                    >
-
-                </div>
-
-
-                <div class="avatar-option">
-
-                    <img
-                        src="https://i.pravatar.cc/300?img=20"
-                        alt="Avatar"
-                        onclick="selectAvatar(this.src)"
-                    >
-
-                </div>
-
-
-                <div class="avatar-option">
-
-                    <img
-                        src="https://i.pravatar.cc/300?img=25"
-                        alt="Avatar"
-                        onclick="selectAvatar(this.src)"
-                    >
-
-                </div>
-
+            <div class="avatar-card"
+                 onclick="selectAvatar(this)">
+                <img
+                    src="https://cdn.pfps.gg/pfps/5355-levi-sunset.png"
+                    alt="Levi"
+                >
+                <span>Levi</span>
             </div>
 
-        </section>
 
-
-        <!-- BLACK BUTLER -->
-
-        <section class="avatar-category">
-
-            <h2>Black Butler</h2>
-
-            <div class="avatar-grid">
-
-                <div class="avatar-option">
-
-                    <img
-                        src="https://i.pravatar.cc/300?img=2"
-                        alt="Avatar"
-                        onclick="selectAvatar(this.src)"
-                    >
-
-                </div>
-
-
-                <div class="avatar-option">
-
-                    <img
-                        src="https://i.pravatar.cc/300?img=8"
-                        alt="Avatar"
-                        onclick="selectAvatar(this.src)"
-                    >
-
-                </div>
-
-
-                <div class="avatar-option">
-
-                    <img
-                        src="https://i.pravatar.cc/300?img=11"
-                        alt="Avatar"
-                        onclick="selectAvatar(this.src)"
-                    >
-
-                </div>
-
+            <div class="avatar-card"
+                 onclick="selectAvatar(this)">
+                <img
+                    src="https://c-ssl.dtstatic.com/uploads/blog/202012/23/20201223190551_ab01a.thumb.1000_0.jpg"
+                    alt="Eren"
+                >
+                <span>Eren</span>
             </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
-    </main>
+    <!-- BLACK BUTLER -->
+    <section class="avatar-section">
+
+        <h2>Black Butler</h2>
+
+        <div class="avatar-grid">
+
+            <div class="avatar-card"
+                 onclick="selectAvatar(this)">
+                <img
+                    src="https://i.pinimg.com/originals/aa/b0/43/aab0439da35411e92ab7cad1aec1915c.jpg"
+                    alt="Ciel"
+                >
+                <span>Ciel</span>
+            </div>
+
+        </div>
+
+    </section>
 
 
-    <!-- ================================
-         JAVASCRIPT
-    ================================= -->
+    <!-- BANANYA -->
+    <section class="avatar-section">
 
-    <script>
+        <h2>Bananya</h2>
 
-        let selectedAvatar =
-            localStorage.getItem("profileAvatar") ||
-            "https://i.pravatar.cc/300?img=12";
+        <div class="avatar-grid">
 
+            <div class="avatar-card"
+                 onclick="selectAvatar(this)">
+                <img
+                    src="https://i.pinimg.com/736x/cd/5b/47/cd5b47dcdf71276bd7f781d98e01505f.jpg"
+                    alt="Bananya"
+                >
+                <span>Bananya</span>
+            </div>
 
-        /* SHOW SAVED AVATAR */
+        </div>
 
-        document.getElementById("currentAvatar").src =
-            selectedAvatar;
+    </section>
 
-
-        /* SELECT AVATAR */
-
-        function selectAvatar(image) {
-
-            selectedAvatar = image;
-
-            document.getElementById("currentAvatar").src =
-                image;
-
-            document.querySelectorAll(".avatar-option")
-                .forEach(option => {
-
-                    option.classList.remove("selected");
-
-                });
-
-            event.currentTarget.parentElement
-                .classList.add("selected");
-
-        }
-
-
-        /* SAVE AVATAR */
-
-        function saveAvatar() {
-
-            localStorage.setItem(
-                "profileAvatar",
-                selectedAvatar
-            );
-
-            window.location.href = "index.html";
-
-        }
-
-    </script>
 
     <script src="avatar.js"></script>
-</body>
 
+</body>
 </html>
