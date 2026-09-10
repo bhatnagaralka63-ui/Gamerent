@@ -121,16 +121,13 @@
 
         <li>
 
-            <button
-                class="profile-btn"
-                onclick="openProfile()"
-            >
-
-                <i class="fas fa-user"></i>
-
-                Profile
-
-            </button>
+         <button
+    class="profile-btn"
+    onclick="window.location.href='avatar.html'"
+>
+    <i class="fas fa-user"></i>
+    <span>Profile</span>
+</button>
 
         </li>
 
@@ -983,9 +980,6 @@
     </div>
 
 </section>
-
-
-
 <!-- =====================================================
      PROFILE
 ===================================================== -->
@@ -996,7 +990,7 @@
 
     <div class="profile-card">
 
-        <!-- Profile Avatar -->
+        <!-- PROFILE AVATAR -->
         <div class="profile-avatar">
             <img
                 id="profileAvatar"
@@ -1005,12 +999,12 @@
             >
         </div>
 
-        <!-- User Name -->
+        <!-- PROFILE NAME -->
         <h3 id="profileDisplayName">
             Guest User
         </h3>
 
-        <!-- Edit Avatar -->
+        <!-- EDIT AVATAR -->
         <button
             class="edit-profile-btn"
             onclick="window.location.href='avatar.html'"
@@ -1019,6 +1013,71 @@
             Edit Avatar
         </button>
 
+
+        <!-- PROFILE STATS -->
+        <div class="profile-stats">
+
+            <!-- GAMES RENTED -->
+            <div class="profile-stat">
+
+                <i class="fa-solid fa-gamepad"></i>
+
+                <h4 id="rentedCount">
+                    0
+                </h4>
+
+                <p>
+                    Games Rented
+                </p>
+
+            </div>
+
+
+            <!-- WISHLIST -->
+            <div class="profile-stat">
+
+                <i class="fa-solid fa-heart"></i>
+
+                <h4 id="wishlistCount">
+                    0
+                </h4>
+
+                <p>
+                    Wishlist
+                </p>
+
+            </div>
+
+
+            <!-- TOTAL SPENT -->
+            <div class="profile-stat">
+
+                <i class="fa-solid fa-wallet"></i>
+
+                <h4 id="moneySpent">
+                    ₹0
+                </h4>
+
+                <p>
+                    Total Spent
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- LOGOUT -->
+        <button
+            class="logout-btn"
+            onclick="logoutUser()"
+        >
+            Logout
+        </button>
+
+    </div>
+
+</section>
         <!-- Statistics -->
         <div class="profile-stats">
 
