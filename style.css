@@ -3395,3 +3395,45 @@ section {
 .wishlist-btn:active {
     transform: translateY(0);
 }
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #080b12;
+    color: #ffffff;
+    text-align: center;
+    padding: 45px 20px;
+    border-top: 1px solid #151b24;
+}
+
+footer h2,
+footer h3 {
+    color: #00d4ff;
+    margin-bottom: 12px;
+}
+
+footer p {
+    color: #a9b0bb;
+    margin: 8px 0;
+}
+
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 8px;
+    font-weight: 600;
+    transition: 0.25s ease;
+}
+
+footer a:hover {
+    color: #00d4ff;
+}
+
+footer .quick-links {
+    margin: 10px 0 20px;
+}
+
+footer .quick-links a {
+    text-decoration: none;
+}
