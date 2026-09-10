@@ -1,0 +1,506 @@
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    background: #111216;
+    color: white;
+
+    font-family: "Poppins", sans-serif;
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.avatar-header {
+
+    height: 90px;
+
+    width: 100%;
+
+    background: #111216;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 35px;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+
+/* BACK BUTTON */
+
+.back-btn {
+
+    width: 50px;
+    height: 50px;
+
+    border: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 30px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition: 0.2s ease;
+}
+
+
+.back-btn:hover {
+
+    transform: translateX(-4px);
+
+    opacity: 0.7;
+}
+
+
+/* TITLE */
+
+.avatar-header h1 {
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    position: absolute;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+}
+
+
+/* DONE */
+
+.done-btn {
+
+    background: transparent;
+
+    border: none;
+
+    color: #66666c;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.done-btn:hover {
+
+    color: #00d4ff;
+}
+
+
+/* =====================================================
+   PROFILE HERO
+===================================================== */
+
+.profile-hero {
+
+    height: 480px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* BACKGROUND */
+
+.hero-background {
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,0.05),
+            rgba(17,18,22,0.95)
+        ),
+        url("images/avatar-banner.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    filter: saturate(1.2);
+
+    z-index: 0;
+}
+
+
+/* PROFILE CONTENT */
+
+.profile-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    text-align: center;
+
+    margin-top: 25px;
+}
+
+
+/* CURRENT AVATAR */
+
+.current-avatar {
+
+    width: 195px;
+
+    height: 195px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    padding: 4px;
+
+    border: 3px solid white;
+
+    background: #171a21;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,0.45);
+}
+
+
+.current-avatar img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    display: block;
+}
+
+
+/* USERNAME */
+
+.profile-content h2 {
+
+    margin-top: 20px;
+
+    font-size: 30px;
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   AVATAR CONTENT
+===================================================== */
+
+.avatar-container {
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 45px 30px 100px;
+}
+
+
+/* CATEGORY */
+
+.avatar-category {
+
+    margin-bottom: 65px;
+}
+
+
+/* CATEGORY TITLE */
+
+.avatar-category h2 {
+
+    font-size: 34px;
+
+    font-weight: 700;
+
+    margin-bottom: 30px;
+}
+
+
+/* =====================================================
+   AVATAR GRID
+===================================================== */
+
+.avatar-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 55px;
+
+    justify-items: center;
+}
+
+
+/* AVATAR */
+
+.avatar-option {
+
+    width: 180px;
+
+    height: 180px;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    position: relative;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.avatar-option img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/* HOVER */
+
+.avatar-option:hover {
+
+    transform: scale(1.07);
+
+    box-shadow:
+        0 0 0 4px #00d4ff,
+        0 12px 35px rgba(0,0,0,0.45);
+}
+
+
+/* SELECTED */
+
+.avatar-option.selected {
+
+    box-shadow:
+        0 0 0 5px #00d4ff,
+        0 0 30px rgba(0,212,255,0.5);
+
+    transform: scale(1.05);
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .avatar-header {
+
+        height: 75px;
+
+        padding: 0 18px;
+    }
+
+
+    .avatar-header h1 {
+
+        font-size: 22px;
+    }
+
+
+    .back-btn {
+
+        font-size: 24px;
+
+        width: 40px;
+
+        height: 40px;
+    }
+
+
+    .done-btn {
+
+        font-size: 16px;
+    }
+
+
+    .profile-hero {
+
+        height: 480px;
+    }
+
+
+    .current-avatar {
+
+        width: 190px;
+
+        height: 190px;
+    }
+
+
+    .profile-content h2 {
+
+        font-size: 28px;
+    }
+
+
+    .avatar-container {
+
+        padding: 35px 30px 80px;
+    }
+
+
+    .avatar-category h2 {
+
+        font-size: 30px;
+
+        margin-bottom: 25px;
+    }
+
+
+    .avatar-grid {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap: 35px 20px;
+    }
+
+
+    .avatar-option {
+
+        width: 140px;
+
+        height: 140px;
+    }
+
+}
+
+
+/* =====================================================
+   SMALL PHONES
+===================================================== */
+
+@media (max-width: 480px) {
+
+    .avatar-header {
+
+        height: 70px;
+    }
+
+
+    .avatar-header h1 {
+
+        font-size: 21px;
+    }
+
+
+    .profile-hero {
+
+        height: 480px;
+    }
+
+
+    .current-avatar {
+
+        width: 190px;
+
+        height: 190px;
+    }
+
+
+    .avatar-container {
+
+        padding: 35px 20px;
+    }
+
+
+    .avatar-category h2 {
+
+        font-size: 28px;
+    }
+
+
+    .avatar-grid {
+
+        gap: 30px 15px;
+    }
+
+
+    .avatar-option {
+
+        width: 105px;
+
+        height: 105px;
+    }
+
+}
