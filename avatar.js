@@ -1,71 +1,104 @@
-/* ================================
+/* =========================================
    AVATAR SYSTEM
-================================ */
+========================================= */
 
-// Get saved profile information
-let savedName = localStorage.getItem("profileName");
-let savedAvatar = localStorage.getItem("profileAvatar");
+document.addEventListener("DOMContentLoaded", function () {
 
+    const currentAvatar =
+        document.getElementById("currentAvatar");
 
-// ================================
-// ELEMENTS
-// ================================
+    const avatarOptions =
+        document.querySelectorAll(".avatar-option");
 
-const currentAvatar = document.getElementById("currentAvatar");
-const profileName = document.getElementById("profileName");
-const avatarOptions = document.querySelectorAll(".avatar-option");
+    const savedAvatar =
+        localStorage.getItem("gameRentAvatar");
 
-
-// ================================
-// LOAD SAVED PROFILE
-// ================================
-
-if (savedName) {
-    profileName.textContent = savedName;
-}
-
-if (savedAvatar) {
-    currentAvatar.src = savedAvatar;
-}
+    const savedName =
+        localStorage.getItem("gameRentUsername");
 
 
-// ================================
-// AVATAR SELECTION
-// ================================
+    /* =========================================
+       LOAD SAVED AVATAR
+    ========================================= */
 
-avatarOptions.forEach(function (avatar) {
+    if (savedAvatar && currentAvatar) {
+        currentAvatar.src = savedAvatar;
+    }
 
-    avatar.addEventListener("click", function () {
 
-        // Change main avatar
-        currentAvatar.src = this.src;
+    /* =========================================
+       LOAD SAVED NAME
+    ========================================= */
 
-        // Remove selection from all
-        avatarOptions.forEach(function (item) {
-            item.classList.remove("selected");
+    const usernameElement =
+        document.getElementById("avatarUsername");
+
+    if (savedName && usernameElement) {
+        usernameElement.textContent = savedName;
+    }
+
+
+    /* =========================================
+       AVATAR CLICK
+    ========================================= */
+
+    avatarOptions.forEach(function (avatar) {
+
+        avatar.addEventListener("click", function () {
+
+            const selectedImage =
+                this.src;
+
+            /* Change preview */
+
+            if (currentAvatar) {
+                currentAvatar.src = selectedImage;
+            }
+
+
+            /* Remove previous selection */
+
+            avatarOptions.forEach(function (item) {
+                item.classList.remove("selected");
+            });
+
+
+            /* Select current avatar */
+
+            this.classList.add("selected");
+
+
+            /* Save immediately */
+
+            localStorage.setItem(
+                "gameRentAvatar",
+                selectedImage
+            );
+
         });
-
-        // Select clicked avatar
-        this.classList.add("selected");
-
-        // Save immediately
-        localStorage.setItem("profileAvatar", this.src);
 
     });
 
 });
 
 
-// ================================
-// DONE BUTTON
-// ================================
+/* =========================================
+   DONE BUTTON
+========================================= */
 
-function saveAvatar() {
-
-    localStorage.setItem(
-        "profileAvatar",
-        currentAvatar.src
-    );
+function finishAvatar() {
 
     window.location.href = "index.html";
+
+}
+
+
+/* =========================================
+   GO BACK
+========================================= */
+
+function goBack() {
+
+    window.history.back();
+
 }
