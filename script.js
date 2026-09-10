@@ -2158,3 +2158,14 @@ function goToCheckout() {
 
     window.location.href = "checkout.html";
 }
+document.addEventListener("DOMContentLoaded", function () {
+
+    const navAvatar = document.getElementById("navAvatar");
+
+    const savedAvatar = localStorage.getItem("profileAvatar");
+
+    if (navAvatar && savedAvatar) {
+        navAvatar.src = savedAvatar;
+    }
+
+});
