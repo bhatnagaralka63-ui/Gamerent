@@ -187,7 +187,15 @@ nav.scrolled {
 .nav-right {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+
     gap: 12px;
+
+    margin-left: auto;
+
+    flex-shrink: 0;
+
+    white-space: nowrap;
 }
 
 
@@ -199,30 +207,42 @@ nav.scrolled {
     display: flex;
     align-items: center;
 
-    background: #191f2d;
+    width: 175px;
+    height: 38px;
 
-    border: 1px solid transparent;
-    border-radius: 30px;
+    background: #111820;
 
-    padding: 8px 15px;
+    border: 1px solid #29333f;
+    border-radius: 22px;
+
+    padding: 0 14px;
 
     transition: 0.3s ease;
+
+    flex-shrink: 0;
 }
 
 .search:focus-within {
+    width: 190px;
+
     border-color: #00d4ff;
 
     box-shadow:
-        0 0 15px rgba(0, 212, 255, 0.15);
+        0 0 15px rgba(0, 212, 255, 0.18);
 }
 
 .search i {
-    color: #00d4ff;
+    color: #ffffff;
+
     margin-right: 8px;
+
+    font-size: 14px;
+
+    flex-shrink: 0;
 }
 
 .search input {
-    width: 175px;
+    width: 100%;
 
     border: none;
     outline: none;
@@ -231,7 +251,9 @@ nav.scrolled {
 
     color: #ffffff;
 
-    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+
+    font-size: 13px;
 }
 
 .search input::placeholder {
@@ -244,17 +266,32 @@ nav.scrolled {
 ========================================================= */
 
 .login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    height: 38px;
+
+    padding: 0 18px;
+
     border: none;
+    border-radius: 22px;
 
     background: #00d4ff;
     color: #071018;
 
-    padding: 10px 21px;
+    font-family: "Poppins", sans-serif;
 
-    border-radius: 25px;
+    font-size: 13px;
+    font-weight: 700;
 
-    font-size: 14px;
-    font-weight: 600;
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    flex-shrink: 0;
 
     transition: 0.3s ease;
 }
@@ -274,38 +311,41 @@ nav.scrolled {
 ========================================================= */
 
 .cart-btn {
-    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    width: auto;
-    height: auto;
+    gap: 6px;
 
-    padding: 0;
+    height: 38px;
+
+    padding: 0 4px;
 
     border: none;
-    border-radius: 0;
 
     background: transparent;
 
     color: #ffffff;
 
-    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+
+    font-size: 15px;
     font-weight: 600;
 
     cursor: pointer;
+
+    white-space: nowrap;
+
+    flex-shrink: 0;
 
     transition: 0.3s ease;
 }
 
 .cart-btn:hover {
-    background: transparent;
     color: #00d4ff;
 
     transform: translateY(-2px);
-
-    box-shadow: none;
 }
-
-
 /* =========================================================
    CART COUNT
 ========================================================= */
