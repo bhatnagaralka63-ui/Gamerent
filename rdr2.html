@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -17,6 +18,7 @@
 
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 </head>
 
 <body>
@@ -43,47 +45,72 @@
 
     </div>
 
+
+    <!-- ================= NAV ACTIONS ================= -->
+
     <div class="nav-actions">
 
-    <!-- SEARCH -->
-    <div class="search-box">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" placeholder="Search games...">
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                placeholder="Search games..."
+            >
+
+        </div>
+
+
+        <!-- LOGIN -->
+
+        <button
+            class="login-btn"
+            onclick="location.href='index.html#profile'"
+        >
+
+            <i class="fa-solid fa-user"></i>
+
+            Login
+
+        </button>
+
+
+        <!-- CART -->
+
+        <button
+            class="cart-btn"
+            onclick="location.href='index.html#rentals'"
+        >
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            <span id="cartCount">0</span>
+
+        </button>
+
     </div>
 
-    <!-- LOGIN -->
-    <button class="login-btn"
-        onclick="location.href='index.html#profile'">
+</nav>
 
-        <i class="fa-solid fa-user"></i>
-        Login
-
-    </button>
-
-    <!-- CART -->
-    <button class="cart-btn"
-        onclick="location.href='index.html#rentals'">
-
-        <i class="fa-solid fa-cart-shopping"></i>
-        <span id="cartCount">0</span>
-
-    </button>
-
-</div>
 
 <!-- ================= GAME HERO ================= -->
 
-<section class="game-detail-hero"
+<section
+    class="game-detail-hero"
     style="
-    background-image:
-    linear-gradient(
-        90deg,
-        rgba(5,8,15,0.96),
-        rgba(5,8,15,0.70),
-        rgba(5,8,15,0.20)
-    ),
-    url('https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/library_hero.jpg');
-    ">
+        background-image:
+        linear-gradient(
+            90deg,
+            rgba(5,8,15,0.96),
+            rgba(5,8,15,0.70),
+            rgba(5,8,15,0.20)
+        ),
+        url('https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/library_hero.jpg');
+    "
+>
 
     <div class="game-detail-content">
 
@@ -91,9 +118,11 @@
             OPEN WORLD
         </span>
 
+
         <h1>
             Red Dead Redemption 2
         </h1>
+
 
         <div class="game-rating">
 
@@ -105,6 +134,7 @@
 
         </div>
 
+
         <p class="game-description">
 
             Experience the story of Arthur Morgan and the Van der
@@ -113,10 +143,13 @@
 
         </p>
 
+
         <div class="game-actions">
 
-            <button class="rent-btn"
-                onclick="rentGame('Red Dead Redemption 2', 219)">
+            <button
+                class="rent-btn"
+                onclick="rentGame('Red Dead Redemption 2', 219)"
+            >
 
                 <i class="fa-solid fa-cart-shopping"></i>
 
@@ -124,8 +157,11 @@
 
             </button>
 
-            <button class="wishlist-btn"
-                onclick="addWishlist('Red Dead Redemption 2')">
+
+            <button
+                class="wishlist-btn"
+                onclick="addWishlist('Red Dead Redemption 2')"
+            >
 
                 <i class="fa-solid fa-heart"></i>
 
@@ -146,11 +182,13 @@
 
     <div class="game-info-container">
 
+
         <div class="game-main-info">
 
             <h2>
                 About the Game
             </h2>
+
 
             <p>
 
@@ -158,6 +196,7 @@
                 adventure game developed by Rockstar Games.
 
             </p>
+
 
             <p>
 
@@ -172,13 +211,16 @@
 
         <div class="game-specs">
 
+
             <div class="spec-item">
 
                 <i class="fa-solid fa-calendar"></i>
 
                 <div>
 
-                    <span>Release</span>
+                    <span>
+                        Release
+                    </span>
 
                     <strong>
                         2018
@@ -195,7 +237,9 @@
 
                 <div>
 
-                    <span>Genre</span>
+                    <span>
+                        Genre
+                    </span>
 
                     <strong>
                         Action Adventure
@@ -212,7 +256,9 @@
 
                 <div>
 
-                    <span>World</span>
+                    <span>
+                        World
+                    </span>
 
                     <strong>
                         Open World
@@ -229,7 +275,9 @@
 
                 <div>
 
-                    <span>Players</span>
+                    <span>
+                        Players
+                    </span>
 
                     <strong>
                         Single Player
@@ -238,6 +286,7 @@
                 </div>
 
             </div>
+
 
         </div>
 
@@ -254,7 +303,9 @@
         Why Play Red Dead Redemption 2?
     </h2>
 
+
     <div class="feature-grid">
+
 
         <div class="feature-card">
 
@@ -265,8 +316,10 @@
             </h3>
 
             <p>
+
                 Travel through mountains, forests, towns,
                 deserts and rivers across a massive world.
+
             </p>
 
         </div>
@@ -281,8 +334,10 @@
             </h3>
 
             <p>
+
                 Take part in intense shootouts, train robberies,
                 bank heists and dangerous missions.
+
             </p>
 
         </div>
@@ -297,8 +352,10 @@
             </h3>
 
             <p>
+
                 Hunt and track a huge variety of animals
                 throughout the wilderness.
+
             </p>
 
         </div>
@@ -313,11 +370,14 @@
             </h3>
 
             <p>
+
                 Follow Arthur Morgan through one of gaming's
                 most memorable stories.
+
             </p>
 
         </div>
+
 
     </div>
 
@@ -332,15 +392,19 @@
         Game Visuals
     </h2>
 
+
     <div class="screenshot-grid">
 
         <img
             src="https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg"
-            alt="Red Dead Redemption 2">
+            alt="Red Dead Redemption 2"
+        >
+
 
         <img
             src="https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/library_hero.jpg"
-            alt="Red Dead Redemption 2">
+            alt="Red Dead Redemption 2"
+        >
 
     </div>
 
@@ -363,8 +427,10 @@
 
     </div>
 
+
     <button
-        onclick="rentGame('Red Dead Redemption 2', 219)">
+        onclick="rentGame('Red Dead Redemption 2', 219)"
+    >
 
         Rent for ₹219
 
@@ -381,15 +447,21 @@
         You May Also Like
     </h2>
 
+
     <div class="games">
 
 
-        <div class="card"
-            onclick="location.href='gta5.html'">
+        <!-- GTA V -->
+
+        <div
+            class="card"
+            onclick="location.href='gta5.html'"
+        >
 
             <img
                 src="https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg"
-                alt="GTA V">
+                alt="GTA V"
+            >
 
             <div class="card-content">
 
@@ -410,12 +482,17 @@
         </div>
 
 
-        <div class="card"
-            onclick="location.href='cyberpunk.html'">
+        <!-- CYBERPUNK -->
+
+        <div
+            class="card"
+            onclick="location.href='cyberpunk.html'"
+        >
 
             <img
                 src="https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg"
-                alt="Cyberpunk 2077">
+                alt="Cyberpunk 2077"
+            >
 
             <div class="card-content">
 
@@ -436,12 +513,17 @@
         </div>
 
 
-        <div class="card"
-            onclick="location.href='ghost.html'">
+        <!-- GHOST OF TSUSHIMA -->
+
+        <div
+            class="card"
+            onclick="location.href='ghost.html'"
+        >
 
             <img
                 src="https://cdn.cloudflare.steamstatic.com/steam/apps/2215430/header.jpg"
-                alt="Ghost of Tsushima">
+                alt="Ghost of Tsushima"
+            >
 
             <div class="card-content">
 
@@ -462,12 +544,17 @@
         </div>
 
 
-        <div class="card"
-            onclick="location.href='eldenring.html'">
+        <!-- ELDEN RING -->
+
+        <div
+            class="card"
+            onclick="location.href='eldenring.html'"
+        >
 
             <img
                 src="https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg"
-                alt="Elden Ring">
+                alt="Elden Ring"
+            >
 
             <div class="card-content">
 
@@ -487,6 +574,7 @@
 
         </div>
 
+
     </div>
 
 </section>
@@ -497,6 +585,7 @@
 <footer>
 
     <div class="footer-content">
+
 
         <div>
 
@@ -517,13 +606,16 @@
                 Quick Links
             </h3>
 
+
             <a href="index.html">
                 Home
             </a>
 
+
             <a href="games.html">
                 Games
             </a>
+
 
             <a href="index.html#contact">
                 Contact
@@ -531,11 +623,14 @@
 
         </div>
 
+
     </div>
 
 
     <p class="copyright">
+
         © 2026 GameRent. All Rights Reserved.
+
     </p>
 
 </footer>
